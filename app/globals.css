@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: #fbfaf7;
+  color: #12161c;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+/* Focus visibility for keyboard users - the search box is used by parents. */
+:focus-visible {
+  outline: 2px solid #b4472e;
+  outline-offset: 2px;
+}
