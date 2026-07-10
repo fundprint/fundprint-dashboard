@@ -3,14 +3,14 @@
     "dataset_version": "2026.07-beta",
     "resolver_version": "0.1.0",
     "methodology_version": "2026.06-floors-v0",
-    "generated_at": "2026-07-10T04:05:53.044593+00:00",
+    "generated_at": "2026-07-10T04:14:35.404741+00:00",
     "source": "fundprint-data v_published_* views"
   },
   "totals": {
-    "clinics": 570,
+    "clinics": 587,
     "acquirers": 7,
     "states": 29,
-    "pe_clinics": 485,
+    "pe_clinics": 502,
     "non_pe_clinics": 85
   },
   "acquirers": [
@@ -60,20 +60,20 @@
       "former": false
     },
     {
+      "id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "hq_state": null,
+      "clinic_count": 21,
+      "brand_count": 2,
+      "former": false
+    },
+    {
       "id": "00c99882-d773-4c8d-a9a0-f8ac42559390",
       "name": "Thomas H. Lee Partners",
       "firm_type": "private_equity",
       "hq_state": null,
       "clinic_count": 20,
-      "brand_count": 1,
-      "former": false
-    },
-    {
-      "id": "d4535a2b-c667-472d-b533-337f68c1351f",
-      "name": "Tenex Capital Management",
-      "firm_type": "private_equity",
-      "hq_state": null,
-      "clinic_count": 4,
       "brand_count": 1,
       "former": false
     },
@@ -153,6 +153,14 @@
       "clinic_count": 20
     },
     {
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "clinic_count": 17
+    },
+    {
       "owner_id": "37876ea4-02b6-410a-ae3a-2f0ba8aedb2e",
       "owner_name": "Behavioral Innovations",
       "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
@@ -164,7 +172,7 @@
   "states": [
     {
       "state": "CO",
-      "clinic_count": 216
+      "clinic_count": 225
     },
     {
       "state": "FL",
@@ -175,12 +183,12 @@
       "clinic_count": 51
     },
     {
-      "state": "AZ",
-      "clinic_count": 27
+      "state": "MD",
+      "clinic_count": 28
     },
     {
-      "state": "MD",
-      "clinic_count": 20
+      "state": "AZ",
+      "clinic_count": 27
     },
     {
       "state": "OH",
@@ -6023,12 +6031,12 @@
       ]
     },
     {
-      "id": "54828f2e-88c3-4e99-84ff-208d43873fbc",
+      "id": "cb55fe75-5006-462f-988e-0c6f0ae22eaf",
       "name": "FLORIDA AUTISM CENTER",
-      "city": "RALEIGH",
-      "state": "NC",
-      "zip": "276013000",
-      "npi": "1467047811",
+      "city": "CANTON",
+      "state": "GA",
+      "zip": "301142566",
+      "npi": "1245899574",
       "owner_id": "e1685f35-3006-4546-affb-10ebe6d30d41",
       "owner_name": "Florida Autism Center",
       "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
@@ -6037,7 +6045,7 @@
       "confidence_score": 0.88,
       "confidence_method": "fuzzy_high",
       "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Blue+Sprig*&enumeration_type=NPI-2&country_code=US"
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Florida+Autism+Center*&enumeration_type=NPI-2&country_code=US"
       ]
     },
     {
@@ -6515,24 +6523,6 @@
       "state": "GA",
       "zip": "305189071",
       "npi": "1457994907",
-      "owner_id": "e1685f35-3006-4546-affb-10ebe6d30d41",
-      "owner_name": "Florida Autism Center",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Florida+Autism+Center*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "cb55fe75-5006-462f-988e-0c6f0ae22eaf",
-      "name": "FLORIDA AUTISM CENTER",
-      "city": "CANTON",
-      "state": "GA",
-      "zip": "301142566",
-      "npi": "1245899574",
       "owner_id": "e1685f35-3006-4546-affb-10ebe6d30d41",
       "owner_name": "Florida Autism Center",
       "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
@@ -7499,6 +7489,24 @@
       ]
     },
     {
+      "id": "54828f2e-88c3-4e99-84ff-208d43873fbc",
+      "name": "FLORIDA AUTISM CENTER",
+      "city": "RALEIGH",
+      "state": "NC",
+      "zip": "276013000",
+      "npi": "1467047811",
+      "owner_id": "e1685f35-3006-4546-affb-10ebe6d30d41",
+      "owner_name": "Florida Autism Center",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Blue+Sprig*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
       "id": "e700d515-80be-4d7c-bc4e-1965c7acacf4",
       "name": "FLORIDA AUTISM CENTER OF EXCELLENCE, INC.",
       "city": "TAMPA",
@@ -7697,12 +7705,12 @@
       ]
     },
     {
-      "id": "0df6c193-3512-4a91-b086-f3aed85a0fb0",
+      "id": "c5ae8140-cdbb-4772-bbd5-2e74545262a6",
       "name": "HOPEBRIDGE HEALTHCARE GROUP, LLC",
       "city": "WEST BOYLSTON",
       "state": "MA",
       "zip": "015832365",
-      "npi": "1386456788",
+      "npi": "1366218174",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -7733,12 +7741,12 @@
       ]
     },
     {
-      "id": "c5ae8140-cdbb-4772-bbd5-2e74545262a6",
+      "id": "0df6c193-3512-4a91-b086-f3aed85a0fb0",
       "name": "HOPEBRIDGE HEALTHCARE GROUP, LLC",
       "city": "WEST BOYLSTON",
       "state": "MA",
       "zip": "015832365",
-      "npi": "1366218174",
+      "npi": "1386456788",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -7841,42 +7849,6 @@
       ]
     },
     {
-      "id": "4f839e69-6a43-4042-971b-427bbbc57a31",
-      "name": "HOPEBRIDGE LLC",
-      "city": "MOUNT DORA",
-      "state": "FL",
-      "zip": "327577039",
-      "npi": "1558017368",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "17e1d21c-1a19-4f4e-9822-218980213cbf",
-      "name": "HOPEBRIDGE LLC",
-      "city": "FORT MYERS",
-      "state": "FL",
-      "zip": "339169498",
-      "npi": "1548833619",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
       "id": "a311bc61-e551-49d9-95b3-935d01766cdf",
       "name": "HOPEBRIDGE LLC",
       "city": "NORMAN",
@@ -7919,24 +7891,6 @@
       "state": "AR",
       "zip": "719136560",
       "npi": "1396497392",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "a8d0afe2-999a-4397-97b6-ee4a7852eb62",
-      "name": "HOPEBRIDGE LLC",
-      "city": "YUMA",
-      "state": "AZ",
-      "zip": "853652036",
-      "npi": "1861064479",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -8147,24 +8101,6 @@
       ]
     },
     {
-      "id": "b947a483-1d81-48c5-be22-f8fce644918c",
-      "name": "HOPEBRIDGE LLC",
-      "city": "LAKEWOOD",
-      "state": "CO",
-      "zip": "802141803",
-      "npi": "1417580689",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
       "id": "bbe2e5ad-e50b-4f3f-ae7d-f6090257ab64",
       "name": "HOPEBRIDGE LLC",
       "city": "UNIVERSITY PARK",
@@ -8201,66 +8137,12 @@
       ]
     },
     {
-      "id": "210cbb9b-070c-4d49-997d-1566e5bda6d3",
-      "name": "HOPEBRIDGE LLC",
-      "city": "BENTONVILLE",
-      "state": "AR",
-      "zip": "727123414",
-      "npi": "1144972233",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
       "id": "9f31bdbb-b268-4849-8152-c6ed8192f36e",
       "name": "HOPEBRIDGE LLC",
       "city": "APEX",
       "state": "NC",
       "zip": "275024343",
       "npi": "1417605825",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "625b775a-c494-4f2c-8d18-2e292ecca23e",
-      "name": "HOPEBRIDGE LLC",
-      "city": "GREELEY",
-      "state": "CO",
-      "zip": "806315151",
-      "npi": "1174193965",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "39763820-93c9-4400-9325-c46030f1b602",
-      "name": "HOPEBRIDGE LLC",
-      "city": "BRENTWOOD",
-      "state": "TN",
-      "zip": "370276842",
-      "npi": "1881352177",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -8327,48 +8209,12 @@
       ]
     },
     {
-      "id": "5aec4469-8d3a-4ed5-9a2a-0ca8fdefa167",
-      "name": "HOPEBRIDGE LLC",
-      "city": "BRANDON",
-      "state": "FL",
-      "zip": "335103935",
-      "npi": "1346913381",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
       "id": "132e554c-493b-471c-a02b-4b58aaca8a05",
       "name": "HOPEBRIDGE LLC",
       "city": "FLAGSTAFF",
       "state": "AZ",
       "zip": "860044032",
       "npi": "1417536715",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "db84b9aa-67c9-45da-b637-b257f4586817",
-      "name": "HOPEBRIDGE LLC",
-      "city": "LOUISVILLE",
-      "state": "KY",
-      "zip": "402224937",
-      "npi": "1003459330",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -8435,624 +8281,12 @@
       ]
     },
     {
-      "id": "69b39edb-f5f4-4aaa-881b-7ce543adbb52",
-      "name": "HOPEBRIDGE LLC",
-      "city": "CONYERS",
-      "state": "GA",
-      "zip": "300136384",
-      "npi": "1598349615",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
       "id": "5fc1fd0f-1b78-45a5-afbb-181607bae4ee",
       "name": "HOPEBRIDGE LLC",
       "city": "MEMPHIS",
       "state": "TN",
       "zip": "381334977",
       "npi": "1598423881",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "d3d68710-89f2-4abb-b307-6dc84c9e3ca9",
-      "name": "HOPEBRIDGE LLC",
-      "city": "PINELLAS PARK",
-      "state": "FL",
-      "zip": "337812652",
-      "npi": "1073273827",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "e516475b-6be3-42fe-9625-6415f16bce43",
-      "name": "HOPEBRIDGE LLC",
-      "city": "WESTMINSTER",
-      "state": "CO",
-      "zip": "802342326",
-      "npi": "1780254573",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "570c153d-616d-4a44-9b6e-f4db7b2704ae",
-      "name": "HOPEBRIDGE LLC",
-      "city": "DENVER",
-      "state": "CO",
-      "zip": "802224906",
-      "npi": "1790317071",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "ae650078-0c1c-415f-9996-80c055eabbad",
-      "name": "HOPEBRIDGE LLC",
-      "city": "HOOVER",
-      "state": "AL",
-      "zip": "352442094",
-      "npi": "1366194458",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "a1075b7d-c497-4e56-a8d5-9ab1d148a695",
-      "name": "HOPEBRIDGE LLC",
-      "city": "CHANDLER",
-      "state": "AZ",
-      "zip": "852483573",
-      "npi": "1003541277",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "f7991dbd-d7d0-4f18-ad48-2892ab312df9",
-      "name": "HOPEBRIDGE LLC",
-      "city": "EDMOND",
-      "state": "OK",
-      "zip": "730129007",
-      "npi": "1962155374",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "5d2ac663-4aa5-4c2b-a0db-b68076c6e143",
-      "name": "HOPEBRIDGE LLC",
-      "city": "PHOENIX",
-      "state": "AZ",
-      "zip": "850374446",
-      "npi": "1487323127",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "20e26005-6a48-4c80-aa6f-f74e74ac3e5f",
-      "name": "HOPEBRIDGE LLC",
-      "city": "PINELLAS PARK",
-      "state": "FL",
-      "zip": "337812652",
-      "npi": "1639842834",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "8256d7b6-3dbd-4b8d-bfc2-8423c4a9e3f6",
-      "name": "HOPEBRIDGE LLC",
-      "city": "MILFORD",
-      "state": "OH",
-      "zip": "451502740",
-      "npi": "1932611399",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "82fd65d0-c705-4517-a484-06bcddb13c0c",
-      "name": "HOPEBRIDGE LLC",
-      "city": "WESTLAKE",
-      "state": "OH",
-      "zip": "441451135",
-      "npi": "1457907289",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "229123b8-4b6f-41f8-bea6-1d429e98813d",
-      "name": "HOPEBRIDGE LLC",
-      "city": "COLORADO SPRINGS",
-      "state": "CO",
-      "zip": "809098310",
-      "npi": "1770116949",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "f0b7df67-00b4-47ba-ac2c-cc77f4dbc6e5",
-      "name": "HOPEBRIDGE LLC",
-      "city": "LITTLE ROCK",
-      "state": "AR",
-      "zip": "722056675",
-      "npi": "1790438778",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "fd3c8de3-3f9b-45c8-a690-39a46dfca696",
-      "name": "HOPEBRIDGE LLC",
-      "city": "FORT MYERS",
-      "state": "FL",
-      "zip": "339169498",
-      "npi": "1255091005",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "c6137fc9-f3dc-4800-8850-4c99a3c34c70",
-      "name": "HOPEBRIDGE LLC",
-      "city": "ENGLEWOOD",
-      "state": "CO",
-      "zip": "801125812",
-      "npi": "1740825462",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "eae3f22e-b72f-4793-aa04-ce8125d1bc6c",
-      "name": "HOPEBRIDGE LLC",
-      "city": "EDMOND",
-      "state": "OK",
-      "zip": "730129007",
-      "npi": "1649939794",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "33d2ac0f-8bc4-4898-82b6-b70f88807d13",
-      "name": "HOPEBRIDGE LLC",
-      "city": "UNIVERSITY PARK",
-      "state": "FL",
-      "zip": "342013002",
-      "npi": "1811657661",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "aaab51d1-6470-4a18-8366-ca35451d3e1a",
-      "name": "HOPEBRIDGE LLC",
-      "city": "MOUNT DORA",
-      "state": "FL",
-      "zip": "327577039",
-      "npi": "1326799768",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "06d6e5ff-805a-4d67-8264-7cffd69f6bb9",
-      "name": "HOPEBRIDGE LLC",
-      "city": "DENVER",
-      "state": "CO",
-      "zip": "802224906",
-      "npi": "1598335382",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "ea851c1a-2bdc-45f7-8303-4dbfb4a3c2e4",
-      "name": "HOPEBRIDGE LLC",
-      "city": "FORT MYERS",
-      "state": "FL",
-      "zip": "339169498",
-      "npi": "1649932989",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "5d767ee8-4cbd-4cf4-b331-0872878bc171",
-      "name": "HOPEBRIDGE LLC",
-      "city": "PHOENIX",
-      "state": "AZ",
-      "zip": "850324648",
-      "npi": "1528620077",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "2e278b8e-4b3b-4d1f-89ed-8e86b1f1c109",
-      "name": "HOPEBRIDGE LLC",
-      "city": "TEMPE",
-      "state": "AZ",
-      "zip": "852841030",
-      "npi": "1396380010",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "58e80ecb-5dcb-4b02-b24b-d97f8bba3da1",
-      "name": "HOPEBRIDGE LLC",
-      "city": "SNELLVILLE",
-      "state": "GA",
-      "zip": "300786141",
-      "npi": "1649824467",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "6f5734c6-4d6a-4c09-969c-6f50e1b23388",
-      "name": "HOPEBRIDGE LLC",
-      "city": "WATKINSVILLE",
-      "state": "GA",
-      "zip": "30677",
-      "npi": "1972131977",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "2e89bd17-4311-4bd7-afc6-5411749580da",
-      "name": "HOPEBRIDGE LLC",
-      "city": "OCALA",
-      "state": "FL",
-      "zip": "344755647",
-      "npi": "1730841073",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "9c807ae4-e013-4f1c-89ea-92f1619fcee7",
-      "name": "HOPEBRIDGE LLC",
-      "city": "GARDENDALE",
-      "state": "AL",
-      "zip": "350712258",
-      "npi": "1376295469",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "dfe41fe5-edbe-425c-adc5-6705251696fa",
-      "name": "HOPEBRIDGE LLC",
-      "city": "BIRMINGHAM",
-      "state": "AL",
-      "zip": "352223211",
-      "npi": "1013669191",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "6c258080-9e1d-44cf-ac15-de42573c02ad",
-      "name": "HOPEBRIDGE LLC",
-      "city": "MESA",
-      "state": "AZ",
-      "zip": "852061734",
-      "npi": "1730727645",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "6ed48dbf-b9b3-4ad5-9c28-a6c43c472180",
-      "name": "HOPEBRIDGE LLC",
-      "city": "LITTLE ROCK",
-      "state": "AR",
-      "zip": "722056606",
-      "npi": "1568114569",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "ca44050a-50d8-43c9-9d00-c0d6a912f100",
-      "name": "HOPEBRIDGE LLC",
-      "city": "NEWNAN",
-      "state": "GA",
-      "zip": "30265",
-      "npi": "1013553379",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "d4ecd6d0-2466-44f8-ac89-21f8b1d58f4f",
-      "name": "HOPEBRIDGE LLC",
-      "city": "FORT COLLINS",
-      "state": "CO",
-      "zip": "805255744",
-      "npi": "1871163667",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "06b1e5a2-a3ce-4608-98ff-3a101df87412",
-      "name": "HOPEBRIDGE LLC",
-      "city": "LITCHFIELD PARK",
-      "state": "AZ",
-      "zip": "853403045",
-      "npi": "1760027486",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "a6ff4730-0677-4ca0-b9f0-1f7dc30bcbf2",
-      "name": "HOPEBRIDGE LLC",
-      "city": "AURORA",
-      "state": "CO",
-      "zip": "800133557",
-      "npi": "1073183869",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "7249a268-8eab-45eb-a71a-a7569d78aa0f",
-      "name": "HOPEBRIDGE LLC",
-      "city": "ENGLEWOOD",
-      "state": "CO",
-      "zip": "801125812",
-      "npi": "1497392690",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -9143,42 +8377,6 @@
       "state": "AZ",
       "zip": "852556665",
       "npi": "1275179426",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "02ed9f9c-bc53-4f4a-b665-268776fa8b99",
-      "name": "HOPEBRIDGE LLC",
-      "city": "GILBERT",
-      "state": "AZ",
-      "zip": "852332806",
-      "npi": "1154983609",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "4982e008-88c7-4476-9a4f-81b42b7802a1",
-      "name": "HOPEBRIDGE LLC",
-      "city": "MESA",
-      "state": "AZ",
-      "zip": "852064631",
-      "npi": "1457999369",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -9407,6 +8605,816 @@
       ]
     },
     {
+      "id": "4f839e69-6a43-4042-971b-427bbbc57a31",
+      "name": "HOPEBRIDGE LLC",
+      "city": "MOUNT DORA",
+      "state": "FL",
+      "zip": "327577039",
+      "npi": "1558017368",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "17e1d21c-1a19-4f4e-9822-218980213cbf",
+      "name": "HOPEBRIDGE LLC",
+      "city": "FORT MYERS",
+      "state": "FL",
+      "zip": "339169498",
+      "npi": "1548833619",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "e516475b-6be3-42fe-9625-6415f16bce43",
+      "name": "HOPEBRIDGE LLC",
+      "city": "WESTMINSTER",
+      "state": "CO",
+      "zip": "802342326",
+      "npi": "1780254573",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "570c153d-616d-4a44-9b6e-f4db7b2704ae",
+      "name": "HOPEBRIDGE LLC",
+      "city": "DENVER",
+      "state": "CO",
+      "zip": "802224906",
+      "npi": "1790317071",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "ae650078-0c1c-415f-9996-80c055eabbad",
+      "name": "HOPEBRIDGE LLC",
+      "city": "HOOVER",
+      "state": "AL",
+      "zip": "352442094",
+      "npi": "1366194458",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "a1075b7d-c497-4e56-a8d5-9ab1d148a695",
+      "name": "HOPEBRIDGE LLC",
+      "city": "CHANDLER",
+      "state": "AZ",
+      "zip": "852483573",
+      "npi": "1003541277",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "5d2ac663-4aa5-4c2b-a0db-b68076c6e143",
+      "name": "HOPEBRIDGE LLC",
+      "city": "PHOENIX",
+      "state": "AZ",
+      "zip": "850374446",
+      "npi": "1487323127",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "20e26005-6a48-4c80-aa6f-f74e74ac3e5f",
+      "name": "HOPEBRIDGE LLC",
+      "city": "PINELLAS PARK",
+      "state": "FL",
+      "zip": "337812652",
+      "npi": "1639842834",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "8256d7b6-3dbd-4b8d-bfc2-8423c4a9e3f6",
+      "name": "HOPEBRIDGE LLC",
+      "city": "MILFORD",
+      "state": "OH",
+      "zip": "451502740",
+      "npi": "1932611399",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "82fd65d0-c705-4517-a484-06bcddb13c0c",
+      "name": "HOPEBRIDGE LLC",
+      "city": "WESTLAKE",
+      "state": "OH",
+      "zip": "441451135",
+      "npi": "1457907289",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "c6137fc9-f3dc-4800-8850-4c99a3c34c70",
+      "name": "HOPEBRIDGE LLC",
+      "city": "ENGLEWOOD",
+      "state": "CO",
+      "zip": "801125812",
+      "npi": "1740825462",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "eae3f22e-b72f-4793-aa04-ce8125d1bc6c",
+      "name": "HOPEBRIDGE LLC",
+      "city": "EDMOND",
+      "state": "OK",
+      "zip": "730129007",
+      "npi": "1649939794",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "06d6e5ff-805a-4d67-8264-7cffd69f6bb9",
+      "name": "HOPEBRIDGE LLC",
+      "city": "DENVER",
+      "state": "CO",
+      "zip": "802224906",
+      "npi": "1598335382",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "ea851c1a-2bdc-45f7-8303-4dbfb4a3c2e4",
+      "name": "HOPEBRIDGE LLC",
+      "city": "FORT MYERS",
+      "state": "FL",
+      "zip": "339169498",
+      "npi": "1649932989",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "2e278b8e-4b3b-4d1f-89ed-8e86b1f1c109",
+      "name": "HOPEBRIDGE LLC",
+      "city": "TEMPE",
+      "state": "AZ",
+      "zip": "852841030",
+      "npi": "1396380010",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "58e80ecb-5dcb-4b02-b24b-d97f8bba3da1",
+      "name": "HOPEBRIDGE LLC",
+      "city": "SNELLVILLE",
+      "state": "GA",
+      "zip": "300786141",
+      "npi": "1649824467",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "6f5734c6-4d6a-4c09-969c-6f50e1b23388",
+      "name": "HOPEBRIDGE LLC",
+      "city": "WATKINSVILLE",
+      "state": "GA",
+      "zip": "30677",
+      "npi": "1972131977",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "2e89bd17-4311-4bd7-afc6-5411749580da",
+      "name": "HOPEBRIDGE LLC",
+      "city": "OCALA",
+      "state": "FL",
+      "zip": "344755647",
+      "npi": "1730841073",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "9c807ae4-e013-4f1c-89ea-92f1619fcee7",
+      "name": "HOPEBRIDGE LLC",
+      "city": "GARDENDALE",
+      "state": "AL",
+      "zip": "350712258",
+      "npi": "1376295469",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "dfe41fe5-edbe-425c-adc5-6705251696fa",
+      "name": "HOPEBRIDGE LLC",
+      "city": "BIRMINGHAM",
+      "state": "AL",
+      "zip": "352223211",
+      "npi": "1013669191",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "6c258080-9e1d-44cf-ac15-de42573c02ad",
+      "name": "HOPEBRIDGE LLC",
+      "city": "MESA",
+      "state": "AZ",
+      "zip": "852061734",
+      "npi": "1730727645",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "6ed48dbf-b9b3-4ad5-9c28-a6c43c472180",
+      "name": "HOPEBRIDGE LLC",
+      "city": "LITTLE ROCK",
+      "state": "AR",
+      "zip": "722056606",
+      "npi": "1568114569",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "ca44050a-50d8-43c9-9d00-c0d6a912f100",
+      "name": "HOPEBRIDGE LLC",
+      "city": "NEWNAN",
+      "state": "GA",
+      "zip": "30265",
+      "npi": "1013553379",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "06b1e5a2-a3ce-4608-98ff-3a101df87412",
+      "name": "HOPEBRIDGE LLC",
+      "city": "LITCHFIELD PARK",
+      "state": "AZ",
+      "zip": "853403045",
+      "npi": "1760027486",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "a6ff4730-0677-4ca0-b9f0-1f7dc30bcbf2",
+      "name": "HOPEBRIDGE LLC",
+      "city": "AURORA",
+      "state": "CO",
+      "zip": "800133557",
+      "npi": "1073183869",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "7249a268-8eab-45eb-a71a-a7569d78aa0f",
+      "name": "HOPEBRIDGE LLC",
+      "city": "ENGLEWOOD",
+      "state": "CO",
+      "zip": "801125812",
+      "npi": "1497392690",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "d4ecd6d0-2466-44f8-ac89-21f8b1d58f4f",
+      "name": "HOPEBRIDGE LLC",
+      "city": "FORT COLLINS",
+      "state": "CO",
+      "zip": "805255744",
+      "npi": "1871163667",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "5d767ee8-4cbd-4cf4-b331-0872878bc171",
+      "name": "HOPEBRIDGE LLC",
+      "city": "PHOENIX",
+      "state": "AZ",
+      "zip": "850324648",
+      "npi": "1528620077",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "aaab51d1-6470-4a18-8366-ca35451d3e1a",
+      "name": "HOPEBRIDGE LLC",
+      "city": "MOUNT DORA",
+      "state": "FL",
+      "zip": "327577039",
+      "npi": "1326799768",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "33d2ac0f-8bc4-4898-82b6-b70f88807d13",
+      "name": "HOPEBRIDGE LLC",
+      "city": "UNIVERSITY PARK",
+      "state": "FL",
+      "zip": "342013002",
+      "npi": "1811657661",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "fd3c8de3-3f9b-45c8-a690-39a46dfca696",
+      "name": "HOPEBRIDGE LLC",
+      "city": "FORT MYERS",
+      "state": "FL",
+      "zip": "339169498",
+      "npi": "1255091005",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "f0b7df67-00b4-47ba-ac2c-cc77f4dbc6e5",
+      "name": "HOPEBRIDGE LLC",
+      "city": "LITTLE ROCK",
+      "state": "AR",
+      "zip": "722056675",
+      "npi": "1790438778",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "229123b8-4b6f-41f8-bea6-1d429e98813d",
+      "name": "HOPEBRIDGE LLC",
+      "city": "COLORADO SPRINGS",
+      "state": "CO",
+      "zip": "809098310",
+      "npi": "1770116949",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "f7991dbd-d7d0-4f18-ad48-2892ab312df9",
+      "name": "HOPEBRIDGE LLC",
+      "city": "EDMOND",
+      "state": "OK",
+      "zip": "730129007",
+      "npi": "1962155374",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "d3d68710-89f2-4abb-b307-6dc84c9e3ca9",
+      "name": "HOPEBRIDGE LLC",
+      "city": "PINELLAS PARK",
+      "state": "FL",
+      "zip": "337812652",
+      "npi": "1073273827",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "69b39edb-f5f4-4aaa-881b-7ce543adbb52",
+      "name": "HOPEBRIDGE LLC",
+      "city": "CONYERS",
+      "state": "GA",
+      "zip": "300136384",
+      "npi": "1598349615",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "db84b9aa-67c9-45da-b637-b257f4586817",
+      "name": "HOPEBRIDGE LLC",
+      "city": "LOUISVILLE",
+      "state": "KY",
+      "zip": "402224937",
+      "npi": "1003459330",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "5aec4469-8d3a-4ed5-9a2a-0ca8fdefa167",
+      "name": "HOPEBRIDGE LLC",
+      "city": "BRANDON",
+      "state": "FL",
+      "zip": "335103935",
+      "npi": "1346913381",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "39763820-93c9-4400-9325-c46030f1b602",
+      "name": "HOPEBRIDGE LLC",
+      "city": "BRENTWOOD",
+      "state": "TN",
+      "zip": "370276842",
+      "npi": "1881352177",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "625b775a-c494-4f2c-8d18-2e292ecca23e",
+      "name": "HOPEBRIDGE LLC",
+      "city": "GREELEY",
+      "state": "CO",
+      "zip": "806315151",
+      "npi": "1174193965",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "210cbb9b-070c-4d49-997d-1566e5bda6d3",
+      "name": "HOPEBRIDGE LLC",
+      "city": "BENTONVILLE",
+      "state": "AR",
+      "zip": "727123414",
+      "npi": "1144972233",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "b947a483-1d81-48c5-be22-f8fce644918c",
+      "name": "HOPEBRIDGE LLC",
+      "city": "LAKEWOOD",
+      "state": "CO",
+      "zip": "802141803",
+      "npi": "1417580689",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "a8d0afe2-999a-4397-97b6-ee4a7852eb62",
+      "name": "HOPEBRIDGE LLC",
+      "city": "YUMA",
+      "state": "AZ",
+      "zip": "853652036",
+      "npi": "1861064479",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "4982e008-88c7-4476-9a4f-81b42b7802a1",
+      "name": "HOPEBRIDGE LLC",
+      "city": "MESA",
+      "state": "AZ",
+      "zip": "852064631",
+      "npi": "1457999369",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "02ed9f9c-bc53-4f4a-b665-268776fa8b99",
+      "name": "HOPEBRIDGE LLC",
+      "city": "GILBERT",
+      "state": "AZ",
+      "zip": "852332806",
+      "npi": "1154983609",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
       "id": "aeadcd8b-7a61-4c0d-80e4-c042d9372af4",
       "name": "HOPEBRIDGE SUPPORT SERVICES LLC",
       "city": "FAIRFAX",
@@ -9443,12 +9451,12 @@
       ]
     },
     {
-      "id": "e2d1453a-46fe-4747-8e86-be1a8d883b5e",
+      "id": "0c0729bf-bcae-407e-a9a0-411d5b5190f4",
       "name": "HOPEBRIDGE, LLC",
-      "city": "EDGEWOOD",
-      "state": "KY",
-      "zip": "410172525",
-      "npi": "1205336120",
+      "city": "MASON",
+      "state": "OH",
+      "zip": "450398086",
+      "npi": "1497279814",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -9461,12 +9469,12 @@
       ]
     },
     {
-      "id": "f969cfce-6f6a-4299-bda2-3ab500984957",
+      "id": "9e225849-dfdf-4929-a2fa-7a855eb6b58c",
       "name": "HOPEBRIDGE, LLC",
-      "city": "EDGEWOOD",
-      "state": "KY",
-      "zip": "410172525",
-      "npi": "1891210159",
+      "city": "CLEVELAND",
+      "state": "OH",
+      "zip": "441303496",
+      "npi": "1073093878",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -9479,12 +9487,66 @@
       ]
     },
     {
-      "id": "2ee3d72d-1a5e-437e-b951-13dec60e3cf9",
+      "id": "97a807f1-563f-4ebf-a314-a8fe6d9cdf0f",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "MAUMEE",
+      "state": "OH",
+      "zip": "435374033",
+      "npi": "1730678806",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "36bafecb-a3e1-4c3e-a71d-03a6f2c0f36d",
       "name": "HOPEBRIDGE, LLC",
       "city": "BOWLING GREEN",
       "state": "KY",
       "zip": "421013980",
-      "npi": "1821511692",
+      "npi": "1477071033",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "11c82133-49a1-4e27-81aa-670734abcea4",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "BOWLING GREEN",
+      "state": "KY",
+      "zip": "421013980",
+      "npi": "1710405774",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "77f04972-ae39-41a3-878a-8ebd9e1ff884",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "LOUISVILLE",
+      "state": "KY",
+      "zip": "402294471",
+      "npi": "1043710965",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -9533,48 +9595,12 @@
       ]
     },
     {
-      "id": "2ce188ec-b7d1-4ea1-a229-7e40aae8c4dd",
+      "id": "0d47f943-9395-4c95-93e2-36a38680963d",
       "name": "HOPEBRIDGE, LLC",
-      "city": "DUBLIN",
-      "state": "OH",
-      "zip": "430163269",
-      "npi": "1639677198",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "11c82133-49a1-4e27-81aa-670734abcea4",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "BOWLING GREEN",
-      "state": "KY",
-      "zip": "421013980",
-      "npi": "1710405774",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "c6c708ab-d5c0-492a-9795-f470738d1cd5",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "MACON",
-      "state": "GA",
-      "zip": "312101156",
-      "npi": "1174097752",
+      "city": "KOKOMO",
+      "state": "IN",
+      "zip": "469022479",
+      "npi": "1891820668",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -9605,48 +9631,12 @@
       ]
     },
     {
-      "id": "469e26a7-fbda-4210-ad69-f5b291a231c7",
+      "id": "e44eba64-828d-481e-8925-734019c04d14",
       "name": "HOPEBRIDGE, LLC",
-      "city": "AKRON",
-      "state": "OH",
-      "zip": "443201122",
-      "npi": "1326537994",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "fc1c2f5b-c42a-4527-9c26-f91a2475fe7e",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "LOUISVILLE",
+      "city": "LEXINGTON",
       "state": "KY",
-      "zip": "402292183",
-      "npi": "1578093555",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "e136deba-7ea3-4bf2-be99-ff3ddec7b167",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "MIAMISBURG",
-      "state": "OH",
-      "zip": "453424478",
-      "npi": "1326550781",
+      "zip": "40505",
+      "npi": "1952800419",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -9767,48 +9757,12 @@
       ]
     },
     {
-      "id": "1c5f9c7d-7317-4d99-bdd6-f36f04bdb808",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "SUWANEE",
-      "state": "GA",
-      "zip": "300246560",
-      "npi": "1952880049",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
       "id": "9b9d5d74-e156-4791-8d5c-73d19fe9750e",
       "name": "HOPEBRIDGE, LLC",
       "city": "HOUSTON",
       "state": "TX",
       "zip": "770354563",
       "npi": "1780022319",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "9abf23fa-7dfd-42bf-8b61-d452aa98a315",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "ROSWELL",
-      "state": "GA",
-      "zip": "300762129",
-      "npi": "1922586486",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -9839,12 +9793,192 @@
       ]
     },
     {
-      "id": "0c0729bf-bcae-407e-a9a0-411d5b5190f4",
+      "id": "e136deba-7ea3-4bf2-be99-ff3ddec7b167",
       "name": "HOPEBRIDGE, LLC",
-      "city": "MASON",
+      "city": "MIAMISBURG",
       "state": "OH",
-      "zip": "450398086",
-      "npi": "1497279814",
+      "zip": "453424478",
+      "npi": "1326550781",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "1c5f9c7d-7317-4d99-bdd6-f36f04bdb808",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "SUWANEE",
+      "state": "GA",
+      "zip": "300246560",
+      "npi": "1952880049",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "fc1c2f5b-c42a-4527-9c26-f91a2475fe7e",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "LOUISVILLE",
+      "state": "KY",
+      "zip": "402292183",
+      "npi": "1578093555",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "469e26a7-fbda-4210-ad69-f5b291a231c7",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "AKRON",
+      "state": "OH",
+      "zip": "443201122",
+      "npi": "1326537994",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "c6c708ab-d5c0-492a-9795-f470738d1cd5",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "MACON",
+      "state": "GA",
+      "zip": "312101156",
+      "npi": "1174097752",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "99d3b0a9-5981-4b90-b85b-06db56468974",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "EDGEWOOD",
+      "state": "KY",
+      "zip": "410172525",
+      "npi": "1043719503",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "87a1abeb-f973-4e09-a4d5-953fc3b578ec",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "WESTERVILLE",
+      "state": "OH",
+      "zip": "430812821",
+      "npi": "1477051936",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "2ce188ec-b7d1-4ea1-a229-7e40aae8c4dd",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "DUBLIN",
+      "state": "OH",
+      "zip": "430163269",
+      "npi": "1639677198",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "9abf23fa-7dfd-42bf-8b61-d452aa98a315",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "ROSWELL",
+      "state": "GA",
+      "zip": "300762129",
+      "npi": "1922586486",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "2ee3d72d-1a5e-437e-b951-13dec60e3cf9",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "BOWLING GREEN",
+      "state": "KY",
+      "zip": "421013980",
+      "npi": "1821511692",
+      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
+      "owner_name": "Hopebridge",
+      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
+      "firm_name": "Arsenal Capital Partners",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "e2d1453a-46fe-4747-8e86-be1a8d883b5e",
+      "name": "HOPEBRIDGE, LLC",
+      "city": "EDGEWOOD",
+      "state": "KY",
+      "zip": "410172525",
+      "npi": "1205336120",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -9893,120 +10027,12 @@
       ]
     },
     {
-      "id": "9e225849-dfdf-4929-a2fa-7a855eb6b58c",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "CLEVELAND",
-      "state": "OH",
-      "zip": "441303496",
-      "npi": "1073093878",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "87a1abeb-f973-4e09-a4d5-953fc3b578ec",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "WESTERVILLE",
-      "state": "OH",
-      "zip": "430812821",
-      "npi": "1477051936",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "97a807f1-563f-4ebf-a314-a8fe6d9cdf0f",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "MAUMEE",
-      "state": "OH",
-      "zip": "435374033",
-      "npi": "1730678806",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "36bafecb-a3e1-4c3e-a71d-03a6f2c0f36d",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "BOWLING GREEN",
-      "state": "KY",
-      "zip": "421013980",
-      "npi": "1477071033",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "77f04972-ae39-41a3-878a-8ebd9e1ff884",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "LOUISVILLE",
-      "state": "KY",
-      "zip": "402294471",
-      "npi": "1043710965",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "e44eba64-828d-481e-8925-734019c04d14",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "LEXINGTON",
-      "state": "KY",
-      "zip": "40505",
-      "npi": "1952800419",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "99d3b0a9-5981-4b90-b85b-06db56468974",
+      "id": "f969cfce-6f6a-4299-bda2-3ab500984957",
       "name": "HOPEBRIDGE, LLC",
       "city": "EDGEWOOD",
       "state": "KY",
       "zip": "410172525",
-      "npi": "1043719503",
+      "npi": "1891210159",
       "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
       "owner_name": "Hopebridge",
       "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
@@ -10019,21 +10045,309 @@
       ]
     },
     {
-      "id": "0d47f943-9395-4c95-93e2-36a38680963d",
-      "name": "HOPEBRIDGE, LLC",
-      "city": "KOKOMO",
-      "state": "IN",
-      "zip": "469022479",
-      "npi": "1891820668",
-      "owner_id": "8f3ea7a3-3953-4db3-8802-5eb0f0998d62",
-      "owner_name": "Hopebridge",
-      "firm_id": "7e0d2b22-2e6e-4bd8-ba19-f98ab88e8cac",
-      "firm_name": "Arsenal Capital Partners",
+      "id": "603d06bd-1e6d-4c71-962a-2fd5e2bedcf0",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "WINDSOR MILL",
+      "state": "MD",
+      "zip": "212445807",
+      "npi": "1588542229",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
       "firm_type": "private_equity",
       "confidence_score": 0.88,
       "confidence_method": "fuzzy_high",
       "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=hopebridge*&enumeration_type=NPI-2&country_code=US"
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=behavioral+innovations*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "0ce8eed0-bf69-4134-bb15-f68c10557635",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "AURORA",
+      "state": "CO",
+      "zip": "800155187",
+      "npi": "1588271480",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "57be86b8-496b-4c29-a826-92b2171fdf64",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "COLUMBIA",
+      "state": "MD",
+      "zip": "210455956",
+      "npi": "1043456296",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=behavioral+innovations*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "ee20c13e-a280-44f5-ae0c-38992aa07e6b",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "LITTLETON",
+      "state": "CO",
+      "zip": "801204502",
+      "npi": "1013531631",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "089bf08a-8ae6-48f4-9460-7ff8f9312bac",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "BOULDER",
+      "state": "CO",
+      "zip": "803012364",
+      "npi": "1114524691",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "ae859fa9-cefa-4991-b198-d42e5c620e7c",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "ARVADA",
+      "state": "CO",
+      "zip": "800078291",
+      "npi": "1497379119",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "ff0c794a-3977-47f3-a69a-1e3aaef971fc",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "LONGMONT",
+      "state": "CO",
+      "zip": "805016548",
+      "npi": "1699378133",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "a8b5c088-a0a1-4f28-9d30-f7578277a6a5",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "COLUMBIA",
+      "state": "MD",
+      "zip": "210455956",
+      "npi": "1376415844",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "4e850ff0-84fa-46f3-ae8b-b4a84a3e4e78",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "FOREST HILL",
+      "state": "MD",
+      "zip": "210502855",
+      "npi": "1023996758",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=behavioral+innovations*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "43cf06bc-2b5c-4585-a68b-60111ad7b865",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "SILVER SPRING",
+      "state": "MD",
+      "zip": "209047801",
+      "npi": "1265310999",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=behavioral+innovations*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "713808e0-d5c7-4dbd-aeae-4da25d23c006",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "LINTHICUM HEIGHTS",
+      "state": "MD",
+      "zip": "210902265",
+      "npi": "1760360499",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "f41bb4a0-b9d0-4df9-80d0-c84a84a4640f",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "LITTLETON",
+      "state": "CO",
+      "zip": "801276405",
+      "npi": "1720601602",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "2494a792-2d45-46cd-b686-470dd3331980",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "WALDORF",
+      "state": "MD",
+      "zip": "206034872",
+      "npi": "1376421099",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=behavioral+innovations*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "c1a306fd-f626-481d-8df5-de7c5e0d2fe5",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "PARKER",
+      "state": "CO",
+      "zip": "801343891",
+      "npi": "1760089270",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "50d24938-9ffc-4c4c-9873-d51d2bb3d574",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "COCKEYSVILLE",
+      "state": "MD",
+      "zip": "210303405",
+      "npi": "1538047261",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=behavioral+innovations*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "b41dcad1-5705-451c-aa3b-e8de0dc0e22b",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "COMMERCE CITY",
+      "state": "CO",
+      "zip": "800222097",
+      "npi": "1396369914",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "1bb60df5-00d9-408b-8ed0-106e0bf06823",
+      "name": "MONARCH BEHAVIORAL THERAPY BII, LLC",
+      "city": "ARVADA",
+      "state": "CO",
+      "zip": "800078291",
+      "npi": "1679345854",
+      "owner_id": "845cbf28-a316-4f32-a537-31f9d5d74fc5",
+      "owner_name": "Monarch Behavioral Therapy",
+      "firm_id": "d4535a2b-c667-472d-b533-337f68c1351f",
+      "firm_name": "Tenex Capital Management",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=Monarch+Behavioral+Therapy*&enumeration_type=NPI-2&country_code=US"
       ]
     },
     {
@@ -10043,60 +10357,6 @@
       "state": "OH",
       "zip": "453246333",
       "npi": "1851842488",
-      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
-      "owner_name": "Trumpet Behavioral Health",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "1b07dc2f-b755-44f2-9f86-f8ccb1ef31f8",
-      "name": "TRUMPET BEHAVIORAL HEALTH",
-      "city": "OVERLAND PARK",
-      "state": "KS",
-      "zip": "662043179",
-      "npi": "1669958153",
-      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
-      "owner_name": "Trumpet Behavioral Health",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "dac4601e-427e-4df1-9adf-bbb9a7ae3957",
-      "name": "TRUMPET BEHAVIORAL HEALTH",
-      "city": "MASON",
-      "state": "OH",
-      "zip": "450407353",
-      "npi": "1811861644",
-      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
-      "owner_name": "Trumpet Behavioral Health",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "b1e8f25e-5583-4ced-a6f5-69dfff554957",
-      "name": "TRUMPET BEHAVIORAL HEALTH",
-      "city": "GILBERT",
-      "state": "AZ",
-      "zip": "852963460",
-      "npi": "1366912867",
       "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
       "owner_name": "Trumpet Behavioral Health",
       "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
@@ -10127,12 +10387,66 @@
       ]
     },
     {
-      "id": "c8856b80-7dd2-4eea-8000-f8b96b563fc0",
+      "id": "b1e8f25e-5583-4ced-a6f5-69dfff554957",
+      "name": "TRUMPET BEHAVIORAL HEALTH",
+      "city": "GILBERT",
+      "state": "AZ",
+      "zip": "852963460",
+      "npi": "1366912867",
+      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
+      "owner_name": "Trumpet Behavioral Health",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "dac4601e-427e-4df1-9adf-bbb9a7ae3957",
+      "name": "TRUMPET BEHAVIORAL HEALTH",
+      "city": "MASON",
+      "state": "OH",
+      "zip": "450407353",
+      "npi": "1811861644",
+      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
+      "owner_name": "Trumpet Behavioral Health",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "1b07dc2f-b755-44f2-9f86-f8ccb1ef31f8",
+      "name": "TRUMPET BEHAVIORAL HEALTH",
+      "city": "OVERLAND PARK",
+      "state": "KS",
+      "zip": "662043179",
+      "npi": "1669958153",
+      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
+      "owner_name": "Trumpet Behavioral Health",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "16002adf-517e-4d67-b544-ada1713b3041",
       "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
-      "city": "NORTHGLENN",
-      "state": "CO",
-      "zip": "802342920",
-      "npi": "1922822444",
+      "city": "GILBERT",
+      "state": "AZ",
+      "zip": "852963461",
+      "npi": "1699267153",
       "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
       "owner_name": "Trumpet Behavioral Health",
       "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
@@ -10181,60 +10495,6 @@
       ]
     },
     {
-      "id": "77a9bc79-3ae3-4957-b309-caaa7e648f76",
-      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
-      "city": "LAKEWOOD",
-      "state": "CO",
-      "zip": "802154848",
-      "npi": "1578112868",
-      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
-      "owner_name": "Trumpet Behavioral Health",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "d21eeb2f-c8f0-4245-b87a-a8a6da4f71cb",
-      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
-      "city": "SCOTTSDALE",
-      "state": "AZ",
-      "zip": "852605263",
-      "npi": "1477045938",
-      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
-      "owner_name": "Trumpet Behavioral Health",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "65993153-9e15-4d8a-822a-219ec59a8fd9",
-      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
-      "city": "PARKER",
-      "state": "CO",
-      "zip": "801343477",
-      "npi": "1801610324",
-      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
-      "owner_name": "Trumpet Behavioral Health",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
       "id": "144163f3-a8ea-4e0b-b3d7-8d1d5fdda088",
       "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
       "city": "COLORADO SPRINGS",
@@ -10253,12 +10513,12 @@
       ]
     },
     {
-      "id": "6f960408-4af6-475e-92c3-18dd3b6404b7",
+      "id": "77a9bc79-3ae3-4957-b309-caaa7e648f76",
       "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
-      "city": "HIGHLANDS RANCH",
+      "city": "LAKEWOOD",
       "state": "CO",
-      "zip": "801292379",
-      "npi": "1043034564",
+      "zip": "802154848",
+      "npi": "1578112868",
       "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
       "owner_name": "Trumpet Behavioral Health",
       "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
@@ -10307,12 +10567,66 @@
       ]
     },
     {
+      "id": "d21eeb2f-c8f0-4245-b87a-a8a6da4f71cb",
+      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
+      "city": "SCOTTSDALE",
+      "state": "AZ",
+      "zip": "852605263",
+      "npi": "1477045938",
+      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
+      "owner_name": "Trumpet Behavioral Health",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
       "id": "d55b6c90-3447-4547-8868-849b15b632d8",
       "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
       "city": "FORT COLLINS",
       "state": "CO",
       "zip": "805259707",
       "npi": "1407354848",
+      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
+      "owner_name": "Trumpet Behavioral Health",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "25ebecb3-ec9e-4b05-aa22-f7c2d20c729e",
+      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
+      "city": "LOVELAND",
+      "state": "CO",
+      "zip": "805382700",
+      "npi": "1851115372",
+      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
+      "owner_name": "Trumpet Behavioral Health",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "6f960408-4af6-475e-92c3-18dd3b6404b7",
+      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
+      "city": "HIGHLANDS RANCH",
+      "state": "CO",
+      "zip": "801292379",
+      "npi": "1043034564",
       "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
       "owner_name": "Trumpet Behavioral Health",
       "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
@@ -10361,24 +10675,6 @@
       ]
     },
     {
-      "id": "c31da9ff-173d-48a3-9e47-bea5b9c37d3b",
-      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
-      "city": "AURORA",
-      "state": "CO",
-      "zip": "800124527",
-      "npi": "1356165039",
-      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
-      "owner_name": "Trumpet Behavioral Health",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
       "id": "299fda5d-ba45-459a-ab44-6877977c292f",
       "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
       "city": "COLORADO SPRINGS",
@@ -10397,48 +10693,30 @@
       ]
     },
     {
-      "id": "25ebecb3-ec9e-4b05-aa22-f7c2d20c729e",
-      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
-      "city": "LOVELAND",
-      "state": "CO",
-      "zip": "805382700",
-      "npi": "1851115372",
-      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
-      "owner_name": "Trumpet Behavioral Health",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "16002adf-517e-4d67-b544-ada1713b3041",
-      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
-      "city": "GILBERT",
-      "state": "AZ",
-      "zip": "852963461",
-      "npi": "1699267153",
-      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
-      "owner_name": "Trumpet Behavioral Health",
-      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
-      "firm_name": "KKR",
-      "firm_type": "private_equity",
-      "confidence_score": 0.88,
-      "confidence_method": "fuzzy_high",
-      "sources": [
-        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
-      ]
-    },
-    {
-      "id": "eedcefb4-650d-4fa2-b226-c121ddf707d2",
+      "id": "65993153-9e15-4d8a-822a-219ec59a8fd9",
       "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
       "city": "PARKER",
       "state": "CO",
       "zip": "801343477",
-      "npi": "1932828084",
+      "npi": "1801610324",
+      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
+      "owner_name": "Trumpet Behavioral Health",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "c31da9ff-173d-48a3-9e47-bea5b9c37d3b",
+      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
+      "city": "AURORA",
+      "state": "CO",
+      "zip": "800124527",
+      "npi": "1356165039",
       "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
       "owner_name": "Trumpet Behavioral Health",
       "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
@@ -10457,6 +10735,24 @@
       "state": "CO",
       "zip": "802154850",
       "npi": "1386468809",
+      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
+      "owner_name": "Trumpet Behavioral Health",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "eedcefb4-650d-4fa2-b226-c121ddf707d2",
+      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
+      "city": "PARKER",
+      "state": "CO",
+      "zip": "801343477",
+      "npi": "1932828084",
       "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
       "owner_name": "Trumpet Behavioral Health",
       "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
@@ -10529,6 +10825,24 @@
       "state": "FL",
       "zip": "327465028",
       "npi": "1588967236",
+      "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
+      "owner_name": "Trumpet Behavioral Health",
+      "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
+      "firm_name": "KKR",
+      "firm_type": "private_equity",
+      "confidence_score": 0.88,
+      "confidence_method": "fuzzy_high",
+      "sources": [
+        "https://npiregistry.cms.hhs.gov/api/?version=2.1&organization_name=trumpet+behavioral*&enumeration_type=NPI-2&country_code=US"
+      ]
+    },
+    {
+      "id": "c8856b80-7dd2-4eea-8000-f8b96b563fc0",
+      "name": "TRUMPET BEHAVIORAL HEALTH, LLC",
+      "city": "NORTHGLENN",
+      "state": "CO",
+      "zip": "802342920",
+      "npi": "1922822444",
       "owner_id": "22c86a17-2f41-4639-907a-e113eb6a194a",
       "owner_name": "Trumpet Behavioral Health",
       "firm_id": "3b7733aa-d997-46e8-887a-39fe1d11ede5",
