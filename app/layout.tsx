@@ -3,10 +3,46 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
+const SITE_URL = "https://whofundsmytherapist.com";
+const TITLE = "Fundprint: Who owns your autism therapy clinic?";
+const DESCRIPTION =
+  "The first free, public dataset of private-equity ownership of U.S. ABA / autism therapy clinics. Every claim traces to a public source.";
+
 export const metadata: Metadata = {
-  title: "Fundprint: Who owns your autism therapy clinic?",
-  description:
-    "The first free, public dataset of private-equity ownership of U.S. ABA / autism therapy clinics. Every claim traces to a public source.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: "Fundprint",
+  keywords: [
+    "private equity",
+    "autism therapy",
+    "ABA therapy",
+    "clinic ownership",
+    "healthcare private equity",
+    "public records",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Fundprint",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Fundprint: is your child's autism therapy clinic owned by private equity?",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
