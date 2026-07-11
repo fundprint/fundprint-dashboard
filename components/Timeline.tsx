@@ -23,7 +23,7 @@ function year(date: string | null, circa: boolean): string {
 export default function Timeline({ events }: { events: TimelineEvent[] }) {
   if (!events || events.length === 0) {
     return (
-      <div className="rounded-sm border border-dashed border-ink/20 bg-manila/30 p-5 font-serif text-sm text-ink/70">
+      <div className="rounded-sm border border-dashed border-ink/20 bg-manila/30 p-5 font-sans text-sm text-ink/70">
         We don&apos;t yet publish dated acquisition events for this owner. Where
         ownership is current it is sourced per clinic (see the chain above);
         dated deal timelines appear here only once the underlying dates are in
@@ -55,7 +55,7 @@ export default function Timeline({ events }: { events: TimelineEvent[] }) {
             )}
           </div>
           {e.notes && (
-            <p className="mt-1 font-serif leading-relaxed text-ink/80">{e.notes}</p>
+            <p className="mt-1 font-sans leading-relaxed text-ink/80">{e.notes}</p>
           )}
           <Provenance sources={e.sources} />
         </li>

@@ -32,7 +32,7 @@ export default async function AcquirerDetail({
         href="/acquirers/"
         className="font-mono text-xs text-ink-muted hover:text-pe"
       >
-        &larr; Index of subjects
+        Index of subjects
       </Link>
 
       {/* Subject header */}
@@ -52,7 +52,7 @@ export default async function AcquirerDetail({
       </div>
 
       {firm.firm_type !== "private_equity" && (
-        <p className="mt-5 max-w-2xl border-l-2 border-ink/25 pl-3 font-serif text-ink/80">
+        <p className="mt-5 max-w-2xl border-l-2 border-ink/25 pl-3 font-sans text-ink/80">
           {firm.name} is a {FIRM_TYPE_LABEL[firm.firm_type].toLowerCase()}, not a
           traditional private-equity firm. We include it and label it honestly rather
           than imply it is PE.
@@ -60,7 +60,7 @@ export default async function AcquirerDetail({
       )}
 
       {firm.former && (
-        <p className="mt-5 max-w-2xl border-l-2 border-pe/50 bg-pe/5 p-3 font-serif text-ink/80">
+        <p className="mt-5 max-w-2xl border-l-2 border-pe/50 bg-pe/5 p-3 font-sans text-ink/80">
           {firm.name} no longer owns any autism-therapy clinics in our data. It is shown
           here for its ownership history, recorded below with sources. Its current
           tracked-clinic count is zero.
@@ -77,10 +77,10 @@ export default async function AcquirerDetail({
                 <div key={b.owner_id} className="folder">
                   <div className="flex items-center justify-between border-b border-rule px-4 py-3">
                     <div>
-                      <div className="font-serif text-lg font-semibold">{b.owner_name}</div>
+                      <div className="font-sans text-lg font-semibold">{b.owner_name}</div>
                       <div className="mt-0.5 font-mono text-[0.72rem] text-ink-muted">
                         <RedactionReveal>{b.owner_name}</RedactionReveal>{" "}
-                        &rarr; {firm.name} &rarr; {fmtNum(b.clinic_count)} clinic
+                        {firm.name} {fmtNum(b.clinic_count)} clinic
                         {b.clinic_count === 1 ? "" : "s"}
                       </div>
                     </div>
@@ -89,7 +89,7 @@ export default async function AcquirerDetail({
                     {clinics.map((c) => (
                       <li key={c.id} className="px-4 py-2.5">
                         <div className="flex items-baseline justify-between gap-3">
-                          <span className="font-serif font-medium">{c.name}</span>
+                          <span className="font-sans font-medium">{c.name}</span>
                           <span className="shrink-0 font-mono text-xs text-ink-muted">
                             {[c.city, c.state].filter(Boolean).join(", ")}
                           </span>

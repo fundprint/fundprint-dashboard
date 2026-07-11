@@ -27,7 +27,7 @@ export default function FindingsPage() {
 
       <Exhibit mark="1" kicker="A market bought in a decade" title="Concentration, not competition">
         <div className="grid gap-6 md:grid-cols-[1.4fr_1fr]">
-          <div className="max-w-2xl space-y-4 font-serif text-ink/85">
+          <div className="max-w-2xl space-y-4 font-sans text-ink/85">
             <p>
               Researchers at the Center for Economic and Policy Research found that
               between 2017 and 2022 private-equity firms completed roughly 85% of all
@@ -50,7 +50,7 @@ export default function FindingsPage() {
       </Exhibit>
 
       <Exhibit mark="2" kicker="The warning already on the record" title="What happened to CARD">
-        <div className="max-w-2xl space-y-4 font-serif text-ink/85">
+        <div className="max-w-2xl space-y-4 font-sans text-ink/85">
           <p>
             In 2018 Blackstone bought the Center for Autism and Related Disorders, then the
             largest ABA provider in the country at roughly 250 locations. The company took
@@ -79,7 +79,7 @@ export default function FindingsPage() {
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="folder px-4 py-4">
             <div className="label-mono text-pe">We can say</div>
-            <p className="mt-2 font-serif text-[0.95rem] text-ink/85">
+            <p className="mt-2 font-sans text-[0.95rem] text-ink/85">
               For every clinic shown, the named owner is backed by a public document you can
               open. Non-PE institutional owners are labeled as what they are, not folded
               into &ldquo;private equity.&rdquo;
@@ -87,14 +87,14 @@ export default function FindingsPage() {
           </div>
           <div className="folder px-4 py-4">
             <div className="label-mono text-pe">We cannot say</div>
-            <p className="mt-2 font-serif text-[0.95rem] text-ink/85">
+            <p className="mt-2 font-sans text-[0.95rem] text-ink/85">
               That a clinic not in this record is independent. Absence is a gap in our
               coverage, not a finding. We track ownership; we do not certify independence.
             </p>
           </div>
           <div className="folder px-4 py-4">
             <div className="label-mono text-pe">Still measuring</div>
-            <p className="mt-2 font-serif text-[0.95rem] text-ink/85">
+            <p className="mt-2 font-sans text-[0.95rem] text-ink/85">
               How complete the record is against the full set of PE-backed ABA platforms,
               and a published hand-verification rate. Both are in progress and will be
               stated as numbers, not implied.
@@ -104,7 +104,7 @@ export default function FindingsPage() {
       </Exhibit>
 
       <Exhibit mark="4" kicker="Not a fringe worry" title="Washington is asking the same question">
-        <p className="max-w-2xl font-serif text-ink/85">
+        <p className="max-w-2xl font-sans text-ink/85">
           A bipartisan Senate Budget Committee investigation into private-equity ownership
           of hospitals found patient care deteriorated as owners took payouts.
           <SourceCite n={3} href="https://www.budget.senate.gov/ranking-member/newsroom/press/private-equity-in-health-care-shown-to-harm-patients-degrade-care-and-drive-hospital-closures" title="Senate Budget Committee report" />{" "}

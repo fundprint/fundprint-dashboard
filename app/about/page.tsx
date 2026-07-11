@@ -29,7 +29,7 @@ export default function AboutPage() {
       />
 
       <Exhibit mark="1" kicker="The motivation" title="A question with no public answer">
-        <div className="max-w-2xl space-y-4 font-serif text-ink/85">
+        <div className="max-w-2xl space-y-4 font-sans text-ink/85">
           <p>
             Autism therapy in the United States has been quietly rolled up by financial
             owners over the past decade. That ownership is real, it is consequential, and it
@@ -45,7 +45,7 @@ export default function AboutPage() {
       </Exhibit>
 
       <Exhibit mark="2" kicker="The engineering" title="Built as a pipeline, not a spreadsheet">
-        <div className="max-w-2xl space-y-4 font-serif text-ink/85">
+        <div className="max-w-2xl space-y-4 font-sans text-ink/85">
           <p>
             The work is three open-source repositories. A deterministic Python pipeline
             pulls public records from two registries, snapshots and embeds them, resolves
@@ -70,7 +70,7 @@ export default function AboutPage() {
       </Exhibit>
 
       <Exhibit mark="3" kicker="The standard it holds itself to" title="Honest by construction">
-        <div className="max-w-2xl space-y-4 font-serif text-ink/85">
+        <div className="max-w-2xl space-y-4 font-sans text-ink/85">
           <p>
             Every owner shown is backed by a public source. Non-PE institutional owners are
             labeled as what they are. A clinic that is not in the record is a gap in
@@ -89,16 +89,16 @@ export default function AboutPage() {
           {REPOS.map(([name, desc, href]) => (
             <li key={name} className="folder px-4 py-4">
               <a href={href} target="_blank" rel="noopener noreferrer" className="font-mono text-sm font-semibold text-pe hover:underline">
-                {name} &nearr;
+                {name}
               </a>
-              <p className="mt-2 font-serif text-[0.92rem] text-ink/80">{desc}</p>
+              <p className="mt-2 font-sans text-[0.92rem] text-ink/80">{desc}</p>
             </li>
           ))}
         </ul>
         <p className="mt-6 font-mono text-sm text-ink-muted">
           Follow the build in the open:{" "}
           <Link href="/progress/" className="text-pe hover:underline">
-            the progress log &rarr;
+            the progress log
           </Link>
         </p>
       </Exhibit>

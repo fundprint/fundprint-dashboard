@@ -9,36 +9,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#201d17", // warm typewriter near-black
-        "ink-muted": "#5a5342",
-        paper: "#e6dbc2", // the desk: kraft / manila
-        sheet: "#f4eedb", // aged white filing paper (cards)
-        manila: "#dccfad", // folder stock
-        "manila-edge": "#c7b992", // folder edge / shadow line
-        rule: "#c3b48f", // hairline rules on kraft
-        // Owner-type legend, learned once and used everywhere. `pe` is the
-        // classified stamp / redaction red; `pen` is the annotation ink-blue.
-        pe: "#8a1f1c", // private equity (oxblood stamp)
-        pension: "#2b4a62", // pension fund (ink blue)
-        family: "#6a5c2e", // family office (olive)
-        other: "#4b4740", // other institutional (graphite)
-        stamp: "#8a1f1c",
-        pen: "#2b4a62",
+        ink: "#1b1c1a",
+        "ink-muted": "#565851", // cool gray
+        paper: "#d7d6c8", // cool putty ground (not yellow)
+        sheet: "#f6f5ef", // crisp near-white document
+        manila: "#d0cfbf",
+        "manila-edge": "#bbbaa8",
+        rule: "#c4c3b4",
+        // Owner-type legend, learned once, used everywhere. `pe` is the one
+        // restrained red; `pen`/slate is the secondary annotation ink.
+        pe: "#b3241c",
+        pension: "#45525a", // slate
+        family: "#6d6a3c", // olive
+        other: "#83837a", // grey
+        stamp: "#b3241c",
+        pen: "#45525a",
       },
       fontFamily: {
-        // Condensed gothic headers, slab-serif body, typewriter for labels/data.
-        display: ["var(--font-display)", "Oswald", "Arial Narrow", "sans-serif"],
-        serif: ["var(--font-body)", "Georgia", "Cambria", "serif"],
-        mono: ["var(--font-typwr)", "Courier New", "monospace"],
-        sans: ["ui-sans-serif", "system-ui", "Segoe UI", "sans-serif"],
+        // Fraunces (old-style serif, character) for display; Archivo (grotesque)
+        // for body, UI, labels and figures. `mono` is remapped to Archivo so no
+        // typewriter face survives anywhere.
+        display: ["var(--font-display)", "Fraunces", "Georgia", "serif"],
+        serif: ["var(--font-display)", "Fraunces", "Georgia", "serif"],
+        sans: ["var(--font-body)", "Archivo", "system-ui", "sans-serif"],
+        mono: ["var(--font-body)", "Archivo", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        folder: "0 1px 0 #c7b992, 0 10px 22px -14px rgba(32,29,23,0.5)",
-        sheet: "0 1px 0 rgba(0,0,0,0.05), 0 12px 26px -16px rgba(32,29,23,0.45)",
-      },
-      rotate: {
-        "1.5": "1.5deg",
-        "2.5": "2.5deg",
+        folder: "0 1px 0 #bbbaa8, 0 12px 26px -18px rgba(27,28,26,0.45)",
+        sheet: "0 1px 0 rgba(0,0,0,0.04), 0 14px 30px -20px rgba(27,28,26,0.4)",
       },
     },
   },

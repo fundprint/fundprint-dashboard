@@ -33,7 +33,7 @@ export default function SourcesPage() {
 
       <Exhibit mark="1" kicker="The rule" title="No source, no claim">
         <div className="grid gap-6 md:grid-cols-[1.4fr_1fr]">
-          <div className="max-w-2xl space-y-3 font-serif text-ink/85">
+          <div className="max-w-2xl space-y-3 font-sans text-ink/85">
             <p>
               When a source is ingested, Fundprint fetches and stores the exact document as
               a content-hashed snapshot, then links that snapshot to the claim it supports.
@@ -48,7 +48,7 @@ export default function SourcesPage() {
           </div>
           <div className="folder self-start px-5 py-5">
             <Stamp label="Content-hashed" rotate={-4} />
-            <p className="mt-3 font-serif text-[0.95rem] text-ink/80">
+            <p className="mt-3 font-sans text-[0.95rem] text-ink/80">
               Each snapshot is fingerprinted. The same URL captured twice with the same
               content is stored once; a change produces a new record.
             </p>
@@ -60,8 +60,8 @@ export default function SourcesPage() {
         <ul className="grid gap-3 sm:grid-cols-2">
           {SOURCE_TYPES.map(([h, b]) => (
             <li key={h} className="folder px-4 py-4">
-              <div className="font-serif text-lg font-semibold">{h}</div>
-              <p className="mt-1.5 font-serif text-[0.95rem] text-ink/80">{b}</p>
+              <div className="font-sans text-lg font-semibold">{h}</div>
+              <p className="mt-1.5 font-sans text-[0.95rem] text-ink/80">{b}</p>
             </li>
           ))}
         </ul>
@@ -71,12 +71,12 @@ export default function SourcesPage() {
         <Exhibit mark="3" kicker="A worked example" title="One claim, its evidence">
           <div className="folder px-4 py-4">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <span className="font-serif text-lg font-semibold">{example.name}</span>
+              <span className="font-sans text-lg font-semibold">{example.name}</span>
               <span className="font-mono text-xs text-ink-muted">
                 {[example.city, example.state].filter(Boolean).join(", ")}
               </span>
             </div>
-            <div className="mt-1 font-serif text-ink/80">
+            <div className="mt-1 font-sans text-ink/80">
               Linked to {example.owner_name}, held by {example.firm_name}.
             </div>
             <Provenance sources={example.sources} />
@@ -87,7 +87,7 @@ export default function SourcesPage() {
       <p className="border-t border-rule pt-5 font-mono text-sm text-ink-muted">
         The full rules live in the versioned methodology.{" "}
         <Link href="/process/" className="text-pe hover:underline">
-          How the machine works &rarr;
+          How the machine works
         </Link>
       </p>
     </div>

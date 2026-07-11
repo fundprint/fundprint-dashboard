@@ -32,7 +32,7 @@ export default function Concentration({
                 <div className="flex items-baseline justify-between gap-3">
                   <Link
                     href={`/acquirers/${a.id}/`}
-                    className="font-serif text-[1.05rem] font-medium hover:text-pe"
+                    className="font-sans text-[1.05rem] font-medium hover:text-pe"
                   >
                     {a.name}
                   </Link>

@@ -65,7 +65,7 @@ export default function AcquirerTable({ acquirers }: { acquirers: Acquirer[] }) 
               <td className="px-4 py-3">
                 <Link
                   href={`/acquirers/${a.id}/`}
-                  className="font-serif text-[1.02rem] font-medium hover:text-pe"
+                  className="font-sans text-[1.02rem] font-medium hover:text-pe"
                 >
                   {a.name}
                 </Link>

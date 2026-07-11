@@ -24,9 +24,15 @@ export default function ProcessPage() {
         lede="Fundprint is not a hand-kept list. It is a deterministic pipeline: the same public inputs run through the same code produce the same record, and every published claim carries the document that proves it."
       />
 
-      <section>
-        <div className="folder p-3 sm:p-5">
-          <EngineDiagram />
+      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="relative overflow-hidden bg-sheet px-4 py-3">
+            <span className="pointer-events-none absolute left-2 top-2 h-3.5 w-3.5 border-l border-t border-ink/40" />
+            <span className="pointer-events-none absolute right-2 top-2 h-3.5 w-3.5 border-r border-t border-ink/40" />
+            <span className="pointer-events-none absolute bottom-2 left-2 h-3.5 w-3.5 border-b border-l border-ink/40" />
+            <span className="pointer-events-none absolute bottom-2 right-2 h-3.5 w-3.5 border-b border-r border-ink/40" />
+            <EngineDiagram />
+          </div>
         </div>
       </section>
 
@@ -36,13 +42,13 @@ export default function ProcessPage() {
             <li key={s.key} className="grid gap-3 border-b border-rule pb-4 last:border-0 sm:grid-cols-[auto_1fr]">
               <div className="flex items-baseline gap-2 sm:w-40">
                 <span className="font-mono text-lg font-bold text-pe">{s.numeral}</span>
-                <span className="font-serif text-xl font-semibold">{s.name}</span>
+                <span className="font-sans text-xl font-semibold">{s.name}</span>
               </div>
               <div>
                 <div className="font-mono text-[0.7rem] uppercase tracking-wider text-pe/90">
                   {s.metric}
                 </div>
-                <p className="mt-1 max-w-2xl font-serif text-ink/85">{s.detail}</p>
+                <p className="mt-1 max-w-2xl font-sans text-ink/85">{s.detail}</p>
               </div>
             </li>
           ))}
@@ -51,7 +57,7 @@ export default function ProcessPage() {
 
       <Exhibit mark="2" kicker="Why two registries" title="Where the clinics come from">
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="max-w-xl space-y-3 font-serif text-ink/85">
+          <div className="max-w-xl space-y-3 font-sans text-ink/85">
             <p>
               The primary source is NPPES, the federal provider registry. It is
               authoritative but it enumerates only the organizations a chain registers with
@@ -93,15 +99,15 @@ export default function ProcessPage() {
             ["Label honestly", "Pension funds and family offices are named as what they are, not folded into private equity."],
           ].map(([h, b]) => (
             <li key={h} className="folder px-4 py-4">
-              <div className="font-serif text-lg font-semibold">{h}</div>
-              <p className="mt-1.5 font-serif text-[0.95rem] text-ink/80">{b}</p>
+              <div className="font-sans text-lg font-semibold">{h}</div>
+              <p className="mt-1.5 font-sans text-[0.95rem] text-ink/80">{b}</p>
             </li>
           ))}
         </ul>
       </Exhibit>
 
       <Exhibit mark="4" kicker="Reproducible by design" title="Pinned, versioned, open">
-        <div className="max-w-2xl space-y-3 font-serif text-ink/85">
+        <div className="max-w-2xl space-y-3 font-sans text-ink/85">
           <p>
             The site ships a frozen snapshot, not a live feed: what you read is a
             reproducible state, dated and version-pinned, so a screenshot dates itself. The
@@ -111,10 +117,10 @@ export default function ProcessPage() {
             <span className="text-ink-muted">dataset {meta.dataset_version}</span>
             <span className="text-ink-muted">methodology {meta.methodology_version}</span>
             <a href={METHODOLOGY} target="_blank" rel="noopener noreferrer" className="text-pe hover:underline">
-              read the full methodology &nearr;
+              read the full methodology
             </a>
             <Link href="/sources/" className="text-pe hover:underline">
-              how provenance works &rarr;
+              how provenance works
             </Link>
           </div>
         </div>

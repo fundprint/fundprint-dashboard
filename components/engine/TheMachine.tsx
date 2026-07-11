@@ -49,30 +49,29 @@ export default function TheMachine() {
 
   return (
     <div>
-      <div className="relative overflow-hidden rounded-sm border border-ink/20 bg-white shadow-folder">
+      <div className="relative w-full overflow-hidden bg-sheet">
         {/* corner registration marks */}
-        <span className="pointer-events-none absolute left-2 top-2 z-10 h-3 w-3 border-l border-t border-ink/40" />
-        <span className="pointer-events-none absolute right-2 top-2 z-10 h-3 w-3 border-r border-t border-ink/40" />
-        <span className="pointer-events-none absolute bottom-2 left-2 z-10 h-3 w-3 border-b border-l border-ink/40" />
-        <span className="pointer-events-none absolute bottom-2 right-2 z-10 h-3 w-3 border-b border-r border-ink/40" />
+        <span className="pointer-events-none absolute left-2 top-2 z-10 h-3.5 w-3.5 border-l border-t border-ink/40" />
+        <span className="pointer-events-none absolute right-2 top-2 z-10 h-3.5 w-3.5 border-r border-t border-ink/40" />
+        <span className="pointer-events-none absolute bottom-2 left-2 z-10 h-3.5 w-3.5 border-b border-l border-ink/40" />
+        <span className="pointer-events-none absolute bottom-2 right-2 z-10 h-3.5 w-3.5 border-b border-r border-ink/40" />
 
-        <div style={{ aspectRatio: "1240 / 560" }} className="w-full">
+        <div style={{ aspectRatio: "1240 / 520" }} className="w-full">
           {use3D ? (
             <SceneBoundary
               fallback={
-                <div className="h-full w-full p-3 sm:p-5">
+                <div className="h-full w-full px-4 py-2">
                   <EngineDiagram className="h-full w-full" />
                 </div>
               }
             >
               <EngineScene className="h-full w-full" />
-              {/* Keep the described figure reachable by assistive tech. */}
               <div className="sr-only">
                 <EngineDiagram />
               </div>
             </SceneBoundary>
           ) : (
-            <div className="h-full w-full p-3 sm:p-5">
+            <div className="h-full w-full px-4 py-2">
               <EngineDiagram className="h-full w-full" />
             </div>
           )}
@@ -80,29 +79,29 @@ export default function TheMachine() {
       </div>
 
       {use3D ? (
-        <p className="mt-2 text-center font-mono text-[0.68rem] text-ink-muted">
-          Live model &middot; hover a stage. Records flow left to right; verified
-          chains exit at the right.
+        <p className="mt-2 text-center text-[0.72rem] text-ink-muted">
+          Live model. Hover a stage; records flow left to right and exit as
+          verified chains.
         </p>
       ) : null}
 
-      {/* The five stages in words: always present, the accessible source of truth. */}
-      <ol className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      {/* The five stages in words: always present, the accessible source. */}
+      <ol className="mt-8 grid gap-x-5 gap-y-6 sm:grid-cols-2 lg:grid-cols-5">
         {ENGINE_STAGES.map((s) => (
-          <li key={s.key} className="folder flex flex-col px-3.5 py-3">
+          <li key={s.key} className="border-t border-ink/70 pt-2.5">
             <div className="flex items-baseline gap-2">
-              <span className="font-mono text-sm font-bold text-pe">{s.numeral}</span>
-              <span className="font-serif text-lg font-semibold leading-none">
+              <span className="font-display text-lg font-semibold text-pe">
+                {s.numeral}
+              </span>
+              <span className="font-display text-lg font-semibold leading-none">
                 {s.name}
               </span>
             </div>
-            <div className="mt-1.5 font-mono text-[0.66rem] uppercase tracking-wider text-pe/90">
+            <div className="mt-1.5 text-[0.64rem] font-semibold uppercase tracking-wider text-pe">
               {s.metric}
             </div>
-            <p className="mt-2 font-serif text-[0.92rem] leading-snug text-ink/80">
-              {s.line}
-            </p>
-            <p className="mt-2 border-t border-rule pt-2 font-mono text-[0.68rem] leading-snug text-ink-muted">
+            <p className="mt-2 text-[0.95rem] leading-snug text-ink/85">{s.line}</p>
+            <p className="mt-2 text-[0.78rem] leading-snug text-ink-muted">
               {s.detail}
             </p>
           </li>

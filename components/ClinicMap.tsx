@@ -84,12 +84,12 @@ export default function ClinicMap({
                 <Geography
                   key={geo.rsmKey}
                   geography={geo as object}
-                  fill="#ddd0b0"
-                  stroke="#b3a37c"
+                  fill="#e7e6da"
+                  stroke="#c4c3b4"
                   strokeWidth={0.5}
                   style={{
                     default: { outline: "none" },
-                    hover: { outline: "none", fill: "#ddd0b0" },
+                    hover: { outline: "none", fill: "#e7e6da" },
                     pressed: { outline: "none" },
                   }}
                 />
@@ -122,7 +122,7 @@ export default function ClinicMap({
         <div className="pointer-events-none absolute left-3 top-3 max-w-[70%]">
           {hover ? (
             <div className="folder px-3 py-2">
-              <div className="font-serif text-sm font-semibold leading-tight">
+              <div className="font-sans text-sm font-semibold leading-tight">
                 {hover.name}
               </div>
               <div className="font-mono text-[0.7rem] text-ink-muted">
@@ -150,7 +150,7 @@ export default function ClinicMap({
         </div>
         {firm ? (
           <Link href={`/acquirers/${firm}/`} className="font-mono text-xs text-pe hover:underline">
-            Open owner file &rarr;
+            Open owner file
           </Link>
         ) : null}
       </div>

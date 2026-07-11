@@ -4,56 +4,26 @@
 
 :root {
   color-scheme: light;
-  --paper: #e6dbc2;
-  --sheet: #f4eedb;
-  --ink: #201d17;
-  --pe: #8a1f1c;
-  --pen: #2b4a62;
+  --paper: #d7d6c8;
+  --sheet: #f6f5ef;
+  --ink: #1b1c1a;
+  --pe: #b3241c;
+  --pen: #45525a;
 }
 
+/* A quiet, cool putty ground with a faint static paper tooth. The texture
+   scrolls with the page (no fixed attachment, no blend mode, no blur anywhere),
+   so nothing forces a full repaint on scroll. */
 body {
-  background-color: #ddcda4; /* warm manila, not a flat cream */
-  /* An aged, uneven desk: a visible engineering grid, warm mottling, age
-     stains and a stray coffee ring, a top light and a bottom vignette so the
-     tone never sits flat. Fixed so the texture stays put as the page scrolls. */
-  background-image:
-    linear-gradient(rgba(32, 29, 23, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(32, 29, 23, 0.07) 1px, transparent 1px),
-    radial-gradient(circle at 82% 27%, transparent 33px, rgba(96, 64, 26, 0.13) 34px, rgba(96, 64, 26, 0.13) 39px, transparent 40px),
-    radial-gradient(circle at 12% 18%, rgba(96, 64, 26, 0.13), transparent 22%),
-    radial-gradient(circle at 86% 12%, rgba(43, 74, 98, 0.07), transparent 20%),
-    radial-gradient(circle at 80% 84%, rgba(138, 31, 28, 0.06), transparent 26%),
-    radial-gradient(circle at 28% 86%, rgba(96, 64, 26, 0.1), transparent 24%),
-    radial-gradient(120% 80% at 50% -12%, rgba(255, 252, 240, 0.5), transparent 55%),
-    radial-gradient(150% 130% at 50% 116%, rgba(35, 25, 12, 0.24), transparent 55%);
-  background-size:
-    28px 28px, 28px 28px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
-    100% 100%, 100% 100%;
-  background-attachment: fixed;
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
   color: var(--ink);
+  /* Guard against the full-bleed (100vw) sections nudging a horizontal
+     scrollbar; the page must never scroll sideways. */
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-}
-
-/* Fibrous paper grain over the whole desk, multiplied into the kraft. Content
-   sheets stack above it, so they read clean while the desk stays textured. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.7;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  background-size: 220px 220px;
-}
-
-body > header,
-body > main,
-body > footer {
-  position: relative;
-  z-index: 2;
 }
 
 a {
@@ -66,52 +36,34 @@ a {
 }
 
 @layer components {
-  /* Typewriter label: field captions, exhibit tags, callouts. */
+  /* Small-caps utility label (grotesque, not typewriter). Kept the class name
+     so every existing label updates at once. No decorative square. */
   .label-mono {
-    @apply font-mono text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink-muted;
+    @apply font-sans text-[0.7rem] font-semibold uppercase tracking-[0.13em] text-ink-muted;
   }
 
-  /* Condensed report headline. */
+  /* Display headline in Fraunces. Mixed case: the face carries the character. */
   .headline {
-    @apply font-display font-semibold uppercase tracking-[0.01em];
+    @apply font-display font-semibold tracking-[-0.01em];
   }
 
   .rule {
     @apply border-0 border-t border-rule;
   }
 
-  /* An aged filing sheet clipped into the folder, with a faint paper tooth. */
+  /* A crisp filing document sitting on the putty ground. */
   .folder {
-    @apply rounded-[2px] border border-manila-edge bg-sheet shadow-folder;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.045'/%3E%3C/svg%3E");
-    background-size: 160px 160px;
+    @apply rounded-[3px] border border-manila-edge bg-sheet shadow-folder;
   }
   .sheet {
-    @apply rounded-[2px] bg-sheet shadow-sheet;
+    @apply rounded-[3px] bg-sheet shadow-sheet;
   }
 
-  /* A ruled engineering panel: faint graph grid for the occasional block that
-     should read as a work surface rather than a clean card. */
-  .graph-paper {
-    background-color: var(--sheet);
-    background-image:
-      linear-gradient(rgba(43, 74, 98, 0.09) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(43, 74, 98, 0.09) 1px, transparent 1px);
-    background-size: 22px 22px;
-  }
-
-  /* Rubber-stamp mark: pressed oxblood ink, rotation applied inline. */
+  /* Rubber-stamp mark: pressed red ink, rotation applied inline. */
   .stamp {
-    @apply inline-flex items-center gap-1.5 rounded-[2px] border-2 border-stamp/60 px-2 py-0.5
-      font-mono text-[0.6rem] font-bold uppercase tracking-[0.18em] text-stamp/85;
-    background: rgba(138, 31, 28, 0.05);
-  }
-
-  /* A strip of masking tape holding a sheet down. */
-  .tape {
-    @apply absolute h-6 w-20 bg-[#d9cf9f]/70;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-    mix-blend-mode: multiply;
+    @apply inline-flex items-center gap-1.5 rounded-[2px] border-2 border-pe/55 px-2 py-0.5
+      text-[0.6rem] font-bold uppercase tracking-[0.16em] text-pe/85;
+    background: rgba(179, 36, 28, 0.05);
   }
 }
 

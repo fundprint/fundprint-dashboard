@@ -98,7 +98,7 @@ export default function StateHeatmap({ states }: { states: StateCount[] }) {
                 .sort((a, b) => b.clinic_count - a.clinic_count)
                 .map((s) => (
                   <tr key={s.state} className="border-b border-rule last:border-0">
-                    <td className="px-4 py-2 font-serif">{STATE_NAME[s.state] ?? s.state}</td>
+                    <td className="px-4 py-2 font-sans">{STATE_NAME[s.state] ?? s.state}</td>
                     <td className="px-4 py-2 text-right font-mono tabular-nums">
                       {fmtNum(s.clinic_count)}
                     </td>

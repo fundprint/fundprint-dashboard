@@ -47,7 +47,7 @@ export default function MapPage() {
 
       <Rule label="The same coverage, by state" />
 
-      <p className="mb-4 max-w-2xl font-serif text-ink/75">
+      <p className="mb-4 max-w-2xl font-sans text-ink/75">
         A darker state means we have resolved more clinics there, not necessarily that it
         has more private-equity ownership. States we have not yet ingested look empty:
         that is a gap in our data, not evidence of independence.

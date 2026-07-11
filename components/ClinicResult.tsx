@@ -12,13 +12,13 @@ export default function ClinicResult({ clinic }: { clinic: Clinic }) {
     <li className="folder p-4">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h3 className="font-serif text-lg font-semibold">{clinic.name}</h3>
+          <h3 className="font-sans text-lg font-semibold">{clinic.name}</h3>
           {place && <p className="font-mono text-xs text-ink-muted">{place}</p>}
         </div>
         <OwnerTypeBadge type={clinic.firm_type} />
       </div>
 
-      <p className="mt-3 font-serif leading-relaxed text-ink/85">
+      <p className="mt-3 font-sans leading-relaxed text-ink/85">
         This clinic {verb}{" "}
         <Link
           href={`/acquirers/${clinic.firm_id}/`}

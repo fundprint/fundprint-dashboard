@@ -1,32 +1,25 @@
 import type { Metadata } from "next";
-import { Oswald, Bitter, Courier_Prime } from "next/font/google";
+import { Fraunces, Archivo } from "next/font/google";
 import Footer from "@/components/Footer";
-import DeskWatermark from "@/components/dossier/DeskWatermark";
 import Masthead from "@/components/dossier/Masthead";
+import MarginPapers from "@/components/dossier/MarginPapers";
 import "./globals.css";
 
-// Self-hosted at build time by next/font: no runtime request to Google, which
-// keeps the static export clean and CSP-safe. Three distinct voices for a case
-// file: a condensed gothic for report headers, a slab serif for the body, and a
-// typewriter for labels, figures, and stamps.
-const oswald = Oswald({
+// Self-hosted at build time by next/font (no runtime Google request, so the
+// static export stays CSP-clean). Two voices: Fraunces, an old-style serif with
+// real character, for display; Archivo, a clean grotesque, for body, UI, labels,
+// and figures. No monospace: typewriter faces read as a default.
+const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
   variable: "--font-display",
 });
-const bitter = Bitter({
+const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
-  style: ["normal", "italic"],
   variable: "--font-body",
-});
-const courier = Courier_Prime({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-typwr",
 });
 
 const SITE_URL = "https://whofundsmytherapist.com";
@@ -78,14 +71,11 @@ export default function RootLayout({
 }) {
   const plausible = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   return (
-    <html
-      lang="en"
-      className={`${oswald.variable} ${bitter.variable} ${courier.variable}`}
-    >
-      <body className="min-h-screen bg-paper font-serif text-ink antialiased">
-        <DeskWatermark />
+    <html lang="en" className={`${fraunces.variable} ${archivo.variable}`}>
+      <body className="min-h-screen bg-paper font-sans text-ink antialiased">
+        <MarginPapers />
         <Masthead />
-        <main className="mx-auto max-w-5xl px-5 py-8">{children}</main>
+        <main className="relative mx-auto max-w-5xl px-5 py-10">{children}</main>
         <Footer />
         {plausible ? (
           // Privacy-respecting analytics: no cookies, no per-user profiles,

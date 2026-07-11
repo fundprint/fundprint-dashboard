@@ -28,10 +28,10 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-10">
         <div className="grid gap-8 sm:grid-cols-[1.6fr_1fr_1fr]">
           <div>
-            <div className="font-serif text-lg font-semibold">
+            <div className="font-sans text-lg font-semibold">
               Fundprint<span className="text-pe">.</span>
             </div>
-            <p className="mt-2 max-w-md font-serif text-sm leading-relaxed text-ink/70">
+            <p className="mt-2 max-w-md font-sans text-sm leading-relaxed text-ink/70">
               A public record of who owns the clinics that serve autistic
               children. It takes no position on ABA as a therapy. Every ownership
               claim links to a public source; a clinic not shown as owned is a
@@ -66,7 +66,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-pe"
                   >
-                    {r.label} &nearr;
+                    {r.label}
                   </a>
                 </li>
               ))}

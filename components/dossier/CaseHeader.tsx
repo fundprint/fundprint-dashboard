@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-// The header block at the top of a section/page: a typewriter eyebrow, a
-// condensed report title, and an optional standfirst.
+// The header block at the top of a section/page: a small-caps eyebrow set off by
+// a short rule (not a colored square), a Fraunces title, and an optional lede.
 export default function CaseHeader({
   eyebrow,
   title,
@@ -15,15 +15,15 @@ export default function CaseHeader({
 }) {
   return (
     <header className="max-w-3xl">
-      <div className="label-mono flex items-center gap-2">
-        <span className="inline-block h-2 w-2 bg-pe" aria-hidden />
+      <div className="label-mono flex items-center gap-2.5">
+        <span className="h-px w-6 bg-pe" aria-hidden />
         {eyebrow}
       </div>
-      <h1 className="headline mt-2 text-[2.4rem] leading-[0.98] sm:text-5xl">
+      <h1 className="headline mt-3 text-[2.6rem] leading-[1.02] sm:text-[3.4rem]">
         {title}
       </h1>
       {lede ? (
-        <p className="mt-3 font-serif text-[1.05rem] leading-relaxed text-ink/85">
+        <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-ink/80">
           {lede}
         </p>
       ) : null}

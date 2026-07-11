@@ -29,7 +29,7 @@ export default function Search() {
         value={q}
         onChange={(e) => setQ(e.target.value)}
         placeholder="Type a clinic name or city…"
-        className="w-full rounded-sm border border-ink/20 bg-white px-4 py-3 font-serif text-lg shadow-sm placeholder:text-ink/35 focus:border-pe"
+        className="w-full rounded-sm border border-ink/20 bg-white px-4 py-3 font-sans text-lg shadow-sm placeholder:text-ink/35 focus:border-pe"
       />
 
       {result && result.outcome === "pe_linked" && (
@@ -49,11 +49,11 @@ export default function Search() {
 
       {result && result.outcome === "no_match" && (
         <div className="mt-5 folder p-5">
-          <p className="font-serif text-lg font-medium">
+          <p className="font-sans text-lg font-medium">
             We don&apos;t have a clinic matching &ldquo;{result.query}&rdquo; in our data
             yet.
           </p>
-          <p className="mt-2 font-serif text-ink/75">
+          <p className="mt-2 font-sans text-ink/75">
             That is <span className="font-medium">not</span> a finding that the
             clinic is independent. It may be owned by a chain we haven&apos;t
             resolved, in a state we haven&apos;t ingested, or listed under a

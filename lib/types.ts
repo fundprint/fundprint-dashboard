@@ -101,8 +101,8 @@ export const FIRM_TYPE_LABEL: Record<FirmType, string> = {
 };
 
 export const FIRM_TYPE_COLOR: Record<FirmType, string> = {
-  private_equity: "#8a1f1c", // oxblood stamp
-  pension_fund: "#2b4a62", // ink blue
-  family_office: "#6a5c2e", // olive
-  other: "#4b4740", // graphite
+  private_equity: "#b3241c", // red
+  pension_fund: "#45525a", // slate
+  family_office: "#6d6a3c", // olive
+  other: "#83837a", // grey
 };

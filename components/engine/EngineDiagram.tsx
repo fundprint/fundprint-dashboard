@@ -14,11 +14,11 @@ const BLOCK_TOP = SHAFT_Y - BLOCK_H / 2;
 const BX0 = 214;
 const STEP = 176;
 
-const INK = "#201d17";
-const PE = "#8a1f1c";
-const MUTED = "#5a5342";
-const RULE = "#c3b48f";
-const SHEET = "#f4eedb";
+const INK = "#1b1c1a";
+const PE = "#b3241c";
+const MUTED = "#565851";
+const RULE = "#c4c3b4";
+const SHEET = "#f6f5ef";
 
 function bolt(cx: number, cy: number, key: string) {
   return <circle key={key} cx={cx} cy={cy} r={2.4} fill={INK} opacity={0.55} />;
@@ -168,7 +168,7 @@ export default function EngineDiagram({ className = "" }: { className?: string }
           <g key={stage.key}>
             {/* drive collar */}
             {i > 0 ? (
-              <rect x={bx - 22} y={SHAFT_Y - 7} width={14} height={14} fill="#dccfad" stroke={INK} strokeWidth={1.5} />
+              <rect x={bx - 22} y={SHAFT_Y - 7} width={14} height={14} fill="#d0cfbf" stroke={INK} strokeWidth={1.5} />
             ) : null}
 
             {/* housing */}
@@ -188,11 +188,10 @@ export default function EngineDiagram({ className = "" }: { className?: string }
               x={cx}
               y={BLOCK_TOP + BLOCK_H - 13}
               fill={INK}
-              fontFamily="var(--font-display), 'Oswald', 'Arial Narrow', sans-serif"
-              fontSize={13}
+              fontFamily="var(--font-display), Fraunces, Georgia, serif"
+              fontSize={15}
               fontWeight={600}
               textAnchor="middle"
-              style={{ textTransform: "uppercase", letterSpacing: "0.08em" }}
             >
               {stage.name}
             </text>

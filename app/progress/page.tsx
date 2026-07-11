@@ -94,8 +94,8 @@ export default function ProgressPage() {
               <span className="label-mono">{m.label}</span>
               {m.done ? <Stamp label="Shipped" rotate={-3} /> : <Stamp label="In progress" rotate={2} />}
             </div>
-            <h2 className="mt-1 font-serif text-xl font-semibold">{m.title}</h2>
-            <p className="mt-1 max-w-2xl font-serif text-ink/80">{m.body}</p>
+            <h2 className="mt-1 font-sans text-xl font-semibold">{m.title}</h2>
+            <p className="mt-1 max-w-2xl font-sans text-ink/80">{m.body}</p>
           </li>
         ))}
       </ol>
