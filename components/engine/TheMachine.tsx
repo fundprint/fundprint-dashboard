@@ -1,9 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Component, type ReactNode, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import EngineDiagram from "./EngineDiagram";
 import { ENGINE_STAGES } from "./engine-stages";
+
+// If anything in the WebGL scene throws at runtime, fall back to the static
+// figure instead of breaking the page. The SVG is always a complete substitute.
+class SceneBoundary extends Component<
+  { fallback: ReactNode; children: ReactNode },
+  { failed: boolean }
+> {
+  state = { failed: false };
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  render() {
+    return this.state.failed ? this.props.fallback : this.props.children;
+  }
+}
 
 // Loaded only in the browser, only where WebGL is available, and only past the
 // first paint, so the static export ships the SVG and the 3D bundle never blocks.
@@ -43,13 +58,19 @@ export default function TheMachine() {
 
         <div style={{ aspectRatio: "1240 / 560" }} className="w-full">
           {use3D ? (
-            <>
+            <SceneBoundary
+              fallback={
+                <div className="h-full w-full p-3 sm:p-5">
+                  <EngineDiagram className="h-full w-full" />
+                </div>
+              }
+            >
               <EngineScene className="h-full w-full" />
               {/* Keep the described figure reachable by assistive tech. */}
               <div className="sr-only">
                 <EngineDiagram />
               </div>
-            </>
+            </SceneBoundary>
           ) : (
             <div className="h-full w-full p-3 sm:p-5">
               <EngineDiagram className="h-full w-full" />
