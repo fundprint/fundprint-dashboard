@@ -16,8 +16,15 @@
    so nothing forces a full repaint on scroll. */
 body {
   background-color: var(--paper);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
+  /* A layered paper tooth: fine fibre over a coarser mottle, plus faint warm
+     and cool blooms so the desk is never a flat fill. All non-fixed and
+     un-blended, so nothing forces a repaint on scroll. */
+  background-image:
+    radial-gradient(60% 40% at 15% 8%, rgba(120, 96, 40, 0.05), transparent 60%),
+    radial-gradient(50% 45% at 88% 92%, rgba(69, 82, 90, 0.05), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 100% 100%, 100% 100%, 140px 140px, 300px 300px;
   color: var(--ink);
   /* Guard against the full-bleed (100vw) sections nudging a horizontal
      scrollbar; the page must never scroll sideways. */
@@ -51,12 +58,27 @@ a {
     @apply border-0 border-t border-rule;
   }
 
-  /* A crisp filing document sitting on the putty ground. */
+  /* A filing document sitting on the putty ground, with a faint paper tooth. */
   .folder {
-    @apply rounded-[3px] border border-manila-edge bg-sheet shadow-folder;
+    @apply relative rounded-[3px] border border-manila-edge bg-sheet shadow-folder;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.05'/%3E%3C/svg%3E");
+    background-size: 120px 120px;
   }
   .sheet {
     @apply rounded-[3px] bg-sheet shadow-sheet;
+  }
+
+  /* A folded-over top-right corner: turns any card into a filed document. */
+  .dogear::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+    border-left: 1px solid #bbbaa8;
+    border-bottom: 1px solid #bbbaa8;
   }
 
   /* Rubber-stamp mark: pressed red ink, rotation applied inline. */

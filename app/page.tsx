@@ -2,6 +2,7 @@ import Link from "next/link";
 import Search from "@/components/Search";
 import Concentration from "@/components/dossier/Concentration";
 import Exhibit from "@/components/dossier/Exhibit";
+import { Pushpin, RedactedDoc, Tape } from "@/components/dossier/Props";
 import RedactionReveal from "@/components/dossier/RedactionReveal";
 import SourceCite from "@/components/dossier/SourceCite";
 import StatSlot from "@/components/dossier/StatSlot";
@@ -17,29 +18,47 @@ export default function Home() {
 
   return (
     <div className="space-y-16">
-      {/* The finding */}
-      <section>
-        <div className="label-mono flex items-center gap-2.5">
-          <span className="h-px w-6 bg-pe" aria-hidden />
-          Opened 2026 / United States / The Finding
+      {/* The finding, as a filed document */}
+      <section className="relative pt-10">
+        {/* a pinned exhibit peeking above the document's corner (large screens) */}
+        <div className="absolute right-3 top-0 z-[2] hidden rotate-[7deg] lg:block">
+          <Pushpin className="absolute left-1/2 top-0 z-10 -translate-x-1/2" />
+          <RedactedDoc w={120} />
         </div>
-        <h1 className="headline mt-3 max-w-4xl text-[2.7rem] leading-[1.0] sm:text-[4rem]">
-          <RedactionReveal>Private equity</RedactionReveal> owns{" "}
-          {fmtNum(totals.pe_clinics)} of the {fmtNum(totals.clinics)}{" "}
-          autism-therapy clinics we could trace.
-        </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/80">
-          Fundprint follows the money behind U.S. ABA / autism-therapy clinics:
-          which are run by an independent practitioner, which by a chain, and
-          which by a financial owner that can restructure or close them. Every
-          claim on this page traces to a public document.
-        </p>
 
-        <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
-          <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note="from public records" />
-          <StatSlot value={`${pePct}%`} label="Private-equity owned" note={`${fmtNum(totals.pe_clinics)} clinics`} accent />
-          <StatSlot value={fmtNum(totals.acquirers)} label="Current owners" note="plus one former owner" />
-          <StatSlot value={fmtNum(totals.states)} label="States covered" note={`as of ${asOf}`} />
+        <div className="dogear relative z-[1] rotate-[-0.5deg] rounded-[3px] border border-manila-edge bg-sheet px-6 py-8 shadow-folder sm:px-11 sm:py-11">
+          <Tape className="-top-3 left-8 -rotate-3" />
+          <Tape className="-top-3 right-10 rotate-6" />
+
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span className="bg-pe px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-sheet">
+              The Finding
+            </span>
+            <span className="label-mono">Opened 2026 / United States</span>
+          </div>
+
+          <h1 className="headline mt-4 max-w-4xl text-[2.7rem] leading-[0.98] sm:text-[4.1rem]">
+            <RedactionReveal>Private equity</RedactionReveal> owns{" "}
+            {fmtNum(totals.pe_clinics)} of the {fmtNum(totals.clinics)}{" "}
+            autism-therapy clinics we could trace.
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/80">
+            Fundprint follows the money behind U.S. ABA / autism-therapy clinics:
+            which are run by an independent practitioner, which by a chain, and
+            which by a financial owner that can restructure or close them. Every
+            claim here traces to a public document.
+          </p>
+
+          <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-rule pt-6 sm:grid-cols-4">
+            <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note="from public records" />
+            <StatSlot value={`${pePct}%`} label="Private-equity owned" note={`${fmtNum(totals.pe_clinics)} clinics`} accent />
+            <StatSlot value={fmtNum(totals.acquirers)} label="Current owners" note="plus one former owner" />
+            <StatSlot value={fmtNum(totals.states)} label="States covered" note={`as of ${asOf}`} />
+          </div>
+
+          <div className="pointer-events-none absolute bottom-5 right-6 hidden sm:block">
+            <Stamp label="Confidential" rotate={-9} />
+          </div>
         </div>
       </section>
 

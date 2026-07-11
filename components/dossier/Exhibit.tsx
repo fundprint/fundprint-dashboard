@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
+import { Paperclip } from "./Props";
 
 // A lettered evidence panel. Exhibits are a real sequence in a case file, so the
-// lettering carries meaning. Fraunces title, small-caps kicker, a ruled header.
+// lettering carries meaning. Fraunces title, small-caps kicker, a ruled header,
+// a paperclip on the corner for the physical file feel.
 export default function Exhibit({
   mark,
   title,
@@ -19,6 +21,7 @@ export default function Exhibit({
 }) {
   return (
     <section className={`relative ${className}`}>
+      <Paperclip className="absolute -top-6 left-2 z-10 text-ink/35" />
       <div className="flex items-end gap-4 border-b border-ink/25 pb-2.5">
         <span className="font-display text-3xl font-semibold leading-none text-pe">
           {mark}

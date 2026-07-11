@@ -56,7 +56,7 @@ export default function TheMachine() {
         <span className="pointer-events-none absolute bottom-2 left-2 z-10 h-3.5 w-3.5 border-b border-l border-ink/40" />
         <span className="pointer-events-none absolute bottom-2 right-2 z-10 h-3.5 w-3.5 border-b border-r border-ink/40" />
 
-        <div style={{ aspectRatio: "1240 / 520" }} className="w-full">
+        <div style={{ aspectRatio: "1240 / 450" }} className="w-full">
           {use3D ? (
             <SceneBoundary
               fallback={

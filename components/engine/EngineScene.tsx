@@ -131,7 +131,9 @@ function Records() {
 function Machine() {
   const [active, setActive] = useState<number | null>(null);
   return (
-    <group rotation={[0.14, -0.4, 0]} scale={0.82}>
+    <group rotation={[0.1, -0.3, 0]} scale={0.98}>
+      {/* faint workbench grid, for depth and to fill the frame */}
+      <gridHelper args={[42, 24, "#b3241c", "#cbcabb"]} position={[0, -1.75, 0]} />
       {/* drive shaft */}
       <mesh rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.06, 0.06, 17, 12]} />
@@ -167,7 +169,7 @@ export default function EngineScene({ className = "" }: { className?: string }) 
       <Canvas
         dpr={[1, 1.75]}
         gl={{ alpha: true, antialias: true }}
-        camera={{ position: [0, 0.5, 18], fov: 30 }}
+        camera={{ position: [0, 0.3, 13], fov: 34 }}
         style={{ width: "100%", height: "100%" }}
       >
         <Machine />
