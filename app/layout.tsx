@@ -1,7 +1,23 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Newsreader, IBM_Plex_Mono } from "next/font/google";
 import Footer from "@/components/Footer";
+import Masthead from "@/components/dossier/Masthead";
 import "./globals.css";
+
+// Self-hosted at build time by next/font: no runtime request to Google, which
+// keeps the static export clean and CSP-safe.
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-newsreader",
+  style: ["normal", "italic"],
+});
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
+});
 
 const SITE_URL = "https://whofundsmytherapist.com";
 const TITLE = "Fundprint: Who owns your autism therapy clinic?";
@@ -52,30 +68,10 @@ export default function RootLayout({
 }) {
   const plausible = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   return (
-    <html lang="en">
-      <body className="min-h-screen font-sans">
-        <header className="border-b border-black/10 bg-white/60 backdrop-blur">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
-            <Link href="/" className="font-mono text-sm font-bold tracking-tight">
-              fundprint<span className="text-pe">.</span>
-            </Link>
-            <nav className="flex gap-5 text-sm text-black/70">
-              <Link href="/" className="hover:text-black">
-                Look up a clinic
-              </Link>
-              <Link href="/acquirers/" className="hover:text-black">
-                Acquirers
-              </Link>
-              <Link href="/map/" className="hover:text-black">
-                Map
-              </Link>
-              <Link href="/methodology/" className="hover:text-black">
-                Methodology
-              </Link>
-            </nav>
-          </div>
-        </header>
-        <main className="mx-auto max-w-6xl px-5 py-8">{children}</main>
+    <html lang="en" className={`${newsreader.variable} ${plexMono.variable}`}>
+      <body className="min-h-screen bg-paper font-serif text-ink antialiased">
+        <Masthead />
+        <main className="mx-auto max-w-6xl px-5 py-10">{children}</main>
         <Footer />
         {plausible ? (
           // Privacy-respecting analytics: no cookies, no per-user profiles,

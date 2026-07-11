@@ -6,16 +6,16 @@ import { hostname } from "@/lib/format";
 export default function Provenance({ sources }: { sources: string[] }) {
   if (!sources || sources.length === 0) return null;
   return (
-    <div className="mt-2 text-xs text-black/60">
-      <span className="font-medium text-black/70">How we know this: </span>
+    <div className="mt-2 font-mono text-[0.7rem] text-ink-muted">
+      <span className="text-pe">How we know this: </span>
       {sources.map((url, i) => (
         <span key={url}>
-          {i > 0 && <span className="text-black/30"> · </span>}
+          {i > 0 && <span className="text-ink/25"> · </span>}
           <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline decoration-black/30 underline-offset-2 hover:decoration-black"
+            className="underline decoration-ink/25 underline-offset-2 hover:decoration-pe hover:text-pe"
           >
             {hostname(url)}
           </a>

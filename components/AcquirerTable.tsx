@@ -32,30 +32,26 @@ export default function AcquirerTable({ acquirers }: { acquirers: Acquirer[] }) 
   const arrow = (k: SortKey) => (k === key ? (asc ? " ▲" : " ▼") : "");
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-black/10 bg-white">
+    <div className="folder overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-black/10 text-left text-black/60">
+          <tr className="border-b border-ink/15 text-left">
             <th className="px-4 py-3">
-              <button onClick={() => toggle("name")} className="font-semibold">
-                Acquirer{arrow("name")}
+              <button onClick={() => toggle("name")} className="label-mono hover:text-ink">
+                Subject{arrow("name")}
               </button>
             </th>
-            <th className="px-4 py-3">Owner type</th>
+            <th className="px-4 py-3">
+              <span className="label-mono">Owner type</span>
+            </th>
             <th className="px-4 py-3 text-right">
-              <button
-                onClick={() => toggle("brand_count")}
-                className="font-semibold"
-              >
+              <button onClick={() => toggle("brand_count")} className="label-mono hover:text-ink">
                 Brands{arrow("brand_count")}
               </button>
             </th>
             <th className="px-4 py-3 text-right">
-              <button
-                onClick={() => toggle("clinic_count")}
-                className="font-semibold"
-              >
-                Clinics tracked{arrow("clinic_count")}
+              <button onClick={() => toggle("clinic_count")} className="label-mono hover:text-ink">
+                Clinics{arrow("clinic_count")}
               </button>
             </th>
           </tr>
@@ -64,40 +60,40 @@ export default function AcquirerTable({ acquirers }: { acquirers: Acquirer[] }) 
           {sorted.map((a) => (
             <tr
               key={a.id}
-              className="border-b border-black/5 last:border-0 hover:bg-black/[0.02]"
+              className="border-b border-rule last:border-0 hover:bg-manila/40"
             >
               <td className="px-4 py-3">
                 <Link
                   href={`/acquirers/${a.id}/`}
-                  className="font-medium underline decoration-black/20 underline-offset-2 hover:decoration-black"
+                  className="font-serif text-[1.02rem] font-medium hover:text-pe"
                 >
                   {a.name}
                 </Link>
                 {a.former && (
-                  <span className="ml-2 rounded-full border border-black/20 px-1.5 py-0.5 text-[10px] font-medium text-black/50">
+                  <span className="ml-2 rounded-sm border border-ink/20 px-1.5 py-0.5 font-mono text-[10px] text-ink-muted">
                     former owner
                   </span>
                 )}
                 {a.hq_state && (
-                  <span className="ml-2 text-xs text-black/40">{a.hq_state}</span>
+                  <span className="ml-2 font-mono text-xs text-ink-muted">{a.hq_state}</span>
                 )}
               </td>
               <td className="px-4 py-3">
                 <OwnerTypeBadge type={a.firm_type} size="xs" />
               </td>
-              <td className="px-4 py-3 text-right tabular-nums">
+              <td className="px-4 py-3 text-right font-mono tabular-nums text-ink/70">
                 {fmtNum(a.brand_count)}
               </td>
-              <td className="px-4 py-3 text-right font-semibold tabular-nums">
+              <td className="px-4 py-3 text-right font-mono font-semibold tabular-nums">
                 {fmtNum(a.clinic_count)}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p className="border-t border-black/10 px-4 py-2 text-xs text-black/50">
-        “Clinics tracked” is coverage in our public-records dataset, not a census
-        of every clinic each owner operates.
+      <p className="border-t border-rule px-4 py-2 font-mono text-[0.68rem] text-ink-muted">
+        &ldquo;Clinics&rdquo; is coverage in our public-records dataset, not a census of
+        every clinic each owner operates.
       </p>
     </div>
   );

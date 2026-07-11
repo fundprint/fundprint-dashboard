@@ -23,7 +23,7 @@ function year(date: string | null, circa: boolean): string {
 export default function Timeline({ events }: { events: TimelineEvent[] }) {
   if (!events || events.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-black/15 bg-white/50 p-5 text-sm text-black/60">
+      <div className="rounded-sm border border-dashed border-ink/20 bg-manila/30 p-5 font-serif text-sm text-ink/70">
         We don&apos;t yet publish dated acquisition events for this owner. Where
         ownership is current it is sourced per clinic (see the chain above);
         dated deal timelines appear here only once the underlying dates are in
@@ -37,27 +37,25 @@ export default function Timeline({ events }: { events: TimelineEvent[] }) {
   );
 
   return (
-    <ol className="relative ml-1 border-l border-black/15 pl-6">
+    <ol className="relative ml-1 border-l-2 border-rule pl-6">
       {ordered.map((e) => (
         <li key={e.id} className="mb-6">
-          <span className="absolute -left-[5px] mt-1.5 h-2.5 w-2.5 rounded-full bg-pe" />
+          <span className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full border-2 border-pe bg-paper" />
           <div className="flex items-center gap-2">
             <span className="font-mono text-sm font-semibold tabular-nums">
               {year(e.date, e.date_circa)}
             </span>
             {e.event_type && (
-              <span className="rounded bg-pe/10 px-1.5 py-0.5 text-xs font-medium text-pe">
+              <span className="rounded-sm bg-pe/10 px-1.5 py-0.5 font-mono text-xs font-medium text-pe">
                 {EVENT_LABEL[e.event_type] ?? e.event_type}
               </span>
             )}
             {e.brand_name && (
-              <span className="text-sm text-black/60">{e.brand_name}</span>
+              <span className="font-mono text-sm text-ink-muted">{e.brand_name}</span>
             )}
           </div>
           {e.notes && (
-            <p className="mt-1 text-sm leading-relaxed text-black/80">
-              {e.notes}
-            </p>
+            <p className="mt-1 font-serif leading-relaxed text-ink/80">{e.notes}</p>
           )}
           <Provenance sources={e.sources} />
         </li>

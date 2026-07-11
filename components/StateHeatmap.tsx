@@ -22,7 +22,7 @@ export default function StateHeatmap({ states }: { states: StateCount[] }) {
 
   return (
     <div>
-      <div className="rounded-lg border border-black/10 bg-white p-3">
+      <div className="folder p-3">
         <ComposableMap
           projection="geoAlbersUsa"
           width={900}
@@ -63,7 +63,7 @@ export default function StateHeatmap({ states }: { states: StateCount[] }) {
         </ComposableMap>
 
         <div className="flex items-center justify-between px-1 pt-2">
-          <div className="flex flex-wrap items-center gap-3 text-xs text-black/60">
+          <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-ink-muted">
             {COVERAGE_BINS.map((b) => (
               <span key={b.label} className="inline-flex items-center gap-1.5">
                 <span
@@ -74,7 +74,7 @@ export default function StateHeatmap({ states }: { states: StateCount[] }) {
               </span>
             ))}
           </div>
-          <span className="min-h-4 text-xs font-medium text-black/70">
+          <span className="min-h-4 font-mono text-xs font-medium text-ink/75">
             {hover}
           </span>
         </div>
@@ -82,24 +82,24 @@ export default function StateHeatmap({ states }: { states: StateCount[] }) {
 
       {/* Text alternative: the same numbers, reachable without the map. */}
       <details className="mt-3">
-        <summary className="cursor-pointer text-sm text-black/60">
+        <summary className="cursor-pointer font-mono text-sm text-ink-muted hover:text-pe">
           Show the numbers as a table
         </summary>
-        <div className="mt-2 overflow-x-auto rounded-lg border border-black/10 bg-white">
+        <div className="folder mt-2 overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-black/10 text-left text-black/60">
-                <th className="px-4 py-2">State</th>
-                <th className="px-4 py-2 text-right">Clinics tracked</th>
+              <tr className="border-b border-ink/15 text-left">
+                <th className="label-mono px-4 py-2">State</th>
+                <th className="label-mono px-4 py-2 text-right">Clinics tracked</th>
               </tr>
             </thead>
             <tbody>
               {[...states]
                 .sort((a, b) => b.clinic_count - a.clinic_count)
                 .map((s) => (
-                  <tr key={s.state} className="border-b border-black/5 last:border-0">
-                    <td className="px-4 py-2">{STATE_NAME[s.state] ?? s.state}</td>
-                    <td className="px-4 py-2 text-right tabular-nums">
+                  <tr key={s.state} className="border-b border-rule last:border-0">
+                    <td className="px-4 py-2 font-serif">{STATE_NAME[s.state] ?? s.state}</td>
+                    <td className="px-4 py-2 text-right font-mono tabular-nums">
                       {fmtNum(s.clinic_count)}
                     </td>
                   </tr>

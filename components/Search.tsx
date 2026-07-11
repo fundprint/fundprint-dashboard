@@ -29,12 +29,12 @@ export default function Search() {
         value={q}
         onChange={(e) => setQ(e.target.value)}
         placeholder="Type a clinic name or city…"
-        className="w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-lg shadow-sm placeholder:text-black/35 focus:border-pe"
+        className="w-full rounded-sm border border-ink/20 bg-white px-4 py-3 font-serif text-lg shadow-sm placeholder:text-ink/35 focus:border-pe"
       />
 
       {result && result.outcome === "pe_linked" && (
         <div className="mt-5">
-          <p className="mb-3 text-sm text-black/60">
+          <p className="mb-3 font-mono text-sm text-ink-muted">
             {result.matches.length} match
             {result.matches.length === 1 ? "" : "es"} in our records. Each links
             to the public source behind the ownership claim.
@@ -48,12 +48,12 @@ export default function Search() {
       )}
 
       {result && result.outcome === "no_match" && (
-        <div className="mt-5 rounded-lg border border-black/10 bg-white p-5">
-          <p className="font-medium">
-            We don&apos;t have a clinic matching “{result.query}” in our data
+        <div className="mt-5 folder p-5">
+          <p className="font-serif text-lg font-medium">
+            We don&apos;t have a clinic matching &ldquo;{result.query}&rdquo; in our data
             yet.
           </p>
-          <p className="mt-2 text-sm text-black/70">
+          <p className="mt-2 font-serif text-ink/75">
             That is <span className="font-medium">not</span> a finding that the
             clinic is independent. It may be owned by a chain we haven&apos;t
             resolved, in a state we haven&apos;t ingested, or listed under a
@@ -64,7 +64,7 @@ export default function Search() {
       )}
 
       {!result && (
-        <p className="mt-3 text-sm text-black/50">
+        <p className="mt-3 font-mono text-xs text-ink-muted">
           Searches happen in your browser and are never recorded.
         </p>
       )}

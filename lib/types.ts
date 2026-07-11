@@ -23,6 +23,8 @@ export interface Totals {
   states: number;
   pe_clinics: number;
   non_pe_clinics: number;
+  // Clinics carrying a map coordinate (ZIP centroid). May be < clinics.
+  located_clinics: number;
 }
 
 export interface Acquirer {
@@ -58,6 +60,8 @@ export interface Clinic {
   state: string | null;
   zip: string | null;
   npi: string | null;
+  lat: number | null;
+  lng: number | null;
   owner_id: string;
   owner_name: string;
   firm_id: string;

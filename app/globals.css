@@ -4,11 +4,18 @@
 
 :root {
   color-scheme: light;
+  --paper: #fbfaf7;
+  --ink: #12161c;
+  --pe: #b4472e;
 }
 
 body {
-  background: #fbfaf7;
-  color: #12161c;
+  background-color: var(--paper);
+  /* A faint printed-paper grain: two low-alpha gradients, no external asset. */
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(180, 71, 46, 0.02), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(47, 111, 125, 0.02), transparent 45%);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -17,8 +24,61 @@ a {
   color: inherit;
 }
 
-/* Focus visibility for keyboard users - the search box is used by parents. */
+/* Focus visibility for keyboard users. */
 :focus-visible {
-  outline: 2px solid #b4472e;
+  outline: 2px solid var(--pe);
   outline-offset: 2px;
+}
+
+@layer components {
+  /* Small-caps mono label used for exhibit tags, field labels, callouts. */
+  .label-mono {
+    @apply font-mono text-[0.68rem] font-medium uppercase tracking-[0.18em] text-ink-muted;
+  }
+
+  /* Hairline rule that reads like a ruled document line. */
+  .rule {
+    @apply border-0 border-t border-rule;
+  }
+
+  /* A folder / evidence card on paper. */
+  .folder {
+    @apply rounded-sm border border-manila-edge bg-white shadow-folder;
+  }
+
+  /* Rubber-stamp mark: pressed ink, slight rotation applied inline. */
+  .stamp {
+    @apply inline-flex items-center gap-1.5 rounded-sm border-2 border-stamp/70 px-2 py-0.5
+      font-mono text-[0.62rem] font-bold uppercase tracking-[0.2em] text-stamp/90;
+  }
+}
+
+/* Redaction bar: covers text, lifts to reveal. Reduced-motion shows revealed. */
+.redaction {
+  position: relative;
+  display: inline-block;
+}
+.redaction > .redaction-cover {
+  position: absolute;
+  inset: -0.05em -0.15em;
+  background: var(--ink);
+  transform-origin: left center;
+  transition: transform 520ms cubic-bezier(0.7, 0, 0.2, 1);
+  z-index: 1;
+}
+.redaction[data-revealed="true"] > .redaction-cover {
+  transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Never hide content behind a bar that can no longer animate away. */
+  .redaction > .redaction-cover {
+    transform: scaleX(0);
+  }
 }

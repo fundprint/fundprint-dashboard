@@ -1,72 +1,146 @@
 import Link from "next/link";
-import AcquirerTable from "@/components/AcquirerTable";
 import Search from "@/components/Search";
+import Concentration from "@/components/dossier/Concentration";
+import Exhibit from "@/components/dossier/Exhibit";
+import RedactionReveal from "@/components/dossier/RedactionReveal";
+import SourceCite from "@/components/dossier/SourceCite";
+import StatSlot from "@/components/dossier/StatSlot";
+import Stamp from "@/components/dossier/Stamp";
+import TheMachine from "@/components/engine/TheMachine";
 import { snapshot } from "@/lib/data";
 import { fmtNum } from "@/lib/format";
 
 export default function Home() {
-  const { totals, acquirers } = snapshot;
+  const { totals, acquirers, meta } = snapshot;
+  const pePct = Math.round((totals.pe_clinics / totals.clinics) * 100);
+  const asOf = new Date(meta.generated_at).toISOString().slice(0, 10);
+
   return (
-    <div>
-      <section className="mx-auto max-w-3xl text-center">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Is your child&apos;s autism therapy clinic owned by private equity?
+    <div className="space-y-20">
+      {/* The finding */}
+      <section>
+        <div className="label-mono flex flex-wrap items-center gap-x-3 gap-y-1">
+          <span className="inline-block h-2 w-2 bg-pe" aria-hidden />
+          Opened 2026 &middot; United States &middot; The Finding
+        </div>
+        <h1 className="mt-4 max-w-4xl font-serif text-[2.1rem] font-semibold leading-[1.06] tracking-tight sm:text-5xl">
+          <RedactionReveal>Private equity</RedactionReveal> owns {fmtNum(totals.pe_clinics)} of
+          the {fmtNum(totals.clinics)} autism-therapy clinics we could trace.
         </h1>
-        <p className="mx-auto mt-3 max-w-2xl text-black/70">
-          Fundprint is a free, public record of who owns U.S. ABA / autism
-          therapy clinics. Look up a clinic below. Every answer links to the
-          public documents behind it.
+        <p className="mt-5 max-w-2xl font-serif text-lg leading-relaxed text-ink/80">
+          Fundprint follows the money behind U.S. ABA / autism-therapy clinics:
+          which are run by an independent practitioner, which by a chain, and
+          which by a financial owner that can restructure or close them. Every
+          claim on this page traces to a public document.
         </p>
 
-        <div className="mt-7 text-left">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note="from public records" />
+          <StatSlot value={`${pePct}%`} label="Private-equity owned" note={`${fmtNum(totals.pe_clinics)} clinics`} accent />
+          <StatSlot value={fmtNum(totals.acquirers)} label="Current owners" note="plus one former owner" />
+          <StatSlot value={fmtNum(totals.states)} label="States covered" note={`as of ${asOf}`} />
+        </div>
+      </section>
+
+      {/* Exhibit A: the engine */}
+      <Exhibit
+        mark="A"
+        kicker="How the record is built"
+        title="The Machine"
+        aside={<Stamp label="Deterministic" />}
+      >
+        <p className="mb-6 max-w-2xl font-serif text-ink/80">
+          Fundprint is not a hand-kept list. It is a five-stage pipeline that
+          pulls public records, snapshots and embeds them, resolves the ownership
+          chain, holds every claim to a validation gate, and publishes only what
+          passes. Watch a record travel through it.
+        </p>
+        <TheMachine />
+        <p className="mt-5 max-w-2xl font-mono text-[0.72rem] leading-relaxed text-ink-muted">
+          The same engine runs on a public dataset with an open methodology. See{" "}
+          <Link href="/process/" className="text-pe hover:underline">
+            how the machine works
+          </Link>{" "}
+          for the confidence floors, the two registries, and the integrity rules.
+        </p>
+      </Exhibit>
+
+      {/* Exhibit B: concentration */}
+      <Exhibit
+        mark="B"
+        kicker="Who holds the most"
+        title="A concentrated market"
+        aside={
+          <Link href="/acquirers/" className="font-mono text-sm text-pe hover:underline">
+            All owners &rarr;
+          </Link>
+        }
+      >
+        <p className="mb-6 max-w-2xl font-serif text-ink/80">
+          Ownership is not spread thin. A handful of firms hold most of the
+          clinics we have traced. Bar length is clinics tracked; color marks the
+          kind of owner.
+        </p>
+        <Concentration acquirers={acquirers} />
+      </Exhibit>
+
+      {/* Exhibit C: the CARD case */}
+      <Exhibit mark="C" kicker="Why it matters" title="When the money leaves">
+        <div className="grid gap-6 md:grid-cols-[1.5fr_1fr]">
+          <div className="max-w-2xl font-serif text-ink/85">
+            <p>
+              In 2018, Blackstone bought the Center for Autism and Related
+              Disorders, then the largest ABA provider in the country at roughly
+              250 locations. The company was loaded with debt, training was cut,
+              and within five years more than a hundred centers had closed. In
+              2023, CARD filed for bankruptcy.
+              <SourceCite
+                n={1}
+                href="https://www.nbcnews.com/health/health-care/card-blackstone-kids-autism-private-equity-bankruptcy-rcna118544"
+                title="NBC News: CARD, Blackstone, and the bankruptcy"
+              />
+            </p>
+            <p className="mt-4">
+              That is why ownership is worth tracing. When a financial owner
+              exits, the families relying on those clinics are the ones left
+              without care. CARD appears in this dataset as a former holding,
+              recorded for its history.
+            </p>
+            <Link
+              href="/findings/"
+              className="mt-5 inline-block font-mono text-sm text-pe hover:underline"
+            >
+              Read the investigation &rarr;
+            </Link>
+          </div>
+          <div className="folder self-start px-5 py-5">
+            <div className="label-mono">Case exhibit</div>
+            <div className="mt-2 font-serif text-4xl font-semibold leading-none">
+              ~250 <span className="text-lg font-normal text-ink-muted">centers</span>
+            </div>
+            <div className="mt-1 font-mono text-xs text-ink-muted">at acquisition, 2018</div>
+            <div className="mt-4 font-serif text-4xl font-semibold leading-none text-pe">
+              Bankrupt
+            </div>
+            <div className="mt-1 font-mono text-xs text-ink-muted">five years later, 2023</div>
+          </div>
+        </div>
+      </Exhibit>
+
+      {/* Look up your clinic */}
+      <section className="folder px-5 py-6 sm:px-8 sm:py-8">
+        <div className="label-mono">For families</div>
+        <h2 className="mt-2 font-serif text-2xl font-semibold">
+          Look up your clinic
+        </h2>
+        <p className="mt-2 max-w-2xl font-serif text-ink/75">
+          Search by clinic name or city. Every answer links to the public source
+          behind it. Searches run in your browser and are never recorded.
+        </p>
+        <div className="mt-5">
           <Search />
         </div>
       </section>
-
-      <section className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
-        <Stat label="Clinics tracked" value={fmtNum(totals.clinics)} />
-        <Stat label="Owners" value={fmtNum(totals.acquirers)} />
-        <Stat label="States covered" value={fmtNum(totals.states)} />
-        <Stat
-          label="PE-owned clinics"
-          value={fmtNum(totals.pe_clinics)}
-        />
-      </section>
-
-      <section className="mt-14">
-        <div className="mb-3 flex items-end justify-between">
-          <h2 className="text-xl font-semibold">Who owns the most clinics</h2>
-          <Link
-            href="/acquirers/"
-            className="text-sm underline decoration-black/30 underline-offset-2 hover:decoration-black"
-          >
-            All acquirers →
-          </Link>
-        </div>
-        <AcquirerTable acquirers={acquirers} />
-      </section>
-
-      <section className="mt-10 rounded-lg border border-black/10 bg-white p-5 text-sm text-black/70">
-        <p>
-          <span className="font-medium text-black">A note on scope. </span>
-          ABA therapy is debated within the autism community. Fundprint takes no
-          position on it. We track <em>who owns the clinics</em> that serve
-          autistic children, so families can know whether their clinic is run by
-          an independent practitioner, a chain, or a financial owner that may
-          restructure or close it. Most owners here are private-equity firms; a
-          few are pension funds or family offices, which we label as such rather
-          than call them PE.
-        </p>
-      </section>
-    </div>
-  );
-}
-
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-lg border border-black/10 bg-white px-4 py-3 text-center">
-      <div className="text-2xl font-bold tabular-nums">{value}</div>
-      <div className="mt-0.5 text-xs text-black/55">{label}</div>
     </div>
   );
 }

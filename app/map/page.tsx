@@ -1,29 +1,58 @@
 import type { Metadata } from "next";
+import ClinicMap from "@/components/ClinicMap";
 import StateHeatmap from "@/components/StateHeatmap";
+import CaseHeader from "@/components/dossier/CaseHeader";
+import Rule from "@/components/dossier/Rule";
 import { snapshot } from "@/lib/data";
+import { fmtNum } from "@/lib/format";
 
 export const metadata: Metadata = {
-  title: "Map | Fundprint",
+  title: "The Territory | Fundprint",
   description:
-    "PE and institution-owned ABA / autism clinics by U.S. state. Coverage, not census.",
+    "Every located PE and institution-owned ABA / autism clinic in the U.S., mapped by owner. Coverage, not census.",
 };
 
 export default function MapPage() {
+  const { clinics, acquirers, states, totals } = snapshot;
+  const mapClinics = clinics.map((c) => ({
+    id: c.id,
+    name: c.name,
+    city: c.city,
+    state: c.state,
+    lat: c.lat,
+    lng: c.lng,
+    firm_id: c.firm_id,
+    firm_name: c.firm_name,
+    firm_type: c.firm_type,
+    owner_name: c.owner_name,
+  }));
+
   return (
     <div>
-      <h1 className="text-2xl font-bold tracking-tight">
-        Clinics by state
-      </h1>
-      <p className="mt-2 max-w-2xl text-black/70">
-        Financial-owner-linked ABA / autism clinics we have tracked, by state.
-        This is <span className="font-medium">coverage</span>, not a census: a
-        darker state means we have resolved more clinics there, not necessarily
-        that it has more PE ownership. States we have not yet ingested look
-        empty; that is a gap in our data, not evidence of independence.
-      </p>
-      <div className="mt-6">
-        <StateHeatmap states={snapshot.states} />
+      <CaseHeader
+        eyebrow="Exhibit / The Territory"
+        title="The clinics, on the map"
+        lede="Every clinic we have traced to a financial owner, placed at its ZIP. Filter by owner to see one firm's national footprint. Color marks the kind of owner."
+      />
+
+      <div className="mt-4 font-mono text-xs text-ink-muted">
+        {fmtNum(totals.located_clinics)} of {fmtNum(totals.clinics)} tracked clinics are
+        placed here; the rest lack a usable ZIP. This is coverage in our public-records
+        dataset, not a census of every clinic each owner runs.
       </div>
+
+      <div className="mt-6">
+        <ClinicMap clinics={mapClinics} acquirers={acquirers} />
+      </div>
+
+      <Rule label="The same coverage, by state" />
+
+      <p className="mb-4 max-w-2xl font-serif text-ink/75">
+        A darker state means we have resolved more clinics there, not necessarily that it
+        has more private-equity ownership. States we have not yet ingested look empty:
+        that is a gap in our data, not evidence of independence.
+      </p>
+      <StateHeatmap states={states} />
     </div>
   );
 }

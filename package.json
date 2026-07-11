@@ -10,11 +10,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
     "next": "15.1.6",
     "prop-types": "^15.8.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-simple-maps": "3.0.0",
+    "three": "^0.171.0",
     "us-atlas": "3.0.1"
   },
   "devDependencies": {
@@ -22,6 +25,7 @@
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
     "@types/react-simple-maps": "3.0.6",
+    "@types/three": "^0.171.0",
     "autoprefixer": "10.4.20",
     "postcss": "8.5.1",
     "tailwindcss": "3.4.17",

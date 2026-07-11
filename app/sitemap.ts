@@ -14,7 +14,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ? new Date(snapshot.meta.generated_at)
     : new Date();
 
-  const staticRoutes = ["/", "/acquirers/", "/map/", "/methodology/"];
+  const staticRoutes = [
+    "/",
+    "/findings/",
+    "/process/",
+    "/map/",
+    "/acquirers/",
+    "/sources/",
+    "/progress/",
+    "/about/",
+    "/methodology/",
+  ];
 
   const acquirerRoutes = snapshot.acquirers.map(
     (a) => `/acquirers/${a.id}/`,
