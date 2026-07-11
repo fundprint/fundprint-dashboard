@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald, Bitter, Courier_Prime } from "next/font/google";
 import Footer from "@/components/Footer";
+import DeskWatermark from "@/components/dossier/DeskWatermark";
 import Masthead from "@/components/dossier/Masthead";
 import "./globals.css";
 
@@ -82,6 +83,7 @@ export default function RootLayout({
       className={`${oswald.variable} ${bitter.variable} ${courier.variable}`}
     >
       <body className="min-h-screen bg-paper font-serif text-ink antialiased">
+        <DeskWatermark />
         <Masthead />
         <main className="mx-auto max-w-5xl px-5 py-8">{children}</main>
         <Footer />

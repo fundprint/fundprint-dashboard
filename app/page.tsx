@@ -128,7 +128,7 @@ export default function Home() {
       </Exhibit>
 
       {/* Look up your clinic */}
-      <section className="folder px-5 py-6 sm:px-8 sm:py-8">
+      <section className="graph-paper rounded-[2px] border border-manila-edge px-5 py-6 shadow-folder sm:px-8 sm:py-8">
         <div className="label-mono">For families</div>
         <h2 className="headline mt-1 text-2xl">Look up your clinic</h2>
         <p className="mt-2 max-w-2xl font-serif text-ink/75">
