@@ -39,9 +39,7 @@ export default async function AcquirerDetail({
       <div className="mt-4 border-b border-ink/20 pb-5">
         <div className="label-mono">Subject file</div>
         <div className="mt-2 flex flex-wrap items-center gap-3">
-          <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            {firm.name}
-          </h1>
+          <h1 className="headline text-3xl sm:text-4xl">{firm.name}</h1>
           <OwnerTypeBadge type={firm.firm_type} />
           {firm.former ? <Stamp label="Former owner" rotate={-4} /> : null}
         </div>

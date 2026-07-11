@@ -12,9 +12,9 @@ import { ENGINE_STAGES } from "./engine-stages";
 // parts breathe and the records flow. Decorative: the SVG diagram and the text
 // cards carry the same information for assistive tech, so the canvas is hidden.
 
-const INK = "#12161c";
-const PE = "#b4472e";
-const PAPER = "#fbfaf7";
+const INK = "#201d17";
+const PE = "#8a1f1c";
+const PAPER = "#f4eedb";
 const XS = [-6, -3, 0, 3, 6];
 
 function Housing({
@@ -73,9 +73,11 @@ function Housing({
       >
         <div
           style={{
-            fontFamily: "var(--font-plex-mono), monospace",
-            fontSize: 22,
-            fontWeight: 700,
+            fontFamily: "var(--font-display), 'Oswald', sans-serif",
+            fontSize: 15,
+            fontWeight: 600,
+            textTransform: "uppercase",
+            letterSpacing: "0.06em",
             color: active ? PE : INK,
             whiteSpace: "nowrap",
           }}

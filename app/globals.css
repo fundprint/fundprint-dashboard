@@ -4,52 +4,90 @@
 
 :root {
   color-scheme: light;
-  --paper: #fbfaf7;
-  --ink: #12161c;
-  --pe: #b4472e;
+  --paper: #e6dbc2;
+  --sheet: #f4eedb;
+  --ink: #201d17;
+  --pe: #8a1f1c;
+  --pen: #2b4a62;
 }
 
 body {
   background-color: var(--paper);
-  /* A faint printed-paper grain: two low-alpha gradients, no external asset. */
+  /* Kraft desk: a warm vignette so the edges sink into shadow. */
   background-image:
-    radial-gradient(circle at 20% 15%, rgba(180, 71, 46, 0.02), transparent 45%),
-    radial-gradient(circle at 85% 80%, rgba(47, 111, 125, 0.02), transparent 45%);
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 250, 236, 0.5), transparent 60%),
+    radial-gradient(140% 120% at 50% 110%, rgba(40, 30, 15, 0.16), transparent 55%);
+  background-attachment: fixed;
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Fibrous paper grain over the whole desk, multiplied into the kraft. Content
+   sheets stack above it, so they read clean while the desk stays textured. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+body > header,
+body > main,
+body > footer {
+  position: relative;
+  z-index: 2;
 }
 
 a {
   color: inherit;
 }
 
-/* Focus visibility for keyboard users. */
 :focus-visible {
   outline: 2px solid var(--pe);
   outline-offset: 2px;
 }
 
 @layer components {
-  /* Small-caps mono label used for exhibit tags, field labels, callouts. */
+  /* Typewriter label: field captions, exhibit tags, callouts. */
   .label-mono {
-    @apply font-mono text-[0.68rem] font-medium uppercase tracking-[0.18em] text-ink-muted;
+    @apply font-mono text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink-muted;
   }
 
-  /* Hairline rule that reads like a ruled document line. */
+  /* Condensed report headline. */
+  .headline {
+    @apply font-display font-semibold uppercase tracking-[0.01em];
+  }
+
   .rule {
     @apply border-0 border-t border-rule;
   }
 
-  /* A folder / evidence card on paper. */
+  /* An aged filing sheet clipped into the folder. */
   .folder {
-    @apply rounded-sm border border-manila-edge bg-white shadow-folder;
+    @apply rounded-[2px] border border-manila-edge bg-sheet shadow-folder;
+  }
+  .sheet {
+    @apply rounded-[2px] bg-sheet shadow-sheet;
   }
 
-  /* Rubber-stamp mark: pressed ink, slight rotation applied inline. */
+  /* Rubber-stamp mark: pressed oxblood ink, rotation applied inline. */
   .stamp {
-    @apply inline-flex items-center gap-1.5 rounded-sm border-2 border-stamp/70 px-2 py-0.5
-      font-mono text-[0.62rem] font-bold uppercase tracking-[0.2em] text-stamp/90;
+    @apply inline-flex items-center gap-1.5 rounded-[2px] border-2 border-stamp/60 px-2 py-0.5
+      font-mono text-[0.6rem] font-bold uppercase tracking-[0.18em] text-stamp/85;
+    background: rgba(138, 31, 28, 0.05);
+  }
+
+  /* A strip of masking tape holding a sheet down. */
+  .tape {
+    @apply absolute h-6 w-20 bg-[#d9cf9f]/70;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    mix-blend-mode: multiply;
   }
 }
 
@@ -77,7 +115,6 @@ a {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  /* Never hide content behind a bar that can no longer animate away. */
   .redaction > .redaction-cover {
     transform: scaleX(0);
   }

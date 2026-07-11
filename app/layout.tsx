@@ -1,22 +1,31 @@
 import type { Metadata } from "next";
-import { Newsreader, IBM_Plex_Mono } from "next/font/google";
+import { Oswald, Bitter, Courier_Prime } from "next/font/google";
 import Footer from "@/components/Footer";
 import Masthead from "@/components/dossier/Masthead";
 import "./globals.css";
 
 // Self-hosted at build time by next/font: no runtime request to Google, which
-// keeps the static export clean and CSP-safe.
-const newsreader = Newsreader({
+// keeps the static export clean and CSP-safe. Three distinct voices for a case
+// file: a condensed gothic for report headers, a slab serif for the body, and a
+// typewriter for labels, figures, and stamps.
+const oswald = Oswald({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-newsreader",
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
 });
-const plexMono = IBM_Plex_Mono({
+const bitter = Bitter({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600"],
-  variable: "--font-plex-mono",
+  style: ["normal", "italic"],
+  variable: "--font-body",
+});
+const courier = Courier_Prime({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-typwr",
 });
 
 const SITE_URL = "https://whofundsmytherapist.com";
@@ -68,10 +77,13 @@ export default function RootLayout({
 }) {
   const plausible = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   return (
-    <html lang="en" className={`${newsreader.variable} ${plexMono.variable}`}>
+    <html
+      lang="en"
+      className={`${oswald.variable} ${bitter.variable} ${courier.variable}`}
+    >
       <body className="min-h-screen bg-paper font-serif text-ink antialiased">
         <Masthead />
-        <main className="mx-auto max-w-6xl px-5 py-10">{children}</main>
+        <main className="mx-auto max-w-5xl px-5 py-8">{children}</main>
         <Footer />
         {plausible ? (
           // Privacy-respecting analytics: no cookies, no per-user profiles,

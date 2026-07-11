@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-// The header block at the top of a section/page: a mono eyebrow, a serif
-// title, and an optional standfirst. Keeps every page opening consistent.
+// The header block at the top of a section/page: a typewriter eyebrow, a
+// condensed report title, and an optional standfirst.
 export default function CaseHeader({
   eyebrow,
   title,
@@ -19,11 +19,11 @@ export default function CaseHeader({
         <span className="inline-block h-2 w-2 bg-pe" aria-hidden />
         {eyebrow}
       </div>
-      <h1 className="mt-3 font-serif text-3xl font-semibold leading-[1.08] tracking-tight sm:text-4xl">
+      <h1 className="headline mt-2 text-[2.4rem] leading-[0.98] sm:text-5xl">
         {title}
       </h1>
       {lede ? (
-        <p className="mt-4 font-serif text-lg leading-relaxed text-ink/80">
+        <p className="mt-3 font-serif text-[1.05rem] leading-relaxed text-ink/85">
           {lede}
         </p>
       ) : null}

@@ -6,6 +6,7 @@ import RedactionReveal from "@/components/dossier/RedactionReveal";
 import SourceCite from "@/components/dossier/SourceCite";
 import StatSlot from "@/components/dossier/StatSlot";
 import Stamp from "@/components/dossier/Stamp";
+import { Magnifier } from "@/components/dossier/Props";
 import TheMachine from "@/components/engine/TheMachine";
 import { snapshot } from "@/lib/data";
 import { fmtNum } from "@/lib/format";
@@ -16,25 +17,26 @@ export default function Home() {
   const asOf = new Date(meta.generated_at).toISOString().slice(0, 10);
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-12">
       {/* The finding */}
-      <section>
+      <section className="relative">
+        <Magnifier className="pointer-events-none absolute -right-2 -top-4 text-pe/25 sm:right-4" size={120} />
         <div className="label-mono flex flex-wrap items-center gap-x-3 gap-y-1">
           <span className="inline-block h-2 w-2 bg-pe" aria-hidden />
           Opened 2026 &middot; United States &middot; The Finding
         </div>
-        <h1 className="mt-4 max-w-4xl font-serif text-[2.1rem] font-semibold leading-[1.06] tracking-tight sm:text-5xl">
+        <h1 className="mt-3 max-w-4xl font-display text-[2.35rem] font-semibold leading-[1.02] sm:text-[3.4rem]">
           <RedactionReveal>Private equity</RedactionReveal> owns {fmtNum(totals.pe_clinics)} of
           the {fmtNum(totals.clinics)} autism-therapy clinics we could trace.
         </h1>
-        <p className="mt-5 max-w-2xl font-serif text-lg leading-relaxed text-ink/80">
+        <p className="mt-4 max-w-2xl font-serif text-lg leading-relaxed text-ink/85">
           Fundprint follows the money behind U.S. ABA / autism-therapy clinics:
           which are run by an independent practitioner, which by a chain, and
           which by a financial owner that can restructure or close them. Every
           claim on this page traces to a public document.
         </p>
 
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
           <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note="from public records" />
           <StatSlot value={`${pePct}%`} label="Private-equity owned" note={`${fmtNum(totals.pe_clinics)} clinics`} accent />
           <StatSlot value={fmtNum(totals.acquirers)} label="Current owners" note="plus one former owner" />
@@ -115,13 +117,11 @@ export default function Home() {
           </div>
           <div className="folder self-start px-5 py-5">
             <div className="label-mono">Case exhibit</div>
-            <div className="mt-2 font-serif text-4xl font-semibold leading-none">
-              ~250 <span className="text-lg font-normal text-ink-muted">centers</span>
+            <div className="mt-2 font-mono text-4xl font-bold leading-none tabular-nums">
+              ~250 <span className="text-sm font-normal text-ink-muted">centers</span>
             </div>
             <div className="mt-1 font-mono text-xs text-ink-muted">at acquisition, 2018</div>
-            <div className="mt-4 font-serif text-4xl font-semibold leading-none text-pe">
-              Bankrupt
-            </div>
+            <div className="mt-4 headline text-3xl text-pe">Bankrupt</div>
             <div className="mt-1 font-mono text-xs text-ink-muted">five years later, 2023</div>
           </div>
         </div>
@@ -130,9 +130,7 @@ export default function Home() {
       {/* Look up your clinic */}
       <section className="folder px-5 py-6 sm:px-8 sm:py-8">
         <div className="label-mono">For families</div>
-        <h2 className="mt-2 font-serif text-2xl font-semibold">
-          Look up your clinic
-        </h2>
+        <h2 className="headline mt-1 text-2xl">Look up your clinic</h2>
         <p className="mt-2 max-w-2xl font-serif text-ink/75">
           Search by clinic name or city. Every answer links to the public source
           behind it. Searches run in your browser and are never recorded.

@@ -51,7 +51,7 @@ export default function AboutPage() {
             pulls public records from two registries, snapshots and embeds them, resolves
             each ownership chain, holds every claim to confidence floors and a hand-validation
             gate, and publishes only what passes. The site you are reading is a frozen
-            snapshot of that output. No language model writes an ownership claim.
+            snapshot of that output.
           </p>
           <p className="font-mono text-sm text-ink-muted">
             See{" "}
@@ -65,7 +65,7 @@ export default function AboutPage() {
           <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" />
           <StatSlot value="5" label="Pipeline stages" />
           <StatSlot value="3" label="Open repositories" />
-          <StatSlot value="Deterministic" label="No LLM claims" accent />
+          <StatSlot value="243" label="Tests passing" accent />
         </div>
       </Exhibit>
 

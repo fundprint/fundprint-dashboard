@@ -21,7 +21,7 @@ export default function ProcessPage() {
       <CaseHeader
         eyebrow="The Machine / How it works"
         title="How the record is built"
-        lede="Fundprint is not a hand-kept list. It is a deterministic pipeline: the same public inputs run through the same code produce the same record, and every published claim carries the document that proves it. No language model writes a single ownership claim."
+        lede="Fundprint is not a hand-kept list. It is a deterministic pipeline: the same public inputs run through the same code produce the same record, and every published claim carries the document that proves it."
       />
 
       <section>

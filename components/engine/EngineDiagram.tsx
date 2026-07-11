@@ -14,10 +14,11 @@ const BLOCK_TOP = SHAFT_Y - BLOCK_H / 2;
 const BX0 = 214;
 const STEP = 176;
 
-const INK = "#12161c";
-const PE = "#b4472e";
-const MUTED = "#5c584f";
-const RULE = "#d9d2c2";
+const INK = "#201d17";
+const PE = "#8a1f1c";
+const MUTED = "#5a5342";
+const RULE = "#c3b48f";
+const SHEET = "#f4eedb";
 
 function bolt(cx: number, cy: number, key: string) {
   return <circle key={key} cx={cx} cy={cy} r={2.4} fill={INK} opacity={0.55} />;
@@ -167,11 +168,11 @@ export default function EngineDiagram({ className = "" }: { className?: string }
           <g key={stage.key}>
             {/* drive collar */}
             {i > 0 ? (
-              <rect x={bx - 22} y={SHAFT_Y - 7} width={14} height={14} fill="#efe7d6" stroke={INK} strokeWidth={1.5} />
+              <rect x={bx - 22} y={SHAFT_Y - 7} width={14} height={14} fill="#dccfad" stroke={INK} strokeWidth={1.5} />
             ) : null}
 
             {/* housing */}
-            <rect x={bx} y={BLOCK_TOP} width={BLOCK_W} height={BLOCK_H} rx={3} fill="#ffffff" stroke={INK} strokeWidth={2} />
+            <rect x={bx} y={BLOCK_TOP} width={BLOCK_W} height={BLOCK_H} rx={3} fill={SHEET} stroke={INK} strokeWidth={2} />
             {[
               [bx + 8, BLOCK_TOP + 8],
               [bx + BLOCK_W - 8, BLOCK_TOP + 8],
@@ -179,11 +180,20 @@ export default function EngineDiagram({ className = "" }: { className?: string }
               [bx + BLOCK_W - 8, BLOCK_TOP + BLOCK_H - 8],
             ].map(([x, y], k) => bolt(x, y, `${stage.key}-b${k}`))}
 
-            <text x={bx + 14} y={BLOCK_TOP + 26} fill={PE} fontFamily="monospace" fontSize={16} fontWeight={700}>
+            <text x={bx + 14} y={BLOCK_TOP + 24} fill={PE} fontFamily="monospace" fontSize={13} fontWeight={700}>
               {stage.numeral}
             </text>
             <Glyph stage={stage} cx={cx} cy={SHAFT_Y - 4} />
-            <text x={cx} y={BLOCK_TOP + BLOCK_H - 14} fill={INK} fontFamily="serif" fontSize={17} fontWeight={600} textAnchor="middle">
+            <text
+              x={cx}
+              y={BLOCK_TOP + BLOCK_H - 13}
+              fill={INK}
+              fontFamily="var(--font-display), 'Oswald', 'Arial Narrow', sans-serif"
+              fontSize={13}
+              fontWeight={600}
+              textAnchor="middle"
+              style={{ textTransform: "uppercase", letterSpacing: "0.08em" }}
+            >
               {stage.name}
             </text>
 
@@ -209,7 +219,7 @@ export default function EngineDiagram({ className = "" }: { className?: string }
           { y: SHAFT_Y + 54, label: "FIRM" },
         ].map((n, i, arr) => (
           <g key={n.label}>
-            <circle cx={1150} cy={n.y} r={9} fill="#ffffff" stroke={INK} strokeWidth={2} />
+            <circle cx={1150} cy={n.y} r={9} fill={SHEET} stroke={INK} strokeWidth={2} />
             {i < arr.length - 1 ? (
               <line x1={1150} y1={n.y + 9} x2={1150} y2={arr[i + 1].y - 9} stroke={INK} strokeWidth={2} />
             ) : null}

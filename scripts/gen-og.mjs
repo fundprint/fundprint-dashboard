@@ -15,12 +15,14 @@ const snap = JSON.parse(readFileSync(join(root, "data/snapshot.json"), "utf8"));
 const t = snap.totals;
 const pePct = Math.round((t.pe_clinics / t.clinics) * 100);
 
-const INK = "#12161c";
-const PAPER = "#fbfaf7";
-const PE = "#b4472e";
-const MUTE = "#5c584f";
-const RULE = "#d9d2c2";
-const SERIF = "Georgia, 'Times New Roman', serif";
+const INK = "#201d17";
+const PAPER = "#e6dbc2";
+const SHEET = "#f4eedb";
+const PE = "#8a1f1c";
+const MUTE = "#5a5342";
+const RULE = "#c3b48f";
+const SERIF = "'Bitter', Georgia, serif";
+const DISPLAY = "'Arial Narrow', 'Oswald', sans-serif";
 const MONO = "'Courier New', monospace";
 
 const stages = ["ACQUIRE", "STORE", "RESOLVE", "VALIDATE", "PUBLISH"];
@@ -28,39 +30,43 @@ const engineStrip = stages
   .map((s, i) => {
     const x = 80 + i * 158;
     return `
-    <rect x="${x}" y="470" width="140" height="70" rx="4" fill="#ffffff" stroke="${INK}" stroke-width="2"/>
-    <text x="${x + 70}" y="512" font-family="${MONO}" font-size="17" fill="${INK}" text-anchor="middle" font-weight="700">${s}</text>
+    <rect x="${x}" y="470" width="140" height="70" rx="2" fill="${SHEET}" stroke="${INK}" stroke-width="2"/>
+    <text x="${x + 70}" y="512" font-family="${MONO}" font-size="16" fill="${INK}" text-anchor="middle" font-weight="700" letter-spacing="1">${s}</text>
     ${i < stages.length - 1 ? `<path d="M${x + 140} 505 h18 M${x + 152} 500 l6 5 l-6 5" fill="none" stroke="${PE}" stroke-width="2"/>` : ""}`;
   })
   .join("");
 
 const stats = [
-  [t.clinics.toLocaleString("en-US"), "clinics traced", 80],
-  [`${pePct}%`, "PE-owned", 380],
-  [String(t.acquirers), "owners", 620],
-  [String(t.states), "states", 820],
+  [t.clinics.toLocaleString("en-US"), "CLINICS TRACED", 80],
+  [`${pePct}%`, "PE-OWNED", 380],
+  [String(t.acquirers), "OWNERS", 620],
+  [String(t.states), "STATES", 820],
 ];
 const statSvg = stats
   .map(
     ([num, label, x]) => `
-    <text x="${x}" y="410" font-family="${SERIF}" font-size="52" font-weight="700" fill="${x === 380 ? PE : INK}">${num}</text>
-    <text x="${x}" y="438" font-family="${MONO}" font-size="19" fill="${MUTE}">${label}</text>`,
+    <text x="${x}" y="410" font-family="${MONO}" font-size="50" font-weight="700" fill="${x === 380 ? PE : INK}">${num}</text>
+    <text x="${x}" y="438" font-family="${MONO}" font-size="16" fill="${MUTE}" letter-spacing="1.5">${label}</text>`,
   )
   .join("");
+
+const line1 = `PRIVATE EQUITY OWNS ${t.pe_clinics.toLocaleString("en-US")} OF THE ${t.clinics.toLocaleString("en-US")}`;
+const line2 = "AUTISM-THERAPY CLINICS WE TRACED.";
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="${PAPER}"/>
   <rect x="0" y="0" width="1200" height="8" fill="${PE}"/>
   <rect x="24" y="24" width="1152" height="582" fill="none" stroke="${RULE}" stroke-width="1"/>
+  <rect x="34" y="34" width="1132" height="562" fill="none" stroke="${RULE}" stroke-width="1" opacity="0.5"/>
 
   <text x="80" y="92" font-family="${SERIF}" font-size="30" font-weight="700" fill="${INK}">Fundprint<tspan fill="${PE}">.</tspan></text>
-  <text x="1120" y="92" font-family="${MONO}" font-size="17" fill="${MUTE}" text-anchor="end" letter-spacing="2">CASE NO. FP&#183;2026</text>
+  <text x="1120" y="92" font-family="${MONO}" font-size="16" fill="${MUTE}" text-anchor="end" letter-spacing="2">CASE NO. FP&#183;2026</text>
 
-  <text font-family="${SERIF}" font-size="55" font-weight="700" fill="${INK}">
-    <tspan x="80" y="192">Private equity owns ${t.pe_clinics.toLocaleString("en-US")} of the ${t.clinics.toLocaleString("en-US")}</tspan>
-    <tspan x="80" y="258">autism-therapy clinics we traced.</tspan>
+  <text font-family="${DISPLAY}" font-size="62" font-weight="700" fill="${INK}" letter-spacing="0.5">
+    <tspan x="80" y="196">${line1}</tspan>
+    <tspan x="80" y="262">${line2}</tspan>
   </text>
-  <text x="80" y="316" font-family="${SERIF}" font-size="26" fill="${MUTE}">Every claim traces to a public source.  &#183;  whofundsmytherapist.com</text>
+  <text x="80" y="312" font-family="${SERIF}" font-size="24" fill="${MUTE}">Every claim traces to a public source.  &#183;  whofundsmytherapist.com</text>
 
   ${statSvg}
   ${engineStrip}

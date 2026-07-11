@@ -84,12 +84,12 @@ export default function ClinicMap({
                 <Geography
                   key={geo.rsmKey}
                   geography={geo as object}
-                  fill="#f2ecdf"
-                  stroke="#cabfa9"
+                  fill="#ddd0b0"
+                  stroke="#b3a37c"
                   strokeWidth={0.5}
                   style={{
                     default: { outline: "none" },
-                    hover: { outline: "none", fill: "#f2ecdf" },
+                    hover: { outline: "none", fill: "#ddd0b0" },
                     pressed: { outline: "none" },
                   }}
                 />
