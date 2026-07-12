@@ -18,6 +18,9 @@ type MapClinic = Pick<
   "id" | "name" | "city" | "state" | "lat" | "lng" | "firm_id" | "firm_name" | "firm_type" | "owner_name"
 >;
 
+// The map projection (geoAlbersUsa) has no coordinates for these.
+const US_TERRITORIES = new Set(["PR", "VI", "GU", "AS", "MP"]);
+
 export default function ClinicMap({
   clinics,
   acquirers,
@@ -28,8 +31,20 @@ export default function ClinicMap({
   const [firm, setFirm] = useState<string | null>(null);
   const [hover, setHover] = useState<MapClinic | null>(null);
 
+  // geoAlbersUsa covers the 50 states and DC only; it returns null for the
+  // territories, and a null projection makes react-simple-maps throw while
+  // rendering a Marker. A Helping Hands Family center in St Thomas, USVI is a
+  // real, tracked clinic that simply has nowhere to sit on this projection, so
+  // it is excluded from the dots (and only from the dots) rather than dropped
+  // from the dataset or allowed to break the page.
   const located = useMemo(
-    () => clinics.filter((c) => c.lat != null && c.lng != null),
+    () =>
+      clinics.filter(
+        (c) =>
+          c.lat != null &&
+          c.lng != null &&
+          !US_TERRITORIES.has(c.state ?? ""),
+      ),
     [clinics],
   );
   const topFirms = useMemo(
