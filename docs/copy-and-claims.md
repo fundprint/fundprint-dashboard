@@ -1,6 +1,6 @@
 # Copy and claims (the editorial gate)
 
-**Owns:** what the dashboard is allowed to *say* — the framing, the labels, the tooltips, the citations, and the neutral-on-ABA line.
+**Owns:** what the dashboard is allowed to *say*: the framing, the labels, the tooltips, the citations, and the neutral-on-ABA line.
 **Depends on:** the methodology repo for definitions and contested positions; the data contract for what is true.
 **Consumed by:** every rendered surface. No claim-bearing pixel ships without passing this gate.
 
@@ -8,7 +8,7 @@ The dataset earns trust by being source-traceable. The dashboard can squander th
 
 ## The neutral-on-ABA line (hold it everywhere)
 
-ABA therapy is contested inside the autism community. **Fundprint is not in that debate.** The dashboard tracks who owns the clinics that serve autistic children — full stop. This position is held in copy, consistently, on every page, tooltip, and error message:
+ABA therapy is contested inside the autism community. **Fundprint is not in that debate.** The dashboard tracks who owns the clinics that serve autistic children, full stop. This position is held in copy, consistently, on every page, tooltip, and error message:
 
 - The dashboard does not call ABA good, bad, harmful, or essential.
 - It does not frame autistic children as victims, burdens, or objects of pity.
@@ -23,9 +23,9 @@ The strength of a sentence must match the strength of the evidence behind it. Th
 
 | Evidence                         | Allowed phrasing                                  | Forbidden phrasing                  |
 |----------------------------------|---------------------------------------------------|-------------------------------------|
-| Human-verified, high confidence  | "X owns this clinic." (with source)               | —                                   |
+| Human-verified, high confidence  | "X owns this clinic." (with source)               | (none)                              |
 | Above floor, inferred / fuzzy    | "Public records link this clinic to X."           | "X owns this clinic" as bare fact   |
-| Below floor                      | *(not shown at all)*                              | any phrasing — it never appears     |
+| Below floor                      | *(not shown at all)*                              | any phrasing; it never appears      |
 | No record                        | "We don't have this clinic in our data."          | "This clinic is independent."       |
 
 "Linked in public records" and "owned by" are different claims. Use the weaker one whenever the evidence is anything short of verified. Downgrading a claim is never wrong; upgrading one past its evidence is the bug.
@@ -47,7 +47,7 @@ Before any claim-bearing copy ships, you must be able to, for a randomly chosen 
 1. Explain in 30 seconds what it claims.
 2. Name the source that backs it.
 3. Identify the weakest part of that claim and why it is weak.
-4. Answer one follow-up you did not anticipate — "what about the clinic that changed names?", "is this acquisition date exact or circa?"
+4. Answer one follow-up you did not anticipate: "what about the clinic that changed names?", "is this acquisition date exact or circa?"
 
 If you cannot, the copy is overclaiming. Soften it to what you can defend, or cut it. The dashboard's credibility is the project's credibility; a single indefensible sentence under a journalist's reply spends it.
 
@@ -56,7 +56,7 @@ If you cannot, the copy is overclaiming. Soften it to what you can defend, or cu
 The dashboard is a window onto an immutable, versioned dataset. It does not "fix" a number by editing a page:
 
 - A wrong figure is corrected by the data repo cutting a new release; the dashboard redeploys against it (see `deployment.md`).
-- A challenged claim — from an advisor, a journalist, or the chain itself — is routed to the data repo, which may quarantine it; it then drops out of the views and off the dashboard at the next deploy.
+- A challenged claim (from an advisor, a journalist, or the chain itself) is routed to the data repo, which may quarantine it; it then drops out of the views and off the dashboard at the next deploy.
 - When a visible number changes between releases, the change is acknowledged, not slipped in. A dataset that silently revises looks like a dataset that hides mistakes.
 
 The dashboard never carries a "corrections" claim the dataset does not back. Its honesty is downstream of the dataset's honesty.

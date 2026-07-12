@@ -1,20 +1,20 @@
-# docs/ — the Fundprint dashboard contract
+# docs/: the Fundprint dashboard contract
 
 This folder describes **how the public dashboard communicates with the rest of the system**, not what code currently exists. It is the contract layer. Components, charts, and routes will be rebuilt many times; these documents define what any version of the dashboard must respect.
 
-If a doc here disagrees with the code, the doc is the intent. Either the code is wrong, or the doc is stale — either way, fix it before shipping the next change.
+If a doc here disagrees with the code, the doc is the intent. Either the code is wrong, or the doc is stale. Either way, fix it before shipping the next change.
 
 ## Reading order
 
 If you are new to the dashboard, read in this order:
 
-1. **architecture.md** — the five layers of the dashboard and how data flows from the dataset to the screen.
-2. **data-contract.md** — the read-only views and dataset the dashboard is allowed to read, and the shapes that flow in.
-3. **search.md** — the "Is your clinic PE-owned?" lookup, the dashboard's core feature.
-4. **visualization.md** — the maps, timelines, and tables, and what each is allowed to claim.
-5. **copy-and-claims.md** — the editorial gate: framing, labels, citations, and the neutral-on-ABA line.
-6. **deployment.md** — how the dashboard reaches the public and how a release is pinned to a dataset version.
-7. **cross-repo.md** — how this repo coordinates with `fundprint-data` and `fundprint-methodology`.
+1. **architecture.md**: the five layers of the dashboard and how data flows from the dataset to the screen.
+2. **data-contract.md**: the read-only views and dataset the dashboard is allowed to read, and the shapes that flow in.
+3. **search.md**: the "Is your clinic PE-owned?" lookup, the dashboard's core feature.
+4. **visualization.md**: the maps, timelines, and tables, and what each is allowed to claim.
+5. **copy-and-claims.md**: the editorial gate: framing, labels, citations, and the neutral-on-ABA line.
+6. **deployment.md**: how the dashboard reaches the public and how a release is pinned to a dataset version.
+7. **cross-repo.md**: how this repo coordinates with `fundprint-data` and `fundprint-methodology`.
 
 Each doc opens with: *what it owns*, *what it depends on*, *what consumes it*. That triple is the contract.
 

@@ -1,10 +1,10 @@
 # Visualization (the views)
 
-**Owns:** the maps, timelines, and tables — what each one shows, what it is allowed to claim, and where its numbers come from.
+**Owns:** the maps, timelines, and tables: what each one shows, what it is allowed to claim, and where its numbers come from.
 **Depends on:** the data contract (`data-contract.md`) for every figure, and the editorial rules (`copy-and-claims.md`) for every label.
 **Consumed by:** the reader. These are the most screenshotted surfaces in the project; design them to survive being screenshotted out of context.
 
-A chart is an argument. Every visualization on the dashboard asserts something, and a reader will take a photo of it and post it without the caption. The discipline here is to make each view say something true *even when stripped of its surrounding copy* — and to make every number in it traceable to the published dataset.
+A chart is an argument. Every visualization on the dashboard asserts something, and a reader will take a photo of it and post it without the caption. The discipline here is to make each view say something true *even when stripped of its surrounding copy*, and to make every number in it traceable to the published dataset.
 
 ## The four canonical views
 
@@ -15,9 +15,9 @@ From the project plan's Week 4 cut. Each has one job and one honest reading.
 | **Acquirer table**            | Sortable list of PE firms by tracked clinic count         | That the count is complete (it is coverage, not census) |
 | **Geographic heatmap**        | PE-acquired clinics by state                              | That a dark state is "worse" rather than better-covered |
 | **Clinic count over time**    | Acquisitions by acquirer across years                     | That a flat recent year means PE stopped (it may be data lag) |
-| **Chain timeline**            | A single chain's history — CARD/Blackstone is the example | That every closure was caused by the PE owner |
+| **Chain timeline**            | A single chain's history (CARD/Blackstone is the example) | That every closure was caused by the PE owner |
 
-The CARD → Blackstone → 2023 bankruptcy timeline is the canonical narrative view. It is also the one most likely to be read as accusation rather than record. It shows dated, sourced events; it does not editorialize cause inside the chart (the framing around it can carry the argument — see `copy-and-claims.md`).
+The CARD → Blackstone → 2023 bankruptcy timeline is the canonical narrative view. It is also the one most likely to be read as accusation rather than record. It shows dated, sourced events; it does not editorialize cause inside the chart (the framing around it can carry the argument; see `copy-and-claims.md`).
 
 ## Every figure traces to the dataset
 
@@ -30,7 +30,7 @@ No visualization computes a number the dataset does not publish (see `data-contr
 
 If a chart needs a number the dataset does not expose, the request goes upstream to `fundprint-data`. The chart waits; it does not improvise.
 
-## Coverage is not census — and the charts must say so
+## Coverage is not census, and the charts must say so
 
 The dataset is the most complete public picture of PE in ABA, and it is still incomplete. Every aggregate view risks being read as a full count when it is a *coverage* count. Three habits keep this honest:
 
@@ -46,7 +46,7 @@ Any data point a reader can click should lead toward its evidence. A bar in the 
 
 ## Accessibility and honesty are the same discipline
 
-- Color is never the only signal — the heatmap needs labels and a legend a colorblind reader can use, and a screenshot in grayscale must still parse.
+- Color is never the only signal; the heatmap needs labels and a legend a colorblind reader can use, and a screenshot in grayscale must still parse.
 - Charts have text alternatives (a table behind every graphic) so the data is reachable without the visualization, and so it is indexable and citable as numbers.
 - No chart junk that exaggerates: zero-baselined bars where a baseline matters, no truncated axes that inflate a trend, no area encodings that distort magnitude. An honest dataset deserves honest geometry.
 

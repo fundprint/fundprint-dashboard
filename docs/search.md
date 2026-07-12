@@ -1,6 +1,6 @@
 # Search (the core feature)
 
-**Owns:** the "Is your clinic PE-owned?" lookup — how a person's query becomes an honest answer about a specific clinic.
+**Owns:** the "Is your clinic PE-owned?" lookup: how a person's query becomes an honest answer about a specific clinic.
 **Depends on:** the data contract (`data-contract.md`) for the rows it searches, and the methodology for how an answer is phrased.
 **Consumed by:** the rendering and framing layers, which present the result and its caveats.
 
@@ -10,21 +10,21 @@ This is the feature a parent actually came for. Everything else on the dashboard
 
 A user types a clinic name, sometimes a city. The honest framing of what we can answer is narrow:
 
-> "In the public records we have collected, is *this clinic* linked — through its operator — to a private-equity owner, and how sure are we?"
+> "In the public records we have collected, is *this clinic* linked (through its operator) to a private-equity owner, and how sure are we?"
 
 That is not the same as "is your clinic PE-owned, yes or no." The gap between those two questions is where the search earns or loses trust. Every result has to communicate the gap, not hide it.
 
-## The three outcomes — and none of them is a bare "no"
+## The three outcomes, and none of them is a bare "no"
 
 A lookup resolves to exactly one of three states. The UI must distinguish them; collapsing them is the core failure mode.
 
 | Outcome              | What it means                                              | What the user must be told                          |
 |----------------------|-----------------------------------------------------------|-----------------------------------------------------|
 | **Match, PE-linked** | We found this clinic and a chain to a PE firm, above floor | The chain, the confidence, and the source documents |
-| **Match, no PE link**| We found this clinic and no PE owner in our records        | "Not found to be PE-owned *in our data*" — not "independent" |
-| **No match**         | We have no record of this clinic at all                    | "We don't have this clinic yet" — silence is not an answer |
+| **Match, no PE link**| We found this clinic and no PE owner in our records        | "Not found to be PE-owned *in our data*" (not "independent") |
+| **No match**         | We have no record of this clinic at all                    | "We don't have this clinic yet" (silence is not an answer) |
 
-The two non-PE outcomes are different and must never be merged. "We have no PE link for this clinic" and "we have never heard of this clinic" feel identical to a user but mean opposite things about our coverage. A clinic absent from the dataset is **not** evidence it is independent — it may be a coverage gap. The UI says so, plainly, every time.
+The two non-PE outcomes are different and must never be merged. "We have no PE link for this clinic" and "we have never heard of this clinic" feel identical to a user but mean opposite things about our coverage. A clinic absent from the dataset is **not** evidence it is independent; it may be a coverage gap. The UI says so, plainly, every time.
 
 ## Absence is not proof
 
@@ -40,7 +40,7 @@ A clinic that does not surface as PE-owned has not been cleared. It may be PE-ow
 user query (name [+ city])
       │
       ▼
-[ Normalize ]  trim, case-fold, strip punctuation — never "correct" the name
+[ Normalize ]  trim, case-fold, strip punctuation; never "correct" the name
       │
       ▼
 [ Match     ]  look up against the published clinic view (name + locality)
@@ -52,7 +52,7 @@ user query (name [+ city])
 [ Present   ]  chain + confidence + sources, OR the honest "no" with its caveat
 ```
 
-Matching uses what the dataset exposes. The dashboard does **not** invent its own fuzzy-matching to claim a link the dataset did not assert — that would be deriving a claim (see `data-contract.md`). If a near-match is ambiguous, the UI shows candidates and lets the person choose; it does not silently pick one and present it as fact.
+Matching uses what the dataset exposes. The dashboard does **not** invent its own fuzzy-matching to claim a link the dataset did not assert. That would be deriving a claim (see `data-contract.md`). If a near-match is ambiguous, the UI shows candidates and lets the person choose; it does not silently pick one and present it as fact.
 
 ## Confidence shapes the phrasing
 
@@ -66,7 +66,7 @@ Never round a 0.81 up to a certainty. The confidence is part of the answer, not 
 
 ## Every answer is traceable
 
-A search result that asserts a PE link must show, inline, the public source documents behind each hop of the chain — the same `source_record` links the dataset carries. A parent should be able to click from "your clinic is owned by a PE firm" to the filing or page that says so, in one step. An assertion the user cannot verify is exactly the assertion that turns into a complaint.
+A search result that asserts a PE link must show, inline, the public source documents behind each hop of the chain: the same `source_record` links the dataset carries. A parent should be able to click from "your clinic is owned by a PE firm" to the filing or page that says so, in one step. An assertion the user cannot verify is exactly the assertion that turns into a complaint.
 
 ## What search never does
 
