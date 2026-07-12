@@ -12,8 +12,7 @@ import { snapshot } from "@/lib/data";
 import { fmtNum } from "@/lib/format";
 
 export default function Home() {
-  const { totals, acquirers, meta } = snapshot;
-  const pePct = Math.round((totals.pe_clinics / totals.clinics) * 100);
+  const { totals, acquirers, meta, market } = snapshot;
   const asOf = new Date(meta.generated_at).toISOString().slice(0, 10);
 
   return (
@@ -38,9 +37,19 @@ export default function Home() {
           </div>
 
           <h1 className="headline mt-4 max-w-4xl text-[2.6rem] leading-[1.0] sm:text-[3.75rem] lg:pr-24">
-            <RedactionReveal>Private equity</RedactionReveal> owns{" "}
-            {fmtNum(totals.pe_clinics)} of the {fmtNum(totals.clinics)}{" "}
-            autism-therapy clinics we could trace.
+            {market ? (
+              <>
+                <RedactionReveal>Financial owners</RedactionReveal> hold{" "}
+                {market.share.tracked_of_chain_sites}% of every chain-run
+                autism-therapy clinic in America.
+              </>
+            ) : (
+              <>
+                <RedactionReveal>Private equity</RedactionReveal> owns{" "}
+                {fmtNum(totals.pe_clinics)} of the {fmtNum(totals.clinics)}{" "}
+                autism-therapy clinics we could trace.
+              </>
+            )}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/80">
             Fundprint follows the money behind U.S. ABA / autism-therapy clinics:
@@ -51,7 +60,16 @@ export default function Home() {
 
           <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-rule pt-6 sm:grid-cols-4">
             <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note="from public records" />
-            <StatSlot value={`${pePct}%`} label="Private-equity owned" note={`${fmtNum(totals.pe_clinics)} clinics`} accent />
+            {market ? (
+              <StatSlot
+                value={`${market.share.tracked_of_chain_sites}%`}
+                label="Of chain-run clinics"
+                note={`${fmtNum(market.numerator.tracked_sites_within_chains)} of ${fmtNum(market.denominator.chain_sites)} nationally`}
+                accent
+              />
+            ) : (
+              <StatSlot value={fmtNum(totals.pe_clinics)} label="Private-equity owned" note="clinics" accent />
+            )}
             <StatSlot value={fmtNum(totals.acquirers)} label="Current owners" note="plus one former owner" />
             <StatSlot value={fmtNum(totals.states)} label="States covered" note={`as of ${asOf}`} />
           </div>
@@ -61,6 +79,64 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* The denominator: what the share is a share OF. */}
+      {market && (
+        <Exhibit
+          mark="0"
+          kicker="What the number is a share of"
+          title="The Denominator"
+          aside={<Stamp label="Measured" />}
+        >
+          <p className="mb-5 max-w-2xl text-ink/80">
+            A count on its own invites a fair question: out of how many? So we
+            counted the whole market. The federal provider registry lists{" "}
+            <strong>{fmtNum(market.denominator.aba_organizations)}</strong>{" "}
+            ABA provider organizations operating{" "}
+            <strong>{fmtNum(market.denominator.aba_sites)}</strong> locations in
+            the United States.
+          </p>
+          <p className="mb-5 max-w-2xl text-ink/80">
+            Most of it is not a market financial owners are in.{" "}
+            <strong>{fmtNum(market.denominator.independent_sites)}</strong> of
+            those locations belong to independents and very small practices.
+            Private equity does not buy those. It buys chains, and there are only{" "}
+            <strong>{fmtNum(market.denominator.chains)}</strong> ABA chains in the
+            country with {market.meta.chain_min_sites} or more locations, running{" "}
+            <strong>{fmtNum(market.denominator.chain_sites)}</strong> clinics
+            between them.
+          </p>
+          <p className="mb-5 max-w-2xl text-ink/80">
+            Of those chain-run clinics,{" "}
+            <strong>
+              {fmtNum(market.numerator.tracked_sites_within_chains)} (
+              {market.share.tracked_of_chain_sites}%)
+            </strong>{" "}
+            are held by a private-equity firm, pension fund or family office we
+            can name and source. Measured against every ABA location in the
+            country, including the independents, the same holdings are{" "}
+            {market.share.tracked_of_all_sites}%. Both numbers are true. The
+            second describes a fragmented profession; the first describes what has
+            happened to the part of it that consolidated.
+          </p>
+          <p className="max-w-2xl text-sm leading-relaxed text-ink-muted">
+            Numerator and denominator are computed in a single pass over one
+            registry with one address key, so the numerator is a strict subset of
+            the denominator and cannot count anything the denominator does not.
+            Clinics we read from an owner&apos;s own location directory are
+            excluded from both sides, because the registry cannot see them, which
+            is why this figure is smaller than the{" "}
+            {fmtNum(market.context.published_clinics)} clinics traced above.
+          </p>
+          <div className="mt-6">
+            <SourceCite
+              n={1}
+              href="https://download.cms.gov/nppes/NPI_Files.html"
+              title="NPPES monthly bulk dissemination file, CMS"
+            />
+          </div>
+        </Exhibit>
+      )}
 
       {/* Exhibit A: the engine, full-bleed */}
       <Exhibit mark="A" kicker="How the record is built" title="The Machine" aside={<Stamp label="Deterministic" />}>

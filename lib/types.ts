@@ -43,6 +43,32 @@ export interface Acquirer {
   in_home?: boolean;
 }
 
+// The national ABA market, measured from the same federal provider registry the
+// clinics come from. Numerator and denominator are computed in one pass over one
+// universe, so the numerator is a strict subset. Registry basis: clinics we read
+// from owners' own directories are excluded from BOTH sides.
+export interface Market {
+  meta: { basis: string; source: string; chain_min_sites: number; note: string };
+  denominator: {
+    aba_organizations: number;
+    aba_sites: number;
+    chains: number;
+    chain_sites: number;
+    independent_sites: number;
+  };
+  numerator: {
+    tracked_sites: number;
+    private_equity_sites: number;
+    tracked_sites_within_chains: number;
+  };
+  share: {
+    tracked_of_all_sites: number;
+    private_equity_of_all_sites: number;
+    tracked_of_chain_sites: number;
+  };
+  context: { published_clinics: number; why_larger: string };
+}
+
 export interface Brand {
   owner_id: string;
   owner_name: string;
@@ -90,6 +116,8 @@ export interface TimelineEvent {
 export interface Snapshot {
   meta: SnapshotMeta;
   totals: Totals;
+  // Null when the market denominator has not been computed for this release.
+  market: Market | null;
   acquirers: Acquirer[];
   brands: Brand[];
   states: StateCount[];
