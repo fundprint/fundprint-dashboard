@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Archivo } from "next/font/google";
+import { Libre_Caslon_Text, Archivo } from "next/font/google";
 import Footer from "@/components/Footer";
 import Masthead from "@/components/dossier/Masthead";
 import MarginPapers from "@/components/dossier/MarginPapers";
 import "./globals.css";
 
 // Self-hosted at build time by next/font (no runtime Google request, so the
-// static export stays CSP-clean). Two voices: Fraunces, an old-style serif with
-// real character, for display; Archivo, a clean grotesque, for body, UI, labels,
-// and figures. No monospace: typewriter faces read as a default.
-const fraunces = Fraunces({
+// static export stays CSP-clean). Two voices: Libre Caslon Text, a legal /
+// broadsheet serif with period character (the "public record" voice), for
+// display; Archivo, a clean grotesque, for body, UI, labels, and figures. No
+// monospace: typewriter faces read as a default.
+const caslon = Libre_Caslon_Text({
   subsets: ["latin"],
+  weight: ["400", "700"],
   display: "swap",
-  style: ["normal", "italic"],
-  axes: ["opsz"],
   variable: "--font-display",
 });
 const archivo = Archivo({
@@ -71,7 +71,7 @@ export default function RootLayout({
 }) {
   const plausible = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   return (
-    <html lang="en" className={`${fraunces.variable} ${archivo.variable}`}>
+    <html lang="en" className={`${caslon.variable} ${archivo.variable}`}>
       <body className="min-h-screen bg-paper font-sans text-ink antialiased">
         <MarginPapers />
         <Masthead />

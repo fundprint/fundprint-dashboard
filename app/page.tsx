@@ -37,7 +37,7 @@ export default function Home() {
             <span className="label-mono">Opened 2026 / United States</span>
           </div>
 
-          <h1 className="headline mt-4 max-w-4xl text-[2.7rem] leading-[0.98] sm:text-[4.1rem]">
+          <h1 className="headline mt-4 max-w-4xl text-[2.6rem] leading-[1.0] sm:text-[3.75rem] lg:pr-24">
             <RedactionReveal>Private equity</RedactionReveal> owns{" "}
             {fmtNum(totals.pe_clinics)} of the {fmtNum(totals.clinics)}{" "}
             autism-therapy clinics we could trace.

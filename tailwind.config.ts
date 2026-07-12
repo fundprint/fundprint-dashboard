@@ -26,11 +26,11 @@ const config: Config = {
         pen: "#45525a",
       },
       fontFamily: {
-        // Fraunces (old-style serif, character) for display; Archivo (grotesque)
-        // for body, UI, labels and figures. `mono` is remapped to Archivo so no
-        // typewriter face survives anywhere.
-        display: ["var(--font-display)", "Fraunces", "Georgia", "serif"],
-        serif: ["var(--font-display)", "Fraunces", "Georgia", "serif"],
+        // Libre Caslon Text (legal / broadsheet serif) for display; Archivo
+        // (grotesque) for body, UI, labels and figures. `mono` is remapped to
+        // Archivo so no typewriter face survives anywhere.
+        display: ["var(--font-display)", "Libre Caslon Text", "Georgia", "serif"],
+        serif: ["var(--font-display)", "Libre Caslon Text", "Georgia", "serif"],
         sans: ["var(--font-body)", "Archivo", "system-ui", "sans-serif"],
         mono: ["var(--font-body)", "Archivo", "system-ui", "sans-serif"],
       },
