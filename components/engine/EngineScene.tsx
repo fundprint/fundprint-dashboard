@@ -327,18 +327,23 @@ function Records() {
 
 function Intake() {
   return (
-    <group position={[INTAKE_X, 0, 0]}>
-      {/* two source stacks: NPPES + directories, feeding the shaft */}
-      {[0.55, -0.55].map((z, s) => (
-        <group key={z} position={[-0.5, 0.6, z]}>
-          {[0, 1, 2].map((i) => (
-            <InkMesh key={i} position={[0, i * 0.12, 0]} edge={INK} opacity={0.85 - i * 0.15}>
-              <boxGeometry args={[0.5, 0.08, 0.36]} />
+    // Sat forward of the shaft, toward the camera, so the two sources read as a
+    // foreground pile feeding the machine rather than a flat shape on the line.
+    <group position={[INTAKE_X + 0.4, -0.35, 3.9]} rotation={[0, 0.5, 0]} scale={1.28}>
+      {/* two source stacks: NPPES + directories, staggered in depth */}
+      {[
+        { z: 0.7, x: -0.35, y: 0.55 },
+        { z: -0.55, x: 0.3, y: 0.2 },
+      ].map((p, s) => (
+        <group key={s} position={[p.x, p.y, p.z]}>
+          {[0, 1, 2, 3].map((i) => (
+            <InkMesh key={i} position={[0, i * 0.13, 0]} edge={INK} opacity={0.88 - i * 0.14}>
+              <boxGeometry args={[0.56, 0.09, 0.4]} />
             </InkMesh>
           ))}
         </group>
       ))}
-      <Html position={[-0.5, -0.7, 0]} center distanceFactor={12} pointerEvents="none">
+      <Html position={[0, -0.5, 0.1]} center distanceFactor={11} pointerEvents="none">
         <div style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 11, letterSpacing: 1, color: INK, whiteSpace: "nowrap" }}>
           NPPES + DIRECTORIES
         </div>
