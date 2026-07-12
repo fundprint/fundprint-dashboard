@@ -23,7 +23,7 @@ const RULE = "#c4c3b4";
 
 const XS = [-6, -3, 0, 3, 6];
 const GATE_X = XS[3]; // Validate: where rejected records peel away
-const INTAKE_X = -9.2;
+const INTAKE_X = -7.9;
 const OUTPUT_X = 8.6;
 
 // ----- reusable mechanism parts -------------------------------------------
@@ -338,7 +338,7 @@ function Intake() {
           ))}
         </group>
       ))}
-      <Html position={[-0.5, 1.5, 0]} center distanceFactor={12} pointerEvents="none">
+      <Html position={[-0.5, -0.7, 0]} center distanceFactor={12} pointerEvents="none">
         <div style={{ fontFamily: "var(--font-body), sans-serif", fontSize: 11, letterSpacing: 1, color: INK, whiteSpace: "nowrap" }}>
           NPPES + DIRECTORIES
         </div>
