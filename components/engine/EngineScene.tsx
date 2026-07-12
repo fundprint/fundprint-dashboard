@@ -26,6 +26,19 @@ const GATE_X = XS[3]; // Validate: where rejected records peel away
 const INTAKE_X = -7.9;
 const OUTPUT_X = 8.6;
 
+// The source pile sits forward of the shaft (toward the camera). Records are
+// born there and fly down onto the shaft line by the time they reach Acquire.
+const SOURCE_Y = 0.1;
+const SOURCE_Z = 3.7;
+const MERGE_X = -6.9;
+
+// Two source stacks (NPPES + directories), staggered in depth. Shared so the
+// bob animation and the record spawn point stay in sync.
+const STACKS = [
+  { x: -0.35, y: 0.55, z: 0.7 },
+  { x: 0.3, y: 0.2, z: -0.55 },
+];
+
 // ----- reusable mechanism parts -------------------------------------------
 
 function InkMesh({
@@ -296,23 +309,39 @@ function Records() {
       const p = (s.phase + t * speed) % 1;
       const x = INTAKE_X + p * FLOW_SPAN;
 
-      let y = s.lane * 0.35;
+      const laneY = s.lane * 0.35;
+      const laneZ = s.lane * 0.5;
+      let y: number;
+      let z: number;
       let fade = 1;
-      let scl = 0.85;
+      let tumble = 0.15;
+      const scl = 0.85;
 
-      // fade in at intake, fade out approaching the output
-      if (x < INTAKE_X + 1.4) fade = Math.max(0, (x - INTAKE_X) / 1.4);
-      if (x > OUTPUT_X - 1.2) fade = Math.max(0, (OUTPUT_X - x) / 1.2);
-
-      // rejects peel downward just past the validation gate
-      if (s.reject && x > GATE_X) {
-        const d = x - GATE_X;
-        y -= d * d * 0.5;
-        fade *= Math.max(0, 1 - d / 2.4);
+      if (x < MERGE_X) {
+        // feed phase: the record flies out of the foreground source pile and
+        // drops onto the shaft line, arriving by the time it reaches Acquire.
+        const tt = THREE.MathUtils.clamp((x - INTAKE_X) / (MERGE_X - INTAKE_X), 0, 1);
+        const e = tt * tt * (3 - 2 * tt);
+        y = THREE.MathUtils.lerp(SOURCE_Y, laneY, e);
+        z = THREE.MathUtils.lerp(SOURCE_Z, laneZ, e);
+        fade = Math.min(1, tt / 0.12);
+        tumble = 0.15 + (1 - e) * 1.1;
+      } else {
+        y = laneY;
+        z = laneZ;
+        // fade out approaching the output
+        if (x > OUTPUT_X - 1.2) fade = Math.max(0, (OUTPUT_X - x) / 1.2);
+        // rejects peel downward just past the validation gate
+        if (s.reject && x > GATE_X) {
+          const d = x - GATE_X;
+          y -= d * d * 0.5;
+          fade *= Math.max(0, 1 - d / 2.4);
+          tumble = -d * 0.6;
+        }
       }
 
-      dummy.position.set(x, y, s.lane * 0.5);
-      dummy.rotation.set(0.2, 0, s.reject && x > GATE_X ? -(x - GATE_X) * 0.6 : 0.15);
+      dummy.position.set(x, y, z);
+      dummy.rotation.set(0.2, 0, tumble);
       const f = scl * fade;
       dummy.scale.set(f, f, f);
       dummy.updateMatrix();
@@ -326,18 +355,23 @@ function Records() {
 // ----- intake + output ------------------------------------------------------
 
 function Intake() {
+  const refs = useRef<(THREE.Group | null)[]>([]);
+  useFrame((s) => {
+    const t = s.clock.elapsedTime;
+    STACKS.forEach((p, i) => {
+      const g = refs.current[i];
+      if (g) g.position.y = p.y + Math.sin(t * 1.9 + i * 1.5) * 0.2;
+    });
+  });
   return (
     // Sat forward of the shaft, toward the camera, so the two sources read as a
     // foreground pile feeding the machine rather than a flat shape on the line.
     <group position={[INTAKE_X + 0.4, -0.35, 3.9]} rotation={[0, 0.5, 0]} scale={1.28}>
-      {/* two source stacks: NPPES + directories, staggered in depth */}
-      {[
-        { z: 0.7, x: -0.35, y: 0.55 },
-        { z: -0.55, x: 0.3, y: 0.2 },
-      ].map((p, s) => (
-        <group key={s} position={[p.x, p.y, p.z]}>
-          {[0, 1, 2, 3].map((i) => (
-            <InkMesh key={i} position={[0, i * 0.13, 0]} edge={INK} opacity={0.88 - i * 0.14}>
+      {/* two source stacks: NPPES + directories, staggered in depth, bobbing */}
+      {STACKS.map((p, i) => (
+        <group key={i} ref={(el) => { refs.current[i] = el; }} position={[p.x, p.y, p.z]}>
+          {[0, 1, 2, 3].map((j) => (
+            <InkMesh key={j} position={[0, j * 0.13, 0]} edge={INK} opacity={0.88 - j * 0.14}>
               <boxGeometry args={[0.56, 0.09, 0.4]} />
             </InkMesh>
           ))}
