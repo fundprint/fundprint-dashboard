@@ -74,6 +74,14 @@ export default function AcquirerTable({ acquirers }: { acquirers: Acquirer[] }) 
                     former owner
                   </span>
                 )}
+                {a.in_home && (
+                  <span
+                    className="ml-2 rounded-sm border border-ink/20 px-1.5 py-0.5 font-mono text-[10px] text-ink-muted"
+                    title="Delivers therapy in the client's home and operates no centers, so it has no clinics to count."
+                  >
+                    in-home, no centers
+                  </span>
+                )}
                 {a.hq_state && (
                   <span className="ml-2 font-mono text-xs text-ink-muted">{a.hq_state}</span>
                 )}

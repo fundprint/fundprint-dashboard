@@ -37,6 +37,10 @@ export interface Acquirer {
   // True when the owner holds no clinics now but is shown for its history
   // (e.g. Blackstone, which lost CARD in the 2023 bankruptcy).
   former?: boolean;
+  // True when the owner's ABA holding delivers therapy in the client's home and
+  // operates no centers (Moran/Butterfly Effects, Cane/Key Autism). Its clinic
+  // count is zero because it has no clinics, not because we found none.
+  in_home?: boolean;
 }
 
 export interface Brand {
