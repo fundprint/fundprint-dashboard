@@ -25,6 +25,8 @@ export interface Totals {
   non_pe_clinics: number;
   // Clinics carrying a map coordinate (ZIP centroid). May be < clinics.
   located_clinics: number;
+  directory_sourced_clinics: number;
+  registry_only_clinics: number;
 }
 
 export interface Acquirer {

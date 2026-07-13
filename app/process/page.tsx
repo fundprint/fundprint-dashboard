@@ -5,6 +5,7 @@ import Exhibit from "@/components/dossier/Exhibit";
 import EngineDiagram from "@/components/engine/EngineDiagram";
 import { ENGINE_STAGES } from "@/components/engine/engine-stages";
 import { snapshot } from "@/lib/data";
+import { fmtNum } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "The Machine | Fundprint",
@@ -59,32 +60,43 @@ export default function ProcessPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <div className="max-w-xl space-y-3 font-sans text-ink/85">
             <p>
-              The primary source is NPPES, the federal provider registry. It is
-              authoritative but it enumerates only the organizations a chain registers with
-              a National Provider Identifier, so it structurally undercounts a chain that
-              runs many centers under a few NPIs.
+              One source is NPPES, the federal provider registry. Anyone can download it
+              and check us. But it enumerates <em>registrations</em>, not centers: a chain
+              that runs forty centers under three identifiers appears as three. And nothing
+              obliges a company to withdraw a registration when a center closes, so the
+              registry also reports places that are no longer there.
             </p>
             <p>
-              The supplement is an owner&rsquo;s own public location directory. For owners
-              that publish machine-readable data, we read each center&rsquo;s address from
-              the page&rsquo;s structured markup, snapshot it, and de-duplicate it against
-              the registry by owner, city and state. It is read from published structured
-              data, never scraped from rendered prose.
+              The other is the operator&rsquo;s own public list of its centers, read from
+              the structured data its site publishes for search engines, never scraped from
+              rendered prose. Where that list is complete, it wins. It is what the company
+              tells parents today, and it corrects the registry in both directions at once:
+              it names centers the registry never saw, and it declines to name the ones that
+              closed.
+            </p>
+            <p className="text-ink-muted">
+              Both are de-duplicated on one key, the street address and ZIP within an owner,
+              so a center appearing in both is counted once.
             </p>
           </div>
           <div className="folder self-start p-5 font-mono text-sm text-ink/80">
             <div className="label-mono mb-2">Clinic-existence sources</div>
             <div className="flex items-center justify-between border-b border-rule py-1.5">
-              <span>NPPES provider registry</span>
-              <span className="text-pe">primary</span>
+              <span>Operator&rsquo;s own directory</span>
+              <span className="text-pe">
+                {fmtNum(snapshot.totals.directory_sourced_clinics)}
+              </span>
             </div>
             <div className="flex items-center justify-between py-1.5">
-              <span>Owner location directories</span>
-              <span className="text-pe">supplement</span>
+              <span>NPPES registry alone</span>
+              <span className="text-pe">
+                {fmtNum(snapshot.totals.registry_only_clinics)}
+              </span>
             </div>
             <p className="mt-3 text-[0.72rem] leading-snug text-ink-muted">
-              A center listed in both is counted once. A center matching no tracked owner
-              is left unlinked.
+              A center matching no tracked owner is left unlinked. A registration an
+              operator&rsquo;s own complete directory does not list is quarantined, not
+              deleted.
             </p>
           </div>
         </div>
@@ -95,7 +107,7 @@ export default function ProcessPage() {
           {[
             ["Never assert without a source", "Every published ownership claim traces to a content-hashed snapshot of a public document. A claim missing its source does not publish, at any confidence."],
             ["Verify the current owner", "Ownership turns over. We cite the owner today, not a stale deal, and drop owners we cannot currently substantiate."],
-            ["Reject over-matches", "Generic brand names that catch unrelated organizations are refused rather than inflate a count."],
+            ["Reject over-matches", "A brand name is only a string, and two companies can share one. “Hope Bridge” matches Hope Bridge Counseling, which is a different business. Names too generic to tell apart are refused, and an operator’s own directory is what catches the rest."],
             ["Label honestly", "Pension funds and family offices are named as what they are, not folded into private equity."],
           ].map(([h, b]) => (
             <li key={h} className="folder px-4 py-4">

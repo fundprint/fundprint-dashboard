@@ -2,8 +2,8 @@
   "meta": {
     "dataset_version": "2026.07-beta",
     "resolver_version": "0.1.0",
-    "methodology_version": "2026.07-directory-v1",
-    "generated_at": "2026-07-13T23:03:59.919581+00:00",
+    "methodology_version": "2026.07-directory-v2",
+    "generated_at": "2026-07-13T23:54:56.257659+00:00",
     "source": "fundprint-data v_published_* views"
   },
   "totals": {
@@ -12,7 +12,9 @@
     "states": 44,
     "pe_clinics": 1564,
     "non_pe_clinics": 141,
-    "located_clinics": 1671
+    "located_clinics": 1671,
+    "directory_sourced_clinics": 1045,
+    "registry_only_clinics": 660
   },
   "market": {
     "meta": {
