@@ -1,23 +1,19 @@
 import { fmtNum } from "@/lib/format";
 import type { Market } from "@/lib/types";
 
-// The market, reported as facts rather than as a constructed ratio.
+// The national market, from the registry.
 //
-// This exhibit used to draw a "share of chain-run clinics", where a chain was an
-// operator with five or more sites. That number is gone and is not coming back.
-// The cut was arbitrary (five, not three, not ten), and worse, the denominator
-// was endogenous: an operator is a chain BECAUSE it has many sites, and it has
-// many sites BECAUSE private equity rolled it up, so PE's own buying inflated the
-// numerator and the denominator together. The measure was partly blind to the
-// thing it existed to measure.
+// Two things this must get right, both learned by getting them wrong:
 //
-// What is here instead needs no threshold and no editorial choice:
-//   1. the operator-size distribution, so the reader sees the market's shape and
-//      draws their own cut, out loud, instead of inheriting ours in silence;
-//   2. private equity's share of EVERY ABA site in the country;
-//   3. private equity's share of the sites in each state, which is the closest
-//      this data gets to market power, because no family chooses between a clinic
-//      in Denver and one in Tampa.
+// 1. The reader arrives from a headline that says 1,398 and immediately meets a
+//    754. If the page does not reconcile that IN THE OPEN, before any chart, the
+//    honest thing (a registry-basis share whose numerator and denominator share
+//    one universe) reads as a broken number. So the bridge is prose, up front.
+// 2. The page is not a changelog. A visitor has never seen the measure we used to
+//    publish and does not care that it is gone; explaining the withdrawal here
+//    just teaches them a bad number and makes the site sound defensive. The
+//    reasoning lives in the methodology and the changelog, where a reader who
+//    wants it will go looking. Here, we simply state what is true.
 //
 // Every width is a ratio of the snapshot's own counts. Nothing is set by hand.
 
@@ -35,9 +31,20 @@ function Field({ value, label }: { value: string; label: string }) {
   );
 }
 
-export default function MarketScale({ market }: { market: Market }) {
+export default function MarketScale({
+  market,
+  peClinics,
+}: {
+  market: Market;
+  // The published PE clinic total (all sources). Passed in rather than hardcoded,
+  // because this component's whole job is to reconcile it against the registry
+  // figure, and a bridge between two numbers is worthless if one of them can go
+  // stale.
+  peClinics: number;
+}) {
   const { denominator: d, numerator: n, share: s, size_distribution: dist, states } = market;
 
+  const singleSite = dist[0];
   const maxDistSites = Math.max(...dist.map((b) => b.sites));
   const topStates = states.slice(0, 8);
   const maxStateShare = Math.max(...topStates.map((r) => r.private_equity_share));
@@ -45,25 +52,42 @@ export default function MarketScale({ market }: { market: Market }) {
   return (
     <figure className="folder m-0 px-5 py-6 sm:px-7 sm:py-7">
       <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
-        <Field value={fmtNum(d.aba_organizations)} label="ABA provider organizations" />
+        <Field value={fmtNum(d.aba_organizations)} label="ABA providers in the U.S." />
         <Field value={fmtNum(d.aba_sites)} label="Locations they run" />
-        <Field value={fmtNum(n.private_equity_sites)} label="Of those, private-equity owned" />
-        <Field value={`${s.private_equity_of_all_sites}%`} label="Private equity's national share" />
+        <Field value={fmtNum(singleSite.operators)} label="Providers running one location" />
+        <Field
+          value={`${s.private_equity_of_all_sites}%`}
+          label="Of all locations, private-equity held"
+        />
       </div>
 
-      {/* 1. The shape of the market. No threshold: the whole distribution. */}
-      <div className="mt-9">
+      {/* The bridge. The reader has just been told 1,398; they are about to see
+          754. Say why, plainly, before showing them anything else. */}
+      <p className="mt-6 max-w-3xl border-l-2 border-pen/30 pl-4 text-[0.85rem] leading-relaxed text-ink-muted">
+        <strong className="font-semibold text-ink/85">
+          Why {fmtNum(n.private_equity_sites)} here, and {fmtNum(peClinics)} on the
+          front page.
+        </strong>{" "}
+        The registry lists {fmtNum(n.private_equity_sites)} of the{" "}
+        {fmtNum(peClinics)} private-equity clinics we trace. The other{" "}
+        {fmtNum(peClinics - n.private_equity_sites)} come from owners&apos; own
+        published directories, which the registry does not carry. A percentage is
+        only honest if both of its halves are drawn from the same place, so every
+        figure on this page counts what the registry can see and nothing else.
+      </p>
+
+      {/* The shape of the market. */}
+      <div className="mt-8">
         <div className="label-mono mb-1">The shape of the market</div>
         <p className="mb-4 max-w-2xl text-[0.85rem] leading-relaxed text-ink-muted">
-          We do not publish a &ldquo;chain&rdquo; cutoff, because any cutoff we
-          picked would decide the answer. Here is the whole distribution instead.
-          Draw your own line, and say where you drew it.
+          American autism therapy is not a corporate industry with a few
+          independents left over. It is the reverse.
         </p>
         <table className="w-full text-left">
           <thead>
             <tr className="border-b border-rule">
-              <th className="label-mono pb-1.5 font-normal">Locations per operator</th>
-              <th className="label-mono pb-1.5 text-right font-normal">Operators</th>
+              <th className="label-mono pb-1.5 font-normal">Locations per provider</th>
+              <th className="label-mono pb-1.5 text-right font-normal">Providers</th>
               <th className="label-mono w-1/2 pb-1.5 pl-4 font-normal">Locations</th>
             </tr>
           </thead>
@@ -97,22 +121,21 @@ export default function MarketScale({ market }: { market: Market }) {
           </tbody>
         </table>
         <p className="mt-3 max-w-2xl text-[0.78rem] leading-relaxed text-ink-muted">
-          {fmtNum(dist[0].operators)} of the country&apos;s{" "}
-          {fmtNum(d.aba_organizations)} ABA operators run exactly one location.
-          Fourteen run twenty-five or more. That is the market: a very long tail,
-          and a very short head.
+          {fmtNum(singleSite.operators)} of the country&apos;s{" "}
+          {fmtNum(d.aba_organizations)} ABA providers run exactly one location.
+          Fourteen run twenty-five or more. A very long tail, and a very short
+          head.
         </p>
       </div>
 
-      {/* 2. Where private equity actually is. A state is a market; the nation is not. */}
+      {/* Where private equity actually is. A state is a market; the country is not. */}
       <div className="mt-9 border-t border-rule pt-6">
         <div className="label-mono mb-1">Where private equity is concentrated</div>
         <p className="mb-4 max-w-2xl text-[0.85rem] leading-relaxed text-ink-muted">
-          Nationally, private equity holds {s.private_equity_of_all_sites}% of ABA
-          locations, which sounds small and is the wrong frame: nobody chooses
-          between a clinic in Denver and one in Tampa. Care is bought locally, so
-          the honest measure is local. Share of every ABA location in the state,
-          registry basis.
+          A national average hides what a family actually faces, because nobody
+          chooses between a clinic in Denver and one in Tampa. Care is bought
+          locally, so this is the number that matters: private equity&apos;s share
+          of every ABA location in the state.
         </p>
         <ol className="space-y-2.5">
           {topStates.map((r) => (
@@ -120,25 +143,23 @@ export default function MarketScale({ market }: { market: Market }) {
               <span className="font-mono text-sm font-semibold tabular-nums">
                 {r.state}
               </span>
-              <div>
-                <div className="flex items-baseline justify-between gap-3">
-                  <div className="h-2.5 flex-1 rounded-sm bg-manila/70">
-                    <div
-                      className="h-2.5 rounded-sm"
-                      style={{
-                        width: `${(r.private_equity_share / maxStateShare) * 100}%`,
-                        backgroundColor: PE,
-                      }}
-                      aria-hidden
-                    />
-                  </div>
-                  <span className="w-40 shrink-0 text-right font-mono text-sm tabular-nums text-ink/80">
-                    {r.private_equity_share}%{" "}
-                    <span className="text-ink-muted">
-                      ({fmtNum(r.private_equity_sites)} of {fmtNum(r.aba_sites)})
-                    </span>
-                  </span>
+              <div className="flex items-center gap-3">
+                <div className="h-2.5 flex-1 rounded-sm bg-manila/70">
+                  <div
+                    className="h-2.5 rounded-sm"
+                    style={{
+                      width: `${(r.private_equity_share / maxStateShare) * 100}%`,
+                      backgroundColor: PE,
+                    }}
+                    aria-hidden
+                  />
                 </div>
+                <span className="w-40 shrink-0 text-right font-mono text-sm tabular-nums text-ink/80">
+                  {r.private_equity_share}%{" "}
+                  <span className="text-ink-muted">
+                    ({fmtNum(r.private_equity_sites)} of {fmtNum(r.aba_sites)})
+                  </span>
+                </span>
               </div>
             </li>
           ))}
@@ -151,14 +172,10 @@ export default function MarketScale({ market }: { market: Market }) {
       </div>
 
       <figcaption className="mt-6 border-t border-rule pt-4 text-[0.78rem] leading-relaxed text-ink-muted">
-        Registry basis. The numerator and the denominator are computed in one pass
-        over one universe with one address key, so the numerator cannot count
-        anything the denominator does not. The{" "}
-        {fmtNum(n.private_equity_sites)} private-equity locations here are the ones
-        the federal registry can see; the{" "}
-        {fmtNum(market.context.published_clinics)} clinics traced above also
-        include centers read from owners&apos; own directories, which the registry
-        does not list. The two are not interchangeable.
+        Source: the federal provider registry, the same one the clinics come from.
+        The numerator and the denominator are counted in a single pass with one
+        address key, so a location can never be counted on one side of a share and
+        missed on the other.
       </figcaption>
     </figure>
   );

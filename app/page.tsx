@@ -49,22 +49,15 @@ export default function Home() {
           <p className="mt-4 max-w-2xl border-l-2 border-pe/40 pl-4 text-[0.92rem] leading-relaxed text-ink-muted">
             Not an estimate and not a projection. {fmtNum(totals.pe_clinics)}{" "}
             individual clinics, each one named, each one traced to a named firm
-            through a public document you can open.{" "}
+            through a public document you can open. They are part of the{" "}
+            {fmtNum(totals.clinics)} clinics whose owner we can name and source.{" "}
             {market && (
-              <>
-                They are part of the {fmtNum(totals.clinics)} clinics whose owner
-                we can name and source. Nationally that is{" "}
-                {market.share.private_equity_of_all_sites}% of every ABA location
-                in the country, but care is bought locally, and in{" "}
-                {market.states[0]?.state} it is{" "}
-                {market.states[0]?.private_equity_share}%.{" "}
-                <a
-                  href="#denominator"
-                  className="font-semibold text-pe underline decoration-pe/30 underline-offset-2 hover:decoration-pe"
-                >
-                  See the whole market.
-                </a>
-              </>
+              <a
+                href="#denominator"
+                className="font-semibold text-pe underline decoration-pe/30 underline-offset-2 hover:decoration-pe"
+              >
+                See the whole market.
+              </a>
             )}
           </p>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/80">
@@ -103,28 +96,23 @@ export default function Home() {
         >
           <div className="mb-7 grid gap-x-10 gap-y-6 md:grid-cols-[1.5fr_1fr]">
             <p className="text-[1.05rem] leading-relaxed text-ink/80">
-              A count invites a fair question: out of how many? So we counted the
-              whole market from the same federal registry the clinics come from.
-              What we will not do is pick the denominator that flatters the
-              answer. Below is the market as it is, and you can draw the line
-              wherever you think it belongs.
+              A count invites a fair question: out of how many? The federal
+              provider registry lists every ABA provider in the country, so we
+              counted the whole market from the same source the clinics come
+              from. Here is what is out there, and where the money has landed.
             </p>
             <aside className="self-end border-l-2 border-pe/30 pl-4 text-[0.8rem] leading-relaxed text-ink-muted">
-              <div className="label-mono">Withdrawn</div>
+              <div className="label-mono">The basis</div>
               <p className="mt-1.5">
-                We used to headline a{" "}
-                <strong className="font-semibold text-ink/85">
-                  share of chain-run clinics
-                </strong>
-                , defining a chain as five or more locations. That number is
-                gone. Five was arbitrary, and private equity builds the very
-                chains it was measured against, so its own buying inflated both
-                sides of the ratio.
+                One registry, one address key, one pass. A clinic that counts
+                toward private equity&apos;s share is counted the same way in the
+                national total, so the share can never exceed the market it is a
+                share of.
               </p>
             </aside>
           </div>
 
-          <MarketScale market={market} />
+          <MarketScale market={market} peClinics={totals.pe_clinics} />
           <div className="mt-6">
             <SourceCite
               n={1}

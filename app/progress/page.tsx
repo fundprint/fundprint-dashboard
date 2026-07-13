@@ -57,9 +57,21 @@ const LOG: Milestone[] = [
     done: true,
   },
   {
+    label: "The market",
+    title: "A denominator, and one clinic per address",
+    body: "The whole national ABA market measured from the registry: 17,567 providers, 21,172 locations, and the size of every operator in it. Along the way, 23 addresses where one owner had registered two of its brands were found to be one clinic each, not two, and were merged.",
+    done: true,
+  },
+  {
+    label: "Correction",
+    title: "A published share, withdrawn",
+    body: "Fundprint used to headline private equity's share of clinics run by operators with five or more locations. It was withdrawn: the cutoff was arbitrary, and the group it measured against is one private equity itself builds, so its own buying inflated both halves of the ratio. The headline is now a count, and the shares that remain need no cutoff at all. Recorded in the changelog rather than quietly dropped.",
+    done: true,
+  },
+  {
     label: "Next",
     title: "Coverage denominator and a verification rate",
-    body: "Enumerating the full set of known PE-backed ABA platforms to state coverage as a fraction, and publishing a hand-verification accuracy rate. Both stated as numbers, not implied.",
+    body: "Enumerating the full set of known PE-backed ABA platforms to state coverage as a fraction, and publishing a hand-verification accuracy rate with its confidence interval. Both stated as numbers, not implied.",
     done: false,
   },
 ];
@@ -75,9 +87,9 @@ export default function ProgressPage() {
       />
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" />
-        <StatSlot value="243" label="Tests passing" note="deterministic pipeline" />
-        <StatSlot value="12 of ~25" label="Platforms covered" note="denominator being finalized" pending />
+        <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note={`${fmtNum(totals.pe_clinics)} private-equity owned`} />
+        <StatSlot value="294" label="Tests passing" note="deterministic pipeline" />
+        <StatSlot value={`${totals.acquirers} of ~30`} label="Platforms covered" note="denominator being finalized" pending />
         <StatSlot value="Measuring" label="Verification rate" note="hand-check sample under way" pending />
       </div>
 
