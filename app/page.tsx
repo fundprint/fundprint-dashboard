@@ -114,7 +114,11 @@ export default function Home() {
           title="The Denominator"
           aside={<Stamp label="Measured" />}
         >
-          <p className="mb-7 max-w-2xl text-ink/80">
+          {/* A standfirst, not body copy: it runs the full width of the exhibit
+              so it squares with the figure below instead of stopping short of
+              it, and splits into two columns so the measure stays readable
+              rather than running to 120 characters a line. */}
+          <p className="mb-7 text-[1.05rem] leading-relaxed text-ink/80 sm:columns-2 sm:gap-10">
             A count on its own invites a fair question: out of how many? So we
             counted the whole market. Most of it is not a market financial owners
             are in. They do not buy solo practices, they buy chains, and the
