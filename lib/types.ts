@@ -60,11 +60,16 @@ export interface Market {
     tracked_sites: number;
     private_equity_sites: number;
     tracked_sites_within_chains: number;
+    private_equity_sites_within_chains: number;
   };
   share: {
     tracked_of_all_sites: number;
     private_equity_of_all_sites: number;
     tracked_of_chain_sites: number;
+    // PE on its own, excluding the pension fund and the family office. Any
+    // headline that says "private equity" has to be built on this, not on
+    // tracked_of_chain_sites.
+    private_equity_of_chain_sites: number;
   };
   context: { published_clinics: number; why_larger: string };
 }

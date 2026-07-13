@@ -9,7 +9,7 @@ import StatSlot from "@/components/dossier/StatSlot";
 import Stamp from "@/components/dossier/Stamp";
 import TheMachine from "@/components/engine/TheMachine";
 import { snapshot } from "@/lib/data";
-import { fmtNum } from "@/lib/format";
+import { fmtNum, oneInPhrase } from "@/lib/format";
 
 export default function Home() {
   const { totals, acquirers, meta, market } = snapshot;
@@ -40,8 +40,15 @@ export default function Home() {
             {market ? (
               <>
                 <RedactionReveal>Financial owners</RedactionReveal> hold{" "}
-                {market.share.tracked_of_chain_sites}% of every chain-run
-                autism-therapy clinic in America.
+                {oneInPhrase(market.share.tracked_of_chain_sites)} of America&apos;s
+                chain-run autism-therapy clinics.
+                <a
+                  href="#denominator"
+                  aria-label="Read what chain-run means and what the share is measured against"
+                  className="align-super text-[0.42em] font-semibold text-pe no-underline hover:underline"
+                >
+                  *
+                </a>
               </>
             ) : (
               <>
@@ -51,6 +58,23 @@ export default function Home() {
               </>
             )}
           </h1>
+          {market && (
+            <p className="mt-4 max-w-2xl border-l-2 border-pe/40 pl-4 text-[0.92rem] leading-relaxed text-ink-muted">
+              <span className="font-semibold text-pe">*</span> A chain is an ABA
+              company with {market.meta.chain_min_sites} or more locations, which
+              is the only part of this market financial owners buy.{" "}
+              {market.share.tracked_of_chain_sites}% of those clinics (
+              {fmtNum(market.numerator.tracked_sites_within_chains)} of{" "}
+              {fmtNum(market.denominator.chain_sites)}) are held by a firm we can
+              name and source; private equity alone holds{" "}
+              {market.share.private_equity_of_chain_sites}%. Counted instead
+              against every ABA site in the country, including the{" "}
+              {fmtNum(market.denominator.independent_sites)} solo and small
+              practices, the same holdings are{" "}
+              {market.share.tracked_of_all_sites}%. Both numbers are true and both
+              are below, because quoting either one alone misleads.
+            </p>
+          )}
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/80">
             Fundprint follows the money behind U.S. ABA / autism-therapy clinics:
             which are run by an independent practitioner, which by a chain, and
@@ -83,6 +107,7 @@ export default function Home() {
       {/* The denominator: what the share is a share OF. */}
       {market && (
         <Exhibit
+          id="denominator"
           mark="0"
           kicker="What the number is a share of"
           title="The Denominator"
@@ -113,11 +138,12 @@ export default function Home() {
               {market.share.tracked_of_chain_sites}%)
             </strong>{" "}
             are held by a private-equity firm, pension fund or family office we
-            can name and source. Measured against every ABA location in the
-            country, including the independents, the same holdings are{" "}
-            {market.share.tracked_of_all_sites}%. Both numbers are true. The
-            second describes a fragmented profession; the first describes what has
-            happened to the part of it that consolidated.
+            can name and source. Private equity on its own holds{" "}
+            {market.share.private_equity_of_chain_sites}% of them. Measured
+            against every ABA location in the country, including the independents,
+            the same holdings are {market.share.tracked_of_all_sites}%. Both
+            numbers are true. The second describes a fragmented profession; the
+            first describes what has happened to the part of it that consolidated.
           </p>
           <p className="max-w-2xl text-sm leading-relaxed text-ink-muted">
             Numerator and denominator are computed in a single pass over one

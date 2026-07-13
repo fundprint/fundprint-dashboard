@@ -11,6 +11,7 @@ export default function Exhibit({
   aside,
   children,
   className = "",
+  id,
 }: {
   mark: string;
   title: string;
@@ -18,9 +19,11 @@ export default function Exhibit({
   aside?: ReactNode;
   children: ReactNode;
   className?: string;
+  id?: string;
 }) {
   return (
-    <section className={`relative ${className}`}>
+    // scroll-mt keeps the exhibit header clear of the sticky nav when linked to.
+    <section id={id} className={`relative scroll-mt-24 ${className}`}>
       <Paperclip className="absolute -top-6 left-2 z-10 text-ink/35" />
       <div className="flex items-end gap-4 border-b border-ink/25 pb-2.5">
         <span className="font-display text-3xl font-semibold leading-none text-pe">

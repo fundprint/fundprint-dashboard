@@ -11,7 +11,21 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, "..");
 const snap = JSON.parse(readFileSync(join(root, "data/snapshot.json"), "utf8"));
 const t = snap.totals;
-const pePct = Math.round((t.pe_clinics / t.clinics) * 100);
+const m = snap.market;
+
+// The card previously led with pe_clinics / clinics, which is ~91%: the share of
+// OUR OWN dataset that is PE-owned, not a fact about the market. A share card is
+// the one artifact that travels with no context at all, and "91% PRIVATE-EQUITY
+// OWNED" over a picture of autism clinics is exactly the misread the methodology
+// exists to prevent. The card now leads with the measured market share and names
+// its denominator in the same breath.
+const chainPct = m?.share?.tracked_of_chain_sites;
+// Strongest "1 in N" phrasing still true of the share (27.4% -> "more than 1 in 4").
+const oneIn = chainPct
+  ? Number.isInteger(100 / chainPct)
+    ? `1 in ${100 / chainPct}`
+    : `more than 1 in ${Math.ceil(100 / chainPct)}`
+  : null;
 
 const INK = "#1b1c1a";
 const PAPER = "#d7d6c8";
@@ -37,7 +51,7 @@ const engineStrip = stages
 
 const stats = [
   [t.clinics.toLocaleString("en-US"), "CLINICS TRACED", 80],
-  [`${pePct}%`, "PRIVATE-EQUITY OWNED", 360],
+  [chainPct ? `${chainPct}%` : "--", "OF CHAIN-RUN CLINICS", 360],
   [String(t.acquirers), "OWNERS", 700],
   [String(t.states), "STATES", 860],
 ];
@@ -57,11 +71,12 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
   <text x="1120" y="92" font-family="${SANS}" font-size="15" fill="${MUTE}" text-anchor="end" letter-spacing="2">CASE NO. FP&#183;2026</text>
   <line x1="80" y1="118" x2="1120" y2="118" stroke="${RULE}" stroke-width="1"/>
 
-  <text font-family="${SERIF}" font-size="52" font-weight="700" fill="${INK}">
-    <tspan x="80" y="206">Private equity owns ${t.pe_clinics.toLocaleString("en-US")} of the ${t.clinics.toLocaleString("en-US")}</tspan>
-    <tspan x="80" y="268">autism-therapy clinics we traced.</tspan>
+  <text font-family="${SERIF}" font-size="44" font-weight="700" fill="${INK}">
+    <tspan x="80" y="198">Financial owners hold ${oneIn ?? "a growing share"} of</tspan>
+    <tspan x="80" y="252">America&#8217;s chain-run autism-therapy clinics.</tspan>
   </text>
-  <text x="80" y="330" font-family="${SANS}" font-size="22" fill="${MUTE}">Every claim traces to a public source.  &#183;  whofundsmytherapist.com</text>
+  <text x="80" y="322" font-family="${SANS}" font-size="20" fill="${MUTE}">A chain is an ABA company with ${m?.meta?.chain_min_sites ?? 5}+ locations. Of all ABA sites, including solo practices: ${m?.share?.tracked_of_all_sites ?? "--"}%.</text>
+  <text x="80" y="352" font-family="${SANS}" font-size="20" fill="${MUTE}">Every claim traces to a public source.  &#183;  whofundsmytherapist.com</text>
 
   ${statSvg}
   ${engineStrip}
