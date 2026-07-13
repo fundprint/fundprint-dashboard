@@ -114,17 +114,30 @@ export default function Home() {
           title="The Denominator"
           aside={<Stamp label="Measured" />}
         >
-          {/* A standfirst, not body copy: it runs the full width of the exhibit
-              so it squares with the figure below instead of stopping short of
-              it, and splits into two columns so the measure stays readable
-              rather than running to 120 characters a line. */}
-          <p className="mb-7 text-[1.05rem] leading-relaxed text-ink/80 sm:columns-2 sm:gap-10">
-            A count on its own invites a fair question: out of how many? So we
-            counted the whole market. Most of it is not a market financial owners
-            are in. They do not buy solo practices, they buy chains, and the
-            chains are a thin slice of the profession. Here is that slice, and
-            what has happened inside it.
-          </p>
+          {/* The lede runs to the figure's right edge, but it gets there by
+              sharing the row with the basis note rather than by stretching one
+              paragraph across 984px. Keeps a normal reading measure and a
+              normal top-to-bottom reading order, and defines "chain" in the
+              margin where the reader first meets the word. */}
+          <div className="mb-7 grid gap-x-10 gap-y-6 md:grid-cols-[1.5fr_1fr]">
+            <p className="text-[1.05rem] leading-relaxed text-ink/80">
+              A count on its own invites a fair question: out of how many? So we
+              counted the whole market. Most of it is not a market financial
+              owners are in. They do not buy solo practices, they buy chains,
+              and the chains are a thin slice of the profession. Here is that
+              slice, and what has happened inside it.
+            </p>
+            <aside className="self-end border-l-2 border-pe/30 pl-4 text-[0.8rem] leading-relaxed text-ink-muted">
+              <div className="label-mono">The basis</div>
+              <p className="mt-1.5">
+                A <strong className="font-semibold text-ink/85">chain</strong> is
+                any ABA company running{" "}
+                {market.meta.chain_min_sites} or more locations. Every figure
+                below is measured from the same federal provider registry the
+                clinics themselves come from.
+              </p>
+            </aside>
+          </div>
 
           <MarketScale market={market} />
 
