@@ -5,10 +5,12 @@ import type { Market } from "@/lib/types";
 //
 // Two things this must get right, both learned by getting them wrong:
 //
-// 1. The reader arrives from a headline that says 1,398 and immediately meets a
-//    754. If the page does not reconcile that IN THE OPEN, before any chart, the
-//    honest thing (a registry-basis share whose numerator and denominator share
-//    one universe) reads as a broken number. So the bridge is prose, up front.
+// 1. The reader arrives from a headline count and immediately meets a much smaller
+//    number here. If the page does not reconcile that IN THE OPEN, before any
+//    chart, the honest thing (a registry-basis share whose numerator and
+//    denominator share one universe) reads as a broken number. So the bridge is
+//    prose, up front, and it names both figures from the snapshot rather than
+//    quoting either by hand.
 // 2. The page is not a changelog. A visitor has never seen the measure we used to
 //    publish and does not care that it is gone; explaining the withdrawal here
 //    just teaches them a bad number and makes the site sound defensive. The
@@ -56,13 +58,16 @@ export default function MarketScale({
         <Field value={fmtNum(d.aba_sites)} label="Locations they run" />
         <Field value={fmtNum(singleSite.operators)} label="Providers running one location" />
         <Field
-          value={`${s.private_equity_of_all_sites}%`}
+          // toFixed, because JSON drops a trailing zero and "3%" reads like a
+          // rounded guess where "3.0%" reads like the measurement it is.
+          value={`${s.private_equity_of_all_sites.toFixed(1)}%`}
           label="Of all locations, private-equity held"
         />
       </div>
 
-      {/* The bridge. The reader has just been told 1,398; they are about to see
-          754. Say why, plainly, before showing them anything else. */}
+      {/* The bridge. The reader has just been told the headline count; they are
+          about to see the smaller registry-visible one. Say why, plainly, before
+          showing them anything else. */}
       <p className="mt-6 max-w-3xl border-l-2 border-pen/30 pl-4 text-[0.85rem] leading-relaxed text-ink-muted">
         <strong className="font-semibold text-ink/85">
           Why {fmtNum(n.private_equity_sites)} here, and {fmtNum(peClinics)} on the

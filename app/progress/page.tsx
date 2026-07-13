@@ -59,13 +59,19 @@ const LOG: Milestone[] = [
   {
     label: "The market",
     title: "A denominator, and one clinic per address",
-    body: "The whole national ABA market measured from the registry: 17,567 providers, 21,172 locations, and the size of every operator in it. Along the way, 23 addresses where one owner had registered two of its brands were found to be one clinic each, not two, and were merged.",
+    body: "The whole national ABA market measured from the registry: 17,567 providers, 21,083 locations, and the size of every operator in it. Along the way, 23 addresses where one owner had registered two of its brands were found to be one clinic each, not two, and were merged.",
     done: true,
   },
   {
     label: "Correction",
     title: "A published share, withdrawn",
     body: "Fundprint used to headline private equity's share of clinics run by operators with five or more locations. It was withdrawn: the cutoff was arbitrary, and the group it measured against is one private equity itself builds, so its own buying inflated both halves of the ratio. The headline is now a count, and the shares that remain need no cutoff at all. Recorded in the changelog rather than quietly dropped.",
+    done: true,
+  },
+  {
+    label: "Sources",
+    title: "The operator's own list beats the registry",
+    body: "A provider registration is filed once and never revoked, so the registry keeps a clinic on the books long after it closes and cannot see a centre a chain never registered separately. Where an operator publishes its own complete list of centres, that list now decides. It corrects in both directions: Autism Learning Partners rises from 1 clinic to 45, while Hopebridge falls from 145 to the 101 it actually lists, and Acorn Health from 90 to 70. The registrations left behind are held in quarantine, not deleted.",
     done: true,
   },
   {
@@ -88,7 +94,7 @@ export default function ProgressPage() {
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note={`${fmtNum(totals.pe_clinics)} private-equity owned`} />
-        <StatSlot value="294" label="Tests passing" note="deterministic pipeline" />
+        <StatSlot value="308" label="Tests passing" note="deterministic pipeline" />
         <StatSlot value={`${totals.acquirers} of ~30`} label="Platforms covered" note="denominator being finalized" pending />
         <StatSlot value="Measuring" label="Verification rate" note="hand-check sample under way" pending />
       </div>
