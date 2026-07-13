@@ -1,28 +1,28 @@
 import { fmtNum } from "@/lib/format";
 import type { Market } from "@/lib/types";
 
-// The market drawn to scale. The claim this exhibit exists to make is that the
-// numerator is a strict SUBSET of the denominator, and prose cannot show a
-// subset -- it can only assert one. So: bar 1 is every ABA location in the
-// country, with the chain-run part in slate. Bar 2 is that same slate slice,
-// unfolded to full width. Its ground is therefore literally the same quantity,
-// and the red that eats into it can only ever be a share of it.
+// The market, reported as facts rather than as a constructed ratio.
 //
-// Every width here is a ratio of the snapshot's own counts. Nothing is set by
-// hand, so a bar cannot drift away from the number printed beside it.
+// This exhibit used to draw a "share of chain-run clinics", where a chain was an
+// operator with five or more sites. That number is gone and is not coming back.
+// The cut was arbitrary (five, not three, not ten), and worse, the denominator
+// was endogenous: an operator is a chain BECAUSE it has many sites, and it has
+// many sites BECAUSE private equity rolled it up, so PE's own buying inflated the
+// numerator and the denominator together. The measure was partly blind to the
+// thing it existed to measure.
+//
+// What is here instead needs no threshold and no editorial choice:
+//   1. the operator-size distribution, so the reader sees the market's shape and
+//      draws their own cut, out loud, instead of inheriting ours in silence;
+//   2. private equity's share of EVERY ABA site in the country;
+//   3. private equity's share of the sites in each state, which is the closest
+//      this data gets to market power, because no family chooses between a clinic
+//      in Denver and one in Tampa.
+//
+// Every width is a ratio of the snapshot's own counts. Nothing is set by hand.
 
-// Diagonal red pinstripe for the non-PE financial owners. It has to survive
-// grayscale and colour-blindness, so the sub-band is separated by texture and
-// not by hue alone: the difference between 23.2% and 28.1% is the difference
-// between a true headline and a false one.
-const HATCH =
-  "repeating-linear-gradient(45deg, #b3241c 0 3px, rgba(179,36,28,0.26) 3px 7px)";
-// The same stripe at swatch scale. The bar's 10px period across a small chip
-// renders as one smeared diagonal that reads as a strike-through, not a hatch,
-// so the key gets a tighter period over the same pale-red bed.
-const HATCH_KEY_BED = "rgba(179,36,28,0.26)";
-const HATCH_KEY =
-  "repeating-linear-gradient(45deg, #b3241c 0 2px, transparent 2px 5px)";
+const PE = "#b3241c";
+const SLATE = "#45525a";
 
 function Field({ value, label }: { value: string; label: string }) {
   return (
@@ -35,215 +35,130 @@ function Field({ value, label }: { value: string; label: string }) {
   );
 }
 
-function Key({
-  swatch,
-  name,
-  count,
-  pct,
-}: {
-  swatch: React.CSSProperties;
-  name: string;
-  count: number;
-  pct: string;
-}) {
-  return (
-    <div className="flex items-baseline gap-2.5">
-      <span
-        className="mt-[0.3rem] h-3 w-5 shrink-0 rounded-[1px] ring-1 ring-inset ring-ink/20"
-        style={swatch}
-        aria-hidden
-      />
-      <div className="min-w-0">
-        <div className="font-mono text-sm tabular-nums text-ink">
-          {fmtNum(count)}{" "}
-          <span className="text-ink-muted">({pct}%)</span>
-        </div>
-        <div className="text-[0.72rem] leading-snug text-ink-muted">{name}</div>
-      </div>
-    </div>
-  );
-}
-
 export default function MarketScale({ market }: { market: Market }) {
-  const { denominator: d, numerator: n, share: s, meta } = market;
+  const { denominator: d, numerator: n, share: s, size_distribution: dist, states } = market;
 
-  const chainPct = (d.chain_sites / d.aba_sites) * 100;
-  const pePct = (n.private_equity_sites_within_chains / d.chain_sites) * 100;
-  const otherFinancial =
-    n.tracked_sites_within_chains - n.private_equity_sites_within_chains;
-  const otherFinPct = (otherFinancial / d.chain_sites) * 100;
-  const unheld = d.chain_sites - n.tracked_sites_within_chains;
-  const unheldPct = (unheld / d.chain_sites) * 100;
+  const maxDistSites = Math.max(...dist.map((b) => b.sites));
+  const topStates = states.slice(0, 8);
+  const maxStateShare = Math.max(...topStates.map((r) => r.private_equity_share));
 
   return (
-    // On a filed sheet, not on the putty ground: manila (#d0cfbf) and the ground
-    // (#d7d6c8) are four steps apart, so the independents band all but vanishes
-    // against the desk. On sheet it reads.
     <figure className="folder m-0 px-5 py-6 sm:px-7 sm:py-7">
-      {/* The measured fields, before any share is taken of them. */}
       <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
         <Field value={fmtNum(d.aba_organizations)} label="ABA provider organizations" />
         <Field value={fmtNum(d.aba_sites)} label="Locations they run" />
-        <Field value={fmtNum(d.chains)} label={`Chains with ${meta.chain_min_sites}+ locations`} />
-        <Field value={fmtNum(d.chain_sites)} label="Clinics those chains run" />
+        <Field value={fmtNum(n.private_equity_sites)} label="Of those, private-equity owned" />
+        <Field value={`${s.private_equity_of_all_sites}%`} label="Private equity's national share" />
       </div>
 
-      {/* Bar 1: the whole country, to scale. */}
+      {/* 1. The shape of the market. No threshold: the whole distribution. */}
       <div className="mt-9">
-        <div className="mb-2 flex items-baseline justify-between gap-4">
-          <span className="label-mono">Every ABA location in the U.S.</span>
-          <span className="font-mono text-sm tabular-nums text-ink-muted">
-            {fmtNum(d.aba_sites)}
-          </span>
-        </div>
-        <div
-          className="flex h-9 w-full overflow-hidden rounded-[2px] ring-1 ring-inset ring-ink/15"
-          role="img"
-          aria-label={`Of ${d.aba_sites} ABA locations in the United States, ${d.chain_sites} are run by chains and ${d.independent_sites} by independents and practices under ${meta.chain_min_sites} sites.`}
-        >
-          <div
-            className="h-full bg-pen"
-            style={{ width: `${chainPct}%` }}
-          />
-          <div className="h-full flex-1 bg-manila" />
-        </div>
-        <div className="mt-2 flex items-start justify-between gap-6">
-          <div className="text-[0.78rem] leading-snug text-ink-muted">
-            <span className="font-mono tabular-nums text-ink">
-              {fmtNum(d.chain_sites)} ({chainPct.toFixed(1)}%)
-            </span>{" "}
-            chain-run
-          </div>
-          <div className="text-right text-[0.78rem] leading-snug text-ink-muted">
-            <span className="font-mono tabular-nums text-ink">
-              {fmtNum(d.independent_sites)} ({(100 - chainPct).toFixed(1)}%)
-            </span>{" "}
-            independents and practices under {meta.chain_min_sites} sites
-          </div>
-        </div>
+        <div className="label-mono mb-1">The shape of the market</div>
+        <p className="mb-4 max-w-2xl text-[0.85rem] leading-relaxed text-ink-muted">
+          We do not publish a &ldquo;chain&rdquo; cutoff, because any cutoff we
+          picked would decide the answer. Here is the whole distribution instead.
+          Draw your own line, and say where you drew it.
+        </p>
+        <table className="w-full text-left">
+          <thead>
+            <tr className="border-b border-rule">
+              <th className="label-mono pb-1.5 font-normal">Locations per operator</th>
+              <th className="label-mono pb-1.5 text-right font-normal">Operators</th>
+              <th className="label-mono w-1/2 pb-1.5 pl-4 font-normal">Locations</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dist.map((b) => (
+              <tr key={b.sites_per_operator} className="border-b border-rule/60">
+                <td className="py-2 font-mono text-sm tabular-nums">
+                  {b.sites_per_operator}
+                </td>
+                <td className="py-2 text-right font-mono text-sm tabular-nums text-ink/80">
+                  {fmtNum(b.operators)}
+                </td>
+                <td className="py-2 pl-4">
+                  <div className="flex items-center gap-2.5">
+                    <div
+                      className="h-2.5 rounded-sm"
+                      style={{
+                        width: `${(b.sites / maxDistSites) * 100}%`,
+                        backgroundColor: SLATE,
+                        minWidth: "2px",
+                      }}
+                      aria-hidden
+                    />
+                    <span className="shrink-0 font-mono text-sm tabular-nums text-ink/80">
+                      {fmtNum(b.sites)}
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="mt-3 max-w-2xl text-[0.78rem] leading-relaxed text-ink-muted">
+          {fmtNum(dist[0].operators)} of the country&apos;s{" "}
+          {fmtNum(d.aba_organizations)} ABA operators run exactly one location.
+          Fourteen run twenty-five or more. That is the market: a very long tail,
+          and a very short head.
+        </p>
       </div>
 
-      {/* The unfold: the slate slice above widens into the whole bar below. This
-          is the load-bearing bit of the graphic, so it is drawn, not implied. */}
-      <div className="relative mt-1.5">
-        <svg
-          className="block h-16 w-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          aria-hidden
-        >
-          <polygon
-            points={`0,0 ${chainPct},0 100,100 0,100`}
-            fill="#45525a"
-            fillOpacity="0.13"
-          />
-          {/* Both fold edges, dashed. Inset by a hair so the left one is not
-              clipped in half by the viewBox edge. */}
-          <line
-            x1={chainPct}
-            y1="0"
-            x2="99.7"
-            y2="100"
-            stroke="#45525a"
-            strokeOpacity="0.5"
-            strokeWidth="1"
-            strokeDasharray="4 3"
-            vectorEffect="non-scaling-stroke"
-          />
-          <line
-            x1="0.3"
-            y1="0"
-            x2="0.3"
-            y2="100"
-            stroke="#45525a"
-            strokeOpacity="0.5"
-            strokeWidth="1"
-            strokeDasharray="4 3"
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
-        <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="bg-sheet px-2 font-sans text-[0.62rem] font-semibold uppercase tracking-[0.13em] text-pen/70">
-            that slice, unfolded
-          </span>
-        </span>
+      {/* 2. Where private equity actually is. A state is a market; the nation is not. */}
+      <div className="mt-9 border-t border-rule pt-6">
+        <div className="label-mono mb-1">Where private equity is concentrated</div>
+        <p className="mb-4 max-w-2xl text-[0.85rem] leading-relaxed text-ink-muted">
+          Nationally, private equity holds {s.private_equity_of_all_sites}% of ABA
+          locations, which sounds small and is the wrong frame: nobody chooses
+          between a clinic in Denver and one in Tampa. Care is bought locally, so
+          the honest measure is local. Share of every ABA location in the state,
+          registry basis.
+        </p>
+        <ol className="space-y-2.5">
+          {topStates.map((r) => (
+            <li key={r.state} className="grid grid-cols-[2rem_1fr] items-center gap-3">
+              <span className="font-mono text-sm font-semibold tabular-nums">
+                {r.state}
+              </span>
+              <div>
+                <div className="flex items-baseline justify-between gap-3">
+                  <div className="h-2.5 flex-1 rounded-sm bg-manila/70">
+                    <div
+                      className="h-2.5 rounded-sm"
+                      style={{
+                        width: `${(r.private_equity_share / maxStateShare) * 100}%`,
+                        backgroundColor: PE,
+                      }}
+                      aria-hidden
+                    />
+                  </div>
+                  <span className="w-40 shrink-0 text-right font-mono text-sm tabular-nums text-ink/80">
+                    {r.private_equity_share}%{" "}
+                    <span className="text-ink-muted">
+                      ({fmtNum(r.private_equity_sites)} of {fmtNum(r.aba_sites)})
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-3 max-w-2xl text-[0.78rem] leading-relaxed text-ink-muted">
+          States with fewer than {market.meta.min_state_sites} ABA locations are
+          not ranked, because a percentage of a handful of clinics is noise. They
+          are still counted in every national figure above.
+        </p>
       </div>
 
-      {/* Bar 2: that slice, unfolded. Its slate ground is the same quantity. */}
-      <div>
-        <div className="mb-2 flex items-baseline justify-between gap-4">
-          <span className="label-mono text-ink">
-            The chain-run clinics, up close
-          </span>
-          <span className="font-mono text-sm tabular-nums text-ink-muted">
-            {fmtNum(d.chain_sites)}
-          </span>
-        </div>
-        <div
-          className="flex h-14 w-full overflow-hidden rounded-[2px] ring-1 ring-inset ring-ink/15"
-          role="img"
-          aria-label={`Of ${d.chain_sites} chain-run ABA clinics, ${n.private_equity_sites_within_chains} (${s.private_equity_of_chain_sites} percent) are held by private equity, a further ${otherFinancial} by a pension fund, family office or search fund, and ${unheld} have no financial owner we can name.`}
-        >
-          <div
-            className="h-full border-r border-sheet/70 bg-pe"
-            style={{ width: `${pePct}%` }}
-          />
-          <div
-            className="h-full border-r border-sheet/70"
-            style={{ width: `${otherFinPct}%`, backgroundImage: HATCH }}
-          />
-          <div className="h-full flex-1 bg-pen" />
-        </div>
-
-        {/* The brace: what the two red bands add up to, and what it is called. */}
-        <div className="mt-1.5 flex" aria-hidden>
-          <div
-            className="shrink-0 border-l border-r border-t border-pe/50"
-            style={{ width: `${pePct + otherFinPct}%`, height: "0.4rem" }}
-          />
-        </div>
-        <div className="mt-1.5 flex items-baseline justify-between gap-4">
-          <div className="text-[0.82rem] leading-snug">
-            <span className="font-semibold text-pe">
-              {s.tracked_of_chain_sites}% held by a financial owner
-            </span>{" "}
-            <span className="text-ink-muted">
-              ({fmtNum(n.tracked_sites_within_chains)} clinics we can name and
-              source)
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* The key. Read once, it disambiguates the two headline numbers. */}
-      <div className="mt-6 grid gap-4 border-t border-rule pt-4 sm:grid-cols-3">
-        <Key
-          swatch={{ backgroundColor: "#b3241c" }}
-          name="Private equity"
-          count={n.private_equity_sites_within_chains}
-          pct={s.private_equity_of_chain_sites.toFixed(1)}
-        />
-        <Key
-          swatch={{ backgroundColor: HATCH_KEY_BED, backgroundImage: HATCH_KEY }}
-          name="Pension fund, family office, search fund"
-          count={otherFinancial}
-          pct={otherFinPct.toFixed(1)}
-        />
-        <Key
-          swatch={{ backgroundColor: "#45525a" }}
-          name="Chain-run, no financial owner we can name"
-          count={unheld}
-          pct={unheldPct.toFixed(1)}
-        />
-      </div>
-
-      <figcaption className="mt-4 text-[0.78rem] leading-relaxed text-ink-muted">
-        Drawn to scale from the federal provider registry. The two red bands
-        together are the {s.tracked_of_chain_sites}% figure; the solid red band
-        alone is the {s.private_equity_of_chain_sites}% that private equity holds
-        on its own. Measured instead against all{" "}
-        {fmtNum(d.aba_sites)} ABA locations, including the independents, the same
-        holdings are {s.tracked_of_all_sites}%.
+      <figcaption className="mt-6 border-t border-rule pt-4 text-[0.78rem] leading-relaxed text-ink-muted">
+        Registry basis. The numerator and the denominator are computed in one pass
+        over one universe with one address key, so the numerator cannot count
+        anything the denominator does not. The{" "}
+        {fmtNum(n.private_equity_sites)} private-equity locations here are the ones
+        the federal registry can see; the{" "}
+        {fmtNum(market.context.published_clinics)} clinics traced above also
+        include centers read from owners&apos; own directories, which the registry
+        does not list. The two are not interchangeable.
       </figcaption>
     </figure>
   );

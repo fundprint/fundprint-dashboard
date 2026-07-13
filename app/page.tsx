@@ -10,7 +10,7 @@ import StatSlot from "@/components/dossier/StatSlot";
 import Stamp from "@/components/dossier/Stamp";
 import TheMachine from "@/components/engine/TheMachine";
 import { snapshot } from "@/lib/data";
-import { fmtNum, oneInPhrase } from "@/lib/format";
+import { fmtNum } from "@/lib/format";
 
 export default function Home() {
   const { totals, acquirers, meta, market } = snapshot;
@@ -37,45 +37,36 @@ export default function Home() {
             <span className="label-mono">Opened 2026 / United States</span>
           </div>
 
+          {/* The headline is a COUNT, not a share. Every share needs a denominator,
+              and every denominator is a choice someone made. The count is the one
+              thing here that no methodological argument can take away: these are
+              named clinics, with named owners, each traceable to a public document. */}
           <h1 className="headline mt-4 max-w-4xl text-[2.6rem] leading-[1.0] sm:text-[3.75rem] lg:pr-24">
-            {market ? (
+            <RedactionReveal>Private equity</RedactionReveal> owns{" "}
+            {fmtNum(totals.pe_clinics)} autism-therapy clinics across{" "}
+            {fmtNum(totals.states)} states.
+          </h1>
+          <p className="mt-4 max-w-2xl border-l-2 border-pe/40 pl-4 text-[0.92rem] leading-relaxed text-ink-muted">
+            Not an estimate and not a projection. {fmtNum(totals.pe_clinics)}{" "}
+            individual clinics, each one named, each one traced to a named firm
+            through a public document you can open.{" "}
+            {market && (
               <>
-                <RedactionReveal>Financial owners</RedactionReveal> hold{" "}
-                {oneInPhrase(market.share.tracked_of_chain_sites)} of America&apos;s
-                chain-run autism-therapy clinics.
+                They are part of the {fmtNum(totals.clinics)} clinics whose owner
+                we can name and source. Nationally that is{" "}
+                {market.share.private_equity_of_all_sites}% of every ABA location
+                in the country, but care is bought locally, and in{" "}
+                {market.states[0]?.state} it is{" "}
+                {market.states[0]?.private_equity_share}%.{" "}
                 <a
                   href="#denominator"
-                  aria-label="Read what chain-run means and what the share is measured against"
-                  className="align-super text-[0.42em] font-semibold text-pe no-underline hover:underline"
+                  className="font-semibold text-pe underline decoration-pe/30 underline-offset-2 hover:decoration-pe"
                 >
-                  *
+                  See the whole market.
                 </a>
               </>
-            ) : (
-              <>
-                <RedactionReveal>Private equity</RedactionReveal> owns{" "}
-                {fmtNum(totals.pe_clinics)} of the {fmtNum(totals.clinics)}{" "}
-                autism-therapy clinics we could trace.
-              </>
             )}
-          </h1>
-          {market && (
-            <p className="mt-4 max-w-2xl border-l-2 border-pe/40 pl-4 text-[0.92rem] leading-relaxed text-ink-muted">
-              <span className="font-semibold text-pe">*</span> A chain is an ABA
-              company with {market.meta.chain_min_sites} or more locations, which
-              is the only part of this market financial owners buy.{" "}
-              {market.share.tracked_of_chain_sites}% of those clinics (
-              {fmtNum(market.numerator.tracked_sites_within_chains)} of{" "}
-              {fmtNum(market.denominator.chain_sites)}) are held by a firm we can
-              name and source; private equity alone holds{" "}
-              {market.share.private_equity_of_chain_sites}%. Counted instead
-              against every ABA site in the country, including the{" "}
-              {fmtNum(market.denominator.independent_sites)} solo and small
-              practices, the same holdings are{" "}
-              {market.share.tracked_of_all_sites}%. Both numbers are true and both
-              are below, because quoting either one alone misleads.
-            </p>
-          )}
+          </p>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/80">
             Fundprint follows the money behind U.S. ABA / autism-therapy clinics:
             which are run by an independent practitioner, which by a chain, and
@@ -85,16 +76,12 @@ export default function Home() {
 
           <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-rule pt-6 sm:grid-cols-4">
             <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note="from public records" />
-            {market ? (
-              <StatSlot
-                value={`${market.share.tracked_of_chain_sites}%`}
-                label="Of chain-run clinics"
-                note={`${fmtNum(market.numerator.tracked_sites_within_chains)} of ${fmtNum(market.denominator.chain_sites)} nationally`}
-                accent
-              />
-            ) : (
-              <StatSlot value={fmtNum(totals.pe_clinics)} label="Private-equity owned" note="clinics" accent />
-            )}
+            <StatSlot
+              value={fmtNum(totals.pe_clinics)}
+              label="Private-equity owned"
+              note={`of ${fmtNum(totals.clinics)} traced`}
+              accent
+            />
             <StatSlot value={fmtNum(totals.acquirers)} label="Current owners" note="plus one former owner" />
             <StatSlot value={fmtNum(totals.states)} label="States covered" note={`as of ${asOf}`} />
           </div>
@@ -110,57 +97,34 @@ export default function Home() {
         <Exhibit
           id="denominator"
           mark="0"
-          kicker="What the number is a share of"
-          title="The Denominator"
+          kicker="Out of how many"
+          title="The Whole Market"
           aside={<Stamp label="Measured" />}
         >
-          {/* The lede runs to the figure's right edge, but it gets there by
-              sharing the row with the basis note rather than by stretching one
-              paragraph across 984px. Keeps a normal reading measure and a
-              normal top-to-bottom reading order, and defines "chain" in the
-              margin where the reader first meets the word. */}
           <div className="mb-7 grid gap-x-10 gap-y-6 md:grid-cols-[1.5fr_1fr]">
             <p className="text-[1.05rem] leading-relaxed text-ink/80">
-              A count on its own invites a fair question: out of how many? So we
-              counted the whole market. Most of it is not a market financial
-              owners are in. They do not buy solo practices, they buy chains,
-              and the chains are a thin slice of the profession. Here is that
-              slice, and what has happened inside it.
+              A count invites a fair question: out of how many? So we counted the
+              whole market from the same federal registry the clinics come from.
+              What we will not do is pick the denominator that flatters the
+              answer. Below is the market as it is, and you can draw the line
+              wherever you think it belongs.
             </p>
             <aside className="self-end border-l-2 border-pe/30 pl-4 text-[0.8rem] leading-relaxed text-ink-muted">
-              <div className="label-mono">The basis</div>
+              <div className="label-mono">Withdrawn</div>
               <p className="mt-1.5">
-                A <strong className="font-semibold text-ink/85">chain</strong> is
-                any ABA company running{" "}
-                {market.meta.chain_min_sites} or more locations. Every figure
-                below is measured from the same federal provider registry the
-                clinics themselves come from.
+                We used to headline a{" "}
+                <strong className="font-semibold text-ink/85">
+                  share of chain-run clinics
+                </strong>
+                , defining a chain as five or more locations. That number is
+                gone. Five was arbitrary, and private equity builds the very
+                chains it was measured against, so its own buying inflated both
+                sides of the ratio.
               </p>
             </aside>
           </div>
 
           <MarketScale market={market} />
-
-          <p className="mt-8 max-w-2xl text-ink/80">
-            Both shares are true, and neither works alone. The{" "}
-            {market.share.tracked_of_all_sites}% describes a profession that is
-            still overwhelmingly independent. The{" "}
-            {market.share.tracked_of_chain_sites}% describes what happened to the
-            part of it that consolidated. And a headline that says{" "}
-            <em>private equity</em> has to be built on{" "}
-            {market.share.private_equity_of_chain_sites}%, because the larger
-            figure also contains a pension fund, a family office and a search
-            fund.
-          </p>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            Numerator and denominator are computed in a single pass over one
-            registry with one address key, so the numerator is a strict subset of
-            the denominator and cannot count anything the denominator does not.
-            Clinics we read from an owner&apos;s own location directory are
-            excluded from both sides, because the registry cannot see them, which
-            is why the figures here are smaller than the{" "}
-            {fmtNum(market.context.published_clinics)} clinics traced above.
-          </p>
           <div className="mt-6">
             <SourceCite
               n={1}

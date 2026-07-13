@@ -47,30 +47,43 @@ export interface Acquirer {
 // clinics come from. Numerator and denominator are computed in one pass over one
 // universe, so the numerator is a strict subset. Registry basis: clinics we read
 // from owners' own directories are excluded from BOTH sides.
+//
+// There is deliberately NO chain threshold here. A "share of chain-run clinics"
+// was published until 2026-07 and withdrawn: the five-site cut was arbitrary, and
+// the denominator was endogenous (an operator is a chain because it has many
+// sites, and it has many sites because private equity rolled it up, so PE's own
+// buying inflated both sides). What replaces it is the operator-size distribution
+// (the reader picks their own cut, out loud) and the per-state shares.
 export interface Market {
-  meta: { basis: string; source: string; chain_min_sites: number; note: string };
+  meta: { basis: string; source: string; min_state_sites: number; note: string };
   denominator: {
     aba_organizations: number;
     aba_sites: number;
-    chains: number;
-    chain_sites: number;
-    independent_sites: number;
   };
   numerator: {
     tracked_sites: number;
     private_equity_sites: number;
-    tracked_sites_within_chains: number;
-    private_equity_sites_within_chains: number;
   };
   share: {
+    // Of every ABA site in the country. No threshold, nothing chosen.
     tracked_of_all_sites: number;
     private_equity_of_all_sites: number;
-    tracked_of_chain_sites: number;
-    // PE on its own, excluding the pension fund and the family office. Any
-    // headline that says "private equity" has to be built on this, not on
-    // tracked_of_chain_sites.
-    private_equity_of_chain_sites: number;
   };
+  size_distribution: {
+    sites_per_operator: string;
+    operators: number;
+    sites: number;
+  }[];
+  // Sorted by private_equity_share, descending. Only states at or above
+  // meta.min_state_sites are here: a percentage of six sites means nothing.
+  states: {
+    state: string;
+    aba_sites: number;
+    tracked_sites: number;
+    private_equity_sites: number;
+    private_equity_share: number;
+    tracked_share: number;
+  }[];
   context: { published_clinics: number; why_larger: string };
 }
 

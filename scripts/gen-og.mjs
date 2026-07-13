@@ -13,19 +13,18 @@ const snap = JSON.parse(readFileSync(join(root, "data/snapshot.json"), "utf8"));
 const t = snap.totals;
 const m = snap.market;
 
-// The card previously led with pe_clinics / clinics, which is ~91%: the share of
-// OUR OWN dataset that is PE-owned, not a fact about the market. A share card is
-// the one artifact that travels with no context at all, and "91% PRIVATE-EQUITY
-// OWNED" over a picture of autism clinics is exactly the misread the methodology
-// exists to prevent. The card now leads with the measured market share and names
-// its denominator in the same breath.
-const chainPct = m?.share?.tracked_of_chain_sites;
-// Strongest "1 in N" phrasing still true of the share (27.4% -> "more than 1 in 4").
-const oneIn = chainPct
-  ? Number.isInteger(100 / chainPct)
-    ? `1 in ${100 / chainPct}`
-    : `more than 1 in ${Math.ceil(100 / chainPct)}`
-  : null;
+// A share card is the one artifact that travels with NO context at all, so it must
+// carry a number that cannot be misread when it is stripped of everything around
+// it. Two have failed that test and were removed:
+//   * pe_clinics / clinics (~91%), which is PE's share of our own dataset, not of
+//     the market, and read as "91% of autism clinics are PE-owned";
+//   * the share of "chain-run" clinics, which depended on an arbitrary five-site
+//     cut and a denominator private equity itself inflates.
+// What is left is a count. A count needs no denominator, so it cannot be given
+// the wrong one by a reader who only ever sees this image.
+const peClinics = snap?.totals?.pe_clinics;
+const statesCovered = snap?.totals?.states;
+const topState = m?.states?.[0];
 
 const INK = "#1b1c1a";
 const PAPER = "#d7d6c8";
@@ -51,7 +50,7 @@ const engineStrip = stages
 
 const stats = [
   [t.clinics.toLocaleString("en-US"), "CLINICS TRACED", 80],
-  [chainPct ? `${chainPct}%` : "--", "OF CHAIN-RUN CLINICS", 360],
+  [t.pe_clinics.toLocaleString("en-US"), "PRIVATE-EQUITY OWNED", 360],
   [String(t.acquirers), "OWNERS", 700],
   [String(t.states), "STATES", 860],
 ];
@@ -72,10 +71,10 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
   <line x1="80" y1="118" x2="1120" y2="118" stroke="${RULE}" stroke-width="1"/>
 
   <text font-family="${SERIF}" font-size="44" font-weight="700" fill="${INK}">
-    <tspan x="80" y="198">Financial owners hold ${oneIn ?? "a growing share"} of</tspan>
-    <tspan x="80" y="252">America&#8217;s chain-run autism-therapy clinics.</tspan>
+    <tspan x="80" y="198">Private equity owns ${peClinics?.toLocaleString("en-US") ?? "--"} autism-therapy</tspan>
+    <tspan x="80" y="252">clinics across ${statesCovered ?? "--"} states.</tspan>
   </text>
-  <text x="80" y="322" font-family="${SANS}" font-size="20" fill="${MUTE}">A chain is an ABA company with ${m?.meta?.chain_min_sites ?? 5}+ locations. Of all ABA sites, including solo practices: ${m?.share?.tracked_of_all_sites ?? "--"}%.</text>
+  <text x="80" y="322" font-family="${SANS}" font-size="20" fill="${MUTE}">Each one named, each one traced to a public document.${topState ? ` In ${topState.state}, ${topState.private_equity_share}% of all ABA locations.` : ""}</text>
   <text x="80" y="352" font-family="${SANS}" font-size="20" fill="${MUTE}">Every claim traces to a public source.  &#183;  whofundsmytherapist.com</text>
 
   ${statSvg}
