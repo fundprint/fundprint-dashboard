@@ -2,6 +2,7 @@ import Link from "next/link";
 import Search from "@/components/Search";
 import Concentration from "@/components/dossier/Concentration";
 import Exhibit from "@/components/dossier/Exhibit";
+import MarketScale from "@/components/dossier/MarketScale";
 import { Pushpin, RedactedDoc, Tape } from "@/components/dossier/Props";
 import RedactionReveal from "@/components/dossier/RedactionReveal";
 import SourceCite from "@/components/dossier/SourceCite";
@@ -113,45 +114,34 @@ export default function Home() {
           title="The Denominator"
           aside={<Stamp label="Measured" />}
         >
-          <p className="mb-5 max-w-2xl text-ink/80">
+          <p className="mb-7 max-w-2xl text-ink/80">
             A count on its own invites a fair question: out of how many? So we
-            counted the whole market. The federal provider registry lists{" "}
-            <strong>{fmtNum(market.denominator.aba_organizations)}</strong>{" "}
-            ABA provider organizations operating{" "}
-            <strong>{fmtNum(market.denominator.aba_sites)}</strong> locations in
-            the United States.
+            counted the whole market. Most of it is not a market financial owners
+            are in. They do not buy solo practices, they buy chains, and the
+            chains are a thin slice of the profession. Here is that slice, and
+            what has happened inside it.
           </p>
-          <p className="mb-5 max-w-2xl text-ink/80">
-            Most of it is not a market financial owners are in.{" "}
-            <strong>{fmtNum(market.denominator.independent_sites)}</strong> of
-            those locations belong to independents and very small practices.
-            Private equity does not buy those. It buys chains, and there are only{" "}
-            <strong>{fmtNum(market.denominator.chains)}</strong> ABA chains in the
-            country with {market.meta.chain_min_sites} or more locations, running{" "}
-            <strong>{fmtNum(market.denominator.chain_sites)}</strong> clinics
-            between them.
+
+          <MarketScale market={market} />
+
+          <p className="mt-8 max-w-2xl text-ink/80">
+            Both shares are true, and neither works alone. The{" "}
+            {market.share.tracked_of_all_sites}% describes a profession that is
+            still overwhelmingly independent. The{" "}
+            {market.share.tracked_of_chain_sites}% describes what happened to the
+            part of it that consolidated. And a headline that says{" "}
+            <em>private equity</em> has to be built on{" "}
+            {market.share.private_equity_of_chain_sites}%, because the larger
+            figure also contains a pension fund, a family office and a search
+            fund.
           </p>
-          <p className="mb-5 max-w-2xl text-ink/80">
-            Of those chain-run clinics,{" "}
-            <strong>
-              {fmtNum(market.numerator.tracked_sites_within_chains)} (
-              {market.share.tracked_of_chain_sites}%)
-            </strong>{" "}
-            are held by a private-equity firm, pension fund or family office we
-            can name and source. Private equity on its own holds{" "}
-            {market.share.private_equity_of_chain_sites}% of them. Measured
-            against every ABA location in the country, including the independents,
-            the same holdings are {market.share.tracked_of_all_sites}%. Both
-            numbers are true. The second describes a fragmented profession; the
-            first describes what has happened to the part of it that consolidated.
-          </p>
-          <p className="max-w-2xl text-sm leading-relaxed text-ink-muted">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-muted">
             Numerator and denominator are computed in a single pass over one
             registry with one address key, so the numerator is a strict subset of
             the denominator and cannot count anything the denominator does not.
             Clinics we read from an owner&apos;s own location directory are
             excluded from both sides, because the registry cannot see them, which
-            is why this figure is smaller than the{" "}
+            is why the figures here are smaller than the{" "}
             {fmtNum(market.context.published_clinics)} clinics traced above.
           </p>
           <div className="mt-6">
