@@ -35,10 +35,16 @@ export default function Search() {
       {result && result.outcome === "pe_linked" && (
         <div className="mt-5">
           <p className="mb-3 font-mono text-sm text-ink-muted">
-            {result.matches.length} match
-            {result.matches.length === 1 ? "" : "es"} in our records. Each links
-            to the public source behind the ownership claim.
+            {result.total} match{result.total === 1 ? "" : "es"} in our records.
+            Each links to the public source behind the ownership claim.
           </p>
+          {result.total > result.matches.length && (
+            <p className="mb-3 font-sans text-sm text-ink/75">
+              Showing the first {result.matches.length}. A chain gives every
+              centre the same name, so searching a brand matches all of them.
+              Add a city or state to find a particular one.
+            </p>
+          )}
           <ul className="space-y-3">
             {result.matches.map((c) => (
               <ClinicResult key={c.id} clinic={c} />

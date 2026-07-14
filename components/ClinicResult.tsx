@@ -7,7 +7,12 @@ import Provenance from "./Provenance";
 // A single matched clinic, phrased at the strength its evidence allows.
 export default function ClinicResult({ clinic }: { clinic: Clinic }) {
   const verb = ownershipVerb(clinic.confidence_method);
-  const place = [clinic.city, clinic.state].filter(Boolean).join(", ");
+  // Street first: within a chain the name is identical on every card, so the
+  // address is the only line that tells a reader which centre this is, and
+  // whether it is theirs.
+  const place = [clinic.address, clinic.city, clinic.state]
+    .filter(Boolean)
+    .join(", ");
   return (
     <li className="folder p-4">
       <div className="flex items-start justify-between gap-3">
