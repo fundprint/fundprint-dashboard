@@ -59,7 +59,7 @@ export default function MarketScale({
         <Field value={fmtNum(singleSite.operators)} label="Providers running one location" />
         <Field
           // toFixed, because JSON drops a trailing zero and "3%" reads like a
-          // rounded guess where "3.0%" reads like the measurement it is.
+          // rounded guess where "2.9%" reads like the measurement it is.
           value={`${s.private_equity_of_all_sites.toFixed(1)}%`}
           label="Of all locations, private-equity held"
         />

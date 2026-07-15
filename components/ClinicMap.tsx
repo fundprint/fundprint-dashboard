@@ -33,10 +33,10 @@ export default function ClinicMap({
 
   // geoAlbersUsa covers the 50 states and DC only; it returns null for the
   // territories, and a null projection makes react-simple-maps throw while
-  // rendering a Marker. A Helping Hands Family center in St Thomas, USVI is a
-  // real, tracked clinic that simply has nowhere to sit on this projection, so
-  // it is excluded from the dots (and only from the dots) rather than dropped
-  // from the dataset or allowed to break the page.
+  // rendering a Marker. A tracked clinic in a territory like Puerto Rico or the
+  // USVI simply has nowhere to sit on this projection, so it is excluded from
+  // the dots (and only from the dots) rather than dropped from the dataset or
+  // allowed to break the page.
   const located = useMemo(
     () =>
       clinics.filter(
