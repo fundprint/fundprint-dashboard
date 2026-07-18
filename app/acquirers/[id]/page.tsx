@@ -6,7 +6,7 @@ import Timeline from "@/components/Timeline";
 import RedactionReveal from "@/components/dossier/RedactionReveal";
 import Stamp from "@/components/dossier/Stamp";
 import { brandsForFirm, clinicsForBrand, getAcquirer, snapshot } from "@/lib/data";
-import { confidenceLabel, fmtNum } from "@/lib/format";
+import { CONFIDENCE_OVERALL_LABEL, fmtNum } from "@/lib/format";
 import { FIRM_TYPE_LABEL } from "@/lib/types";
 
 // Static export needs every dynamic path enumerated at build time.
@@ -95,7 +95,7 @@ export default async function AcquirerDetail({
                           </span>
                         </div>
                         <div className="mt-0.5 font-mono text-[0.7rem] text-ink-muted">
-                          {confidenceLabel(c.confidence_method, c.confidence_score)}
+                          {CONFIDENCE_OVERALL_LABEL[c.confidence.overall]}
                           {c.npi ? ` · NPI ${c.npi}` : ""}
                         </div>
                         <Provenance sources={c.sources} />

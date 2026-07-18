@@ -27,6 +27,35 @@ export interface Totals {
   located_clinics: number;
   directory_sourced_clinics: number;
   registry_only_clinics: number;
+  // Every clinic bucketed by its overall confidence. Keys are ConfidenceOverall
+  // values; absent keys are zero.
+  confidence: Partial<Record<ConfidenceOverall, number>>;
+}
+
+// The four dimensions the old single label conflated: is the clinic open, is it at
+// this address, is it a centre or in-home, and who owns it. Each is derived from
+// the published dataset, never asserted.
+export type ConfidenceOverall =
+  | "owner_verified" // the owner's own directory lists this exact site
+  | "registry_current" // registry-only, re-certified within three years
+  | "registry_aging" // registry-only, three to six years cold
+  | "registry_undated" // registry-only, no certification date
+  | "registry_stale" // registry-only, six-plus years untouched
+  | "in_home"; // owner delivers in-home therapy, runs no centre
+
+export interface Confidence {
+  overall: ConfidenceOverall;
+  open:
+    | "owner_listed"
+    | "registry_current"
+    | "registry_aging"
+    | "registry_undated"
+    | "registry_stale"
+    | "in_home";
+  address: "owner_stated" | "registry_filed";
+  site_type: "center" | "in_home" | "unverified";
+  ownership: { firm_type: FirmType | null; basis: "curated" | "portfolio" };
+  registry_last_updated: string | null;
 }
 
 export interface Acquirer {
@@ -120,6 +149,7 @@ export interface Clinic {
   firm_type: FirmType;
   confidence_score: number | null;
   confidence_method: string | null;
+  confidence: Confidence;
   sources: string[];
 }
 
