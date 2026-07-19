@@ -59,7 +59,7 @@ const LOG: Milestone[] = [
   {
     label: "The market",
     title: "A denominator, and one clinic per address",
-    body: "The whole national ABA market measured from the registry: 17,567 providers, 21,083 locations, and the size of every operator in it. Along the way, 23 addresses where one owner had registered two of its brands were found to be one clinic each, not two, and were merged.",
+    body: "The whole national ABA market measured from the registry: 17,569 providers, 21,088 locations, and the size of every operator in it. Along the way, addresses where one owner had registered two of its brands were found to be one clinic each, not two, and were merged.",
     done: true,
   },
   {
