@@ -169,12 +169,84 @@ export interface Snapshot {
   totals: Totals;
   // Null when the market denominator has not been computed for this release.
   market: Market | null;
+  // Null when the platform denominator has not been built for this release.
+  coverage: Coverage | null;
   acquirers: Acquirer[];
   brands: Brand[];
   states: StateCount[];
   clinics: Clinic[];
   timeline: TimelineEvent[];
 }
+
+// How many of the known private-equity-backed ABA platforms Fundprint covers.
+//
+// The denominator is deliberately NOT ours. Its spine is the appendix of PESP's
+// April 2026 report, "Private equity-backed ABA providers", content-hashed like
+// any other source, so the finish line is one somebody else drew. The unit is the
+// platform (the operating company a sponsor buys), not the deal (one platform
+// absorbs many) and not the clinic (that is the thing being measured).
+//
+// The list is wrong in both directions and both are recorded: PESP omits four
+// platforms we publish, and lists eight we have not started.
+export type PlatformStatus =
+  | "covered"
+  | "not_started"
+  | "blocked"
+  | "mixed_scope"
+  | "out_of_scope";
+
+export interface Platform {
+  name: string;
+  investors: string[];
+  status: PlatformStatus;
+  note: string;
+  in_pesp: boolean;
+  // PESP's facility count, never ours, kept unedited so the two can be diffed.
+  pesp_facilities: number | null;
+  other_brands: string[];
+  fundprint_owners: string[];
+  fundprint_clinics: number | null;
+  source_url: string | null;
+}
+
+export interface Coverage {
+  generated_at: string;
+  provenance: {
+    source_url: string;
+    source_record_id: string;
+    content_hash: string;
+    bytes: number;
+    as_of: string;
+    appendix: string;
+  };
+  coverage: {
+    covered: number;
+    // covered + not_started + blocked. mixed_scope and out_of_scope are listed
+    // with reasons but excluded: a denominator you can shrink by redefinition
+    // is not a denominator.
+    in_scope: number;
+    not_started: number;
+    blocked: number;
+    excluded: number;
+    total_listed: number;
+    in_pesp_appendix: number;
+    covered_absent_from_pesp: number;
+    // PESP's own facility count for the platforms we do not cover. The honest
+    // size of what is still missing, and the reason our clinic count is a floor
+    // at the platform level too.
+    unpublished_facilities: number;
+    published_clinics_at_covered_platforms: number;
+  };
+  platforms: Platform[];
+}
+
+export const PLATFORM_STATUS_LABEL: Record<PlatformStatus, string> = {
+  covered: "Covered",
+  not_started: "Not started",
+  blocked: "Blocked",
+  mixed_scope: "Mixed scope",
+  out_of_scope: "Out of scope",
+};
 
 export const FIRM_TYPE_LABEL: Record<FirmType, string> = {
   private_equity: "Private equity",

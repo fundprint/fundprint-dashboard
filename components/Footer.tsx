@@ -13,6 +13,7 @@ const SECTIONS = [
   { label: "Map", href: "/map/" },
   { label: "Owners", href: "/acquirers/" },
   { label: "Sources", href: "/sources/" },
+  { label: "Coverage", href: "/coverage/" },
   { label: "Progress", href: "/progress/" },
   { label: "About", href: "/about/" },
 ];

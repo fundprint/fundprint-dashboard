@@ -75,15 +75,22 @@ const LOG: Milestone[] = [
     done: true,
   },
   {
+    label: "Denominator",
+    title: "Coverage stated as a fraction, against someone else's list",
+    body: "A clinic count with no denominator invites the question 'out of how many?' and has no answer. Coverage is now stated as a fraction of the known private-equity-backed ABA platforms, measured against the appendix of the Private Equity Stakeholder Project's April 2026 report rather than a list of our own drawing. It runs both ways: that appendix omits four platforms published here, and it names eight more that are not, holding several hundred facilities between them. Every one of them is listed by name, with the reason.",
+    done: true,
+  },
+  {
     label: "Next",
-    title: "Coverage denominator and a verification rate",
-    body: "Enumerating the full set of known PE-backed ABA platforms to state coverage as a fraction, and publishing a hand-verification accuracy rate with its confidence interval. Both stated as numbers, not implied.",
+    title: "A verification rate with its confidence interval",
+    body: "A stratified hand-check of published clinics against independent sources, reported as accuracy with a 95% confidence interval broken out by source type, plus the rate of registrations that survive after a centre has closed. Stated as a number, not implied.",
     done: false,
   },
 ];
 
 export default function ProgressPage() {
-  const { totals } = snapshot;
+  const { totals, coverage } = snapshot;
+  const cov = coverage?.coverage;
   return (
     <div className="space-y-12">
       <CaseHeader
@@ -94,8 +101,16 @@ export default function ProgressPage() {
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note={`${fmtNum(totals.pe_clinics)} private-equity owned`} />
-        <StatSlot value="308" label="Tests passing" note="deterministic pipeline" />
-        <StatSlot value={`${totals.acquirers} of ~30`} label="Platforms covered" note="denominator being finalized" pending />
+        <StatSlot value="345" label="Tests passing" note="deterministic pipeline" />
+        {cov ? (
+          <StatSlot
+            value={`${cov.covered} of ${cov.in_scope}`}
+            label="Platforms covered"
+            note={<Link href="/coverage/" className="text-pe hover:underline">every gap named</Link>}
+          />
+        ) : (
+          <StatSlot value={`${totals.acquirers} of ~30`} label="Platforms covered" note="denominator being finalized" pending />
+        )}
         <StatSlot value="Measuring" label="Verification rate" note="hand-check sample under way" pending />
       </div>
 

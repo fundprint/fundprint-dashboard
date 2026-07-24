@@ -10,7 +10,9 @@ export default function StatSlot({
 }: {
   value: string;
   label: string;
-  note?: string;
+  // ReactNode, not string: an earned figure often wants to link to the page
+  // that shows its working.
+  note?: React.ReactNode;
   accent?: boolean;
   pending?: boolean;
 }) {
