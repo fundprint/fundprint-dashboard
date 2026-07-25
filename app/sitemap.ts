@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/sources/",
     "/coverage/",
     "/reconciliation/",
+    "/states/",
     "/progress/",
     "/about/",
     "/methodology/",
@@ -32,7 +33,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     (a) => `/acquirers/${a.id}/`,
   );
 
-  return [...staticRoutes, ...acquirerRoutes].map((path) => ({
+  const stateRoutes = (snapshot.state_files?.states ?? [])
+    .filter((s) => s.status === "published")
+    .map((s) => `/states/${s.state.toLowerCase()}/`);
+
+  return [...staticRoutes, ...acquirerRoutes, ...stateRoutes].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified,
     changeFrequency: "monthly",

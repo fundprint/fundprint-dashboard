@@ -173,6 +173,8 @@ export interface Snapshot {
   coverage: Coverage | null;
   // Null when the reconciliation has not been built for this release.
   reconciliation: Reconciliation | null;
+  // Null when the state files have not been built for this release.
+  state_files: StateFiles | null;
   acquirers: Acquirer[];
   brands: Brand[];
   states: StateCount[];
@@ -357,6 +359,71 @@ export interface Reconciliation {
     invisible_owners: string[];
   };
   owners: ReconciliationOwner[];
+}
+
+// The state files: a government audit of a state's Medicaid ABA spending, next to
+// the ownership footprint Fundprint tracks in that state.
+//
+// The join is deliberately weak and the page says so. No audit here names a
+// provider or an ownership type, and `attributes_to_ownership` is false on every
+// one. Maine is published with a $45.6M finding and zero PE clinics precisely
+// because it is the cleanest demonstration that these audits do not measure
+// ownership. A blocked audit ships its reason and NOT its figures, so `improper`
+// and friends are absent rather than null.
+export interface AuditFinding {
+  issuer: string;
+  title: string;
+  report_number: string | null;
+  issued: string;
+  period: string;
+  source_url: string;
+  findings: string[];
+  attributes_to_ownership: boolean;
+  improper?: number;
+  potentially_improper?: number | null;
+  federal_refund?: number | null;
+  spend_growth?: { year: string; dollars: number }[] | null;
+  source_record_id?: string;
+  content_hash?: string;
+}
+
+export interface StateFootprintOwner {
+  brand: string;
+  firm: string;
+  clinics: number;
+}
+
+export interface StateFile {
+  state: string;
+  state_name: string;
+  status: "published" | "blocked";
+  audit: AuditFinding;
+  note: string;
+  blocked_reason?: string;
+  footprint: {
+    pe_clinics: number;
+    owners: StateFootprintOwner[];
+    registry_visible_pe_sites: number | null;
+    aba_sites: number | null;
+    pe_share: number | null;
+  };
+}
+
+export interface StateFiles {
+  generated_at: string;
+  totals: {
+    audits: number;
+    states: string[];
+    improper: number;
+    potentially_improper: number;
+    federal_refund: number;
+    federal_audits: number;
+    blocked: number;
+    attributing_to_ownership: number;
+    pe_clinics_in_audited_states: number;
+    audited_states_with_no_pe: string[];
+  };
+  states: StateFile[];
 }
 
 export const PLATFORM_STATUS_LABEL: Record<PlatformStatus, string> = {

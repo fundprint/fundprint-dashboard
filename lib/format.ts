@@ -101,3 +101,11 @@ export function hostname(url: string): string {
 export function fmtNum(n: number): string {
   return n.toLocaleString("en-US");
 }
+
+// Audit figures in millions. A published finding of "at least $77.8 million" is
+// already a rounded estimate, so rendering the exact cents would be false
+// precision; the exact dollar amounts stay in the snapshot for anyone checking.
+export function fmtDollarsM(n: number): string {
+  const m = n / 1_000_000;
+  return `$${m >= 100 ? Math.round(m) : m.toFixed(1)}M`;
+}

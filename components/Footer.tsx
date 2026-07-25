@@ -15,6 +15,7 @@ const SECTIONS = [
   { label: "Sources", href: "/sources/" },
   { label: "Coverage", href: "/coverage/" },
   { label: "Reconciliation", href: "/reconciliation/" },
+  { label: "State files", href: "/states/" },
   { label: "Progress", href: "/progress/" },
   { label: "About", href: "/about/" },
 ];

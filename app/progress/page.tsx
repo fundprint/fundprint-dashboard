@@ -87,6 +87,12 @@ const LOG: Milestone[] = [
     done: true,
   },
   {
+    label: "States",
+    title: "What the auditors found, next to who owns the clinics",
+    body: "Care is bought locally and so is oversight. Each audited state now has its own page pairing the government audit of its Medicaid autism-therapy spending with the ownership traced there. The pages refuse the obvious insinuation: no audit attributes a dollar to private equity, and Maine is published as the control case, with the third-largest finding of the four and no private-equity clinics at all. What the pairing does support is that Wisconsin's auditors can see 2 of the 48 private-equity-owned centres in their state.",
+    done: true,
+  },
+  {
     label: "Next",
     title: "A verification rate with its confidence interval",
     body: "A stratified hand-check of published clinics against independent sources, reported as accuracy with a 95% confidence interval broken out by source type, plus the rate of registrations that survive after a centre has closed. Stated as a number, not implied.",
@@ -107,7 +113,7 @@ export default function ProgressPage() {
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note={`${fmtNum(totals.pe_clinics)} private-equity owned`} />
-        <StatSlot value="353" label="Tests passing" note="deterministic pipeline" />
+        <StatSlot value="364" label="Tests passing" note="deterministic pipeline" />
         {cov ? (
           <StatSlot
             value={`${cov.covered} of ${cov.in_scope}`}
