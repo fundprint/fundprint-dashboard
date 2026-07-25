@@ -319,6 +319,12 @@ export interface PlatformComparison {
   higher: number;
   lower: number;
   exact: string[];
+  // PESP's appendix summed across every in-scope platform. Published so the
+  // platform-level 1.08x is not misread as deflating the national 2.8x: one is a
+  // precision check over shared platforms, the other is a national gap. Added up,
+  // PESP implies MORE than Fundprint publishes, not less.
+  national_implied: number;
+  national_platforms: number;
   definitional_only: { name: string; pesp: number }[];
   rows: PlatformComparisonRow[];
 }

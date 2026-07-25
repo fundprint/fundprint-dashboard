@@ -233,6 +233,68 @@ export default function ReconciliationPage() {
             </tbody>
           </table>
         </div>
+        <p className="max-w-2xl font-sans text-ink/80">
+          <strong>
+            That 1.08x is a precision check, not a national total, and the two must not
+            be confused.
+          </strong>{" "}
+          It asks a narrow question: counting the same {pc.platforms_measured} companies,
+          do the two sources land in the same place? They do. It says nothing about the
+          national gap, which is still {ratio}x. Summed across all{" "}
+          {pc.national_platforms} in-scope platforms, PESP&apos;s own facility counts come
+          to <strong>{fmtNum(pc.national_implied)}</strong>, against the published
+          estimate&apos;s {fmtNum(e.sites)}. So the two outside sources disagree with each
+          other by more than we disagree with either, and{" "}
+          <strong>Fundprint sits between them, nearer PESP</strong>:
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[30rem] border-collapse text-left font-sans text-sm">
+            <thead>
+              <tr className="border-b border-rule">
+                <th className="py-2 pr-4 font-semibold">Source</th>
+                <th className="py-2 pr-4 text-right font-semibold">Count</th>
+                <th className="py-2 text-right font-semibold">
+                  vs {e.venue}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-rule/50">
+                <td className="py-2 pr-4">{e.venue}, {publishedYear}</td>
+                <td className="py-2 pr-4 text-right tabular-nums">{fmtNum(e.sites)}</td>
+                <td className="py-2 text-right tabular-nums text-ink-muted">n/a</td>
+              </tr>
+              <tr className="border-b border-rule/50">
+                <td className="py-2 pr-4 font-semibold">Fundprint</td>
+                <td className="py-2 pr-4 text-right font-semibold tabular-nums">
+                  {fmtNum(f.pe_clinics)}
+                </td>
+                <td className="py-2 text-right font-semibold tabular-nums">{ratio}x</td>
+              </tr>
+              <tr className="border-b border-rule/50">
+                <td className="py-2 pr-4">PESP appendix, summed</td>
+                <td className="py-2 pr-4 text-right tabular-nums">
+                  {fmtNum(pc.national_implied)}
+                </td>
+                <td className="py-2 text-right tabular-nums">
+                  {(pc.national_implied / e.sites).toFixed(1)}x
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="max-w-2xl font-sans text-ink/80">
+          Our figure is the lower of the two current-state counts, and the reason is
+          already published: PESP lists {" "}
+          <Link href="/coverage/" className="text-pe hover:underline">
+            platforms we have not read
+          </Link>
+          . Read them and this dataset would move toward PESP, not away. The three
+          numbers are not strictly like-for-like, since PESP counts facilities open{" "}
+          <span className="italic">or opening soon</span> and its appendix, like our
+          scope, includes a few owners that are not private equity. The ordering is not
+          close enough for either caveat to change it.
+        </p>
         <p className="max-w-2xl font-sans text-sm text-ink-muted">
           Independence here is partial, and pretending otherwise would not survive a
           reviewer. The platform <span className="italic">list</span> is shared:
