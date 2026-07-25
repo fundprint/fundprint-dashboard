@@ -8,7 +8,7 @@ import { fmtNum } from "@/lib/format";
 export const metadata: Metadata = {
   title: "Reconciliation | Fundprint",
   description:
-    "Fundprint counts 2.8x more private-equity-owned autism clinics than the published peer-reviewed estimate. This is where the difference comes from, decomposed operator by operator.",
+    "Fundprint counts 2.8x more private-equity-owned autism clinics than the published peer-reviewed estimate. Reconciled against two published estimates, platform by platform and operator by operator.",
 };
 
 // Owners small enough that a ratio is noise rather than evidence are kept out of
@@ -31,6 +31,7 @@ export default function ReconciliationPage() {
   }
 
   const { estimate: e, fundprint: f, headline: h, owner_spread: spread } = rec;
+  const pc = rec.platform_comparison;
   const material = rec.owners.filter((o) => o.published >= MATERIAL);
   const publishedYear = e.published.slice(0, 4);
   // One decimal everywhere it is spoken. 2.82 reads as false precision on a
@@ -42,7 +43,7 @@ export default function ReconciliationPage() {
       <CaseHeader
         eyebrow="The file / Reconciliation"
         title={`Why we find ${ratio}x more PE-owned clinics than the published estimate`}
-        lede="Two counts of the same thing disagree by a factor of nearly three. Rather than assert ours is right, this page takes the difference apart. Most of it turns out not to be a disagreement about method at all."
+        lede="Two counts of the same thing disagree by a factor of nearly three. Rather than assert ours is right, this page takes the difference apart against two published estimates. It turns out the censuses sort by what they count, not by how carefully they count it."
       />
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -174,6 +175,144 @@ export default function ReconciliationPage() {
           publishes all 400 on its website, because it wants families to find them. It
           does not separately register all 400 with the federal registry, and the
           transaction that created it recorded whatever it owned that day.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="font-sans text-xl font-semibold">
+          A second estimate, counted a different way, agrees with us
+        </h2>
+        <p className="max-w-2xl font-sans text-ink/80">
+          One comparison against one estimate is the weakest form of this argument.
+          It cannot be told apart from a pipeline that simply inflates. So here is a
+          second published estimate, and it counts in a different unit: the{" "}
+          <strong>{pc.source}</strong> lists a facility count per{" "}
+          <strong>platform</strong>, the operating company a sponsor buys, rather than
+          per deal. Unlike an aggregate, that can be diffed line by line.
+        </p>
+        <p className="max-w-2xl font-sans text-ink/80">
+          Across the {pc.platforms_measured} platforms both cover, PESP counts{" "}
+          <strong>{fmtNum(pc.pesp_total)}</strong> facilities and Fundprint publishes{" "}
+          <strong>{fmtNum(pc.fundprint_total)}</strong> clinics, a ratio of{" "}
+          <strong>{pc.ratio}x</strong>. <strong>And the differences run both ways:</strong>{" "}
+          Fundprint is higher on {pc.higher} platforms, <em>lower</em> on {pc.lower}, and
+          exact on {pc.exact.length} ({pc.exact.join(" and ")}), reached from opposite
+          directions. A dataset that only ever revised counts upward would deserve no
+          trust at all, and these are the receipts that this one does not.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[38rem] border-collapse text-left font-sans text-sm">
+            <thead>
+              <tr className="border-b border-rule">
+                <th className="py-2 pr-4 font-semibold">Platform</th>
+                <th className="py-2 pr-4 text-right font-semibold">PESP</th>
+                <th className="py-2 pr-4 text-right font-semibold">Fundprint</th>
+                <th className="py-2 text-right font-semibold">Difference</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pc.rows.map((r) => (
+                <tr key={r.name} className="border-b border-rule/50">
+                  <td className="py-2 pr-4 font-semibold">
+                    {r.name}
+                    {r.definitional && (
+                      <span className="ml-2 label-mono text-ink-muted">scope rule</span>
+                    )}
+                  </td>
+                  <td className="py-2 pr-4 text-right tabular-nums text-ink-muted">
+                    {fmtNum(r.pesp)}
+                  </td>
+                  <td className="py-2 pr-4 text-right tabular-nums">
+                    {fmtNum(r.fundprint)}
+                  </td>
+                  <td className="py-2 text-right tabular-nums">
+                    {r.difference > 0 ? `+${r.difference}` : r.difference}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="max-w-2xl font-sans text-sm text-ink-muted">
+          Independence here is partial, and pretending otherwise would not survive a
+          reviewer. The platform <span className="italic">list</span> is shared:
+          Fundprint adopted PESP&apos;s appendix as its{" "}
+          <Link href="/coverage/" className="text-pe hover:underline">
+            coverage denominator
+          </Link>
+          . The <span className="italic">counts</span> are not: ours come from operator
+          directories and the federal registry without reference to PESP&apos;s numbers,
+          and PESP&apos;s come from PitchBook and LevinPro. The two are also not
+          like-for-like, since PESP counts facilities open{" "}
+          <span className="italic">or opening soon</span>.{" "}
+          {pc.definitional_only.map((d) => d.name).join(", ")} is excluded from the
+          totals: we publish zero centers for it under the in-home rule, which is a
+          scope disagreement rather than a counting one, and folding it in would let a
+          definition masquerade as measurement error.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="font-sans text-xl font-semibold">
+          So the estimates sort by unit, not by rigor
+        </h2>
+        <p className="max-w-2xl font-sans text-ink/80">
+          Put the four numbers side by side and they do not scatter. They fall into two
+          groups, and the thing that separates the groups is what each method counts.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[38rem] border-collapse text-left font-sans text-sm">
+            <thead>
+              <tr className="border-b border-rule">
+                <th className="py-2 pr-4 font-semibold">Method</th>
+                <th className="py-2 pr-4 font-semibold">Counts</th>
+                <th className="py-2 pr-4 font-semibold">Sees the operator</th>
+                <th className="py-2 text-right font-semibold">Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-rule/50">
+                <td className="py-2 pr-4">{e.venue}</td>
+                <td className="py-2 pr-4 text-ink/80">sites attached to deals</td>
+                <td className="py-2 pr-4 text-ink/80">on the day it was bought</td>
+                <td className="py-2 text-right tabular-nums">{fmtNum(e.sites)}</td>
+              </tr>
+              <tr className="border-b border-rule/50">
+                <td className="py-2 pr-4">Fundprint, registry only</td>
+                <td className="py-2 pr-4 text-ink/80">federal registrations</td>
+                <td className="py-2 pr-4 text-ink/80">on the day it registered</td>
+                <td className="py-2 text-right tabular-nums">
+                  {fmtNum(f.registry_visible_pe_sites)}
+                </td>
+              </tr>
+              <tr className="border-b border-rule/50">
+                <td className="py-2 pr-4">PESP</td>
+                <td className="py-2 pr-4 text-ink/80">platform facilities</td>
+                <td className="py-2 pr-4 text-ink/80">now</td>
+                <td className="py-2 text-right tabular-nums">{fmtNum(pc.pesp_total)}</td>
+              </tr>
+              <tr className="border-b border-rule/50">
+                <td className="py-2 pr-4">Fundprint, all sources</td>
+                <td className="py-2 pr-4 text-ink/80">operator directories</td>
+                <td className="py-2 pr-4 text-ink/80">now</td>
+                <td className="py-2 text-right tabular-nums">
+                  {fmtNum(pc.fundprint_total)}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="max-w-2xl font-sans text-ink/80">
+          The bottom two rows cover {pc.platforms_measured} platforms rather than the
+          whole country, so they are not national totals and the four numbers are not a
+          single series. What the grouping shows is the mechanism:{" "}
+          <strong>
+            a census built on deals or on registrations sees a company frozen at a
+            moment, and a census built on platforms or directories sees it today.
+          </strong>{" "}
+          A chain that was bought with 40 centers and now runs 400 is counted at 40 by
+          the first kind and at 400 by the second. That is where {ratio}x comes from,
+          and it is a property of the unit, not of anyone&apos;s care.
         </p>
       </section>
 

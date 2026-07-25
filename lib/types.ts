@@ -292,9 +292,41 @@ export interface ReconciliationState {
   ratio: number | null;
 }
 
+// The second estimate, counted in a different unit. PESP's appendix itemizes a
+// facility count per platform, so unlike the JAMA aggregate it can be diffed line
+// by line. Independence is partial and the page says so: the platform LIST is
+// shared (we adopted it as the coverage denominator), the COUNTS are not.
+export interface PlatformComparisonRow {
+  name: string;
+  pesp: number;
+  fundprint: number;
+  difference: number;
+  ratio: number;
+  // True where we publish zero against a positive PESP count. A scope rule
+  // (in-home operators run no centres), not a measurement disagreement, so it is
+  // excluded from the totals rather than allowed to look like error.
+  definitional: boolean;
+}
+
+export interface PlatformComparison {
+  source: string;
+  unit: string;
+  platforms: number;
+  platforms_measured: number;
+  pesp_total: number;
+  fundprint_total: number;
+  ratio: number | null;
+  higher: number;
+  lower: number;
+  exact: string[];
+  definitional_only: { name: string; pesp: number }[];
+  rows: PlatformComparisonRow[];
+}
+
 export interface Reconciliation {
   generated_at: string;
   estimate: ExternalEstimate;
+  platform_comparison: PlatformComparison;
   fundprint: {
     pe_clinics: number;
     states: number;
