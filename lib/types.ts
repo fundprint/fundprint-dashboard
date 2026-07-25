@@ -171,6 +171,8 @@ export interface Snapshot {
   market: Market | null;
   // Null when the platform denominator has not been built for this release.
   coverage: Coverage | null;
+  // Null when the reconciliation has not been built for this release.
+  reconciliation: Reconciliation | null;
   acquirers: Acquirer[];
   brands: Brand[];
   states: StateCount[];
@@ -238,6 +240,85 @@ export interface Coverage {
     published_clinics_at_covered_platforms: number;
   };
   platforms: Platform[];
+}
+
+// The reconciliation against the published peer-reviewed estimate.
+//
+// Two counts of the same thing disagree by 2.8x. The point of this block is to
+// decompose that number rather than assert it: restricted to what the federal
+// registry can see, the two counts land 6 sites apart, and the remainder comes
+// from a third source neither method uses (the operator's own directory).
+//
+// `external` figures are stored exactly as published. They are never rescaled to
+// our basis; where the two are not like-for-like, the page says so.
+export interface ExternalEstimate {
+  key: string;
+  title: string;
+  authors: string;
+  venue: string;
+  published: string;
+  canonical_url: string;
+  source_url: string;
+  unit: string;
+  // The date their count describes, which is not the date it was published.
+  as_of: string;
+  sites: number;
+  acquisitions: number;
+  states: number;
+  method: string;
+  // Their own stated limitations, quoted. They named the gap before we did.
+  stated_limitations: string;
+  notes: string[];
+  source_record_id: string;
+  content_hash: string;
+}
+
+export interface ReconciliationOwner {
+  owner: string;
+  brand: string;
+  firm: string;
+  firm_type: FirmType;
+  published: number;
+  registry_visible: number;
+  // Null when the registry sees none of this brand's centers. Not Infinity: a
+  // ratio would invent a finite blind spot where the real answer is total.
+  ratio: number | null;
+}
+
+export interface ReconciliationState {
+  state: string;
+  external: number;
+  fundprint_pe: number;
+  ratio: number | null;
+}
+
+export interface Reconciliation {
+  generated_at: string;
+  estimate: ExternalEstimate;
+  fundprint: {
+    pe_clinics: number;
+    states: number;
+    registry_visible_pe_sites: number;
+    aba_sites: number;
+    pe_share_of_all_sites: number;
+    archive_sha256: string;
+    as_of: string;
+  };
+  headline: {
+    ratio_all_sources: number;
+    ratio_registry_visible: number;
+    registry_visible_gap: number;
+    directory_only_pe_clinics: number;
+    states_agree: boolean;
+  };
+  states: ReconciliationState[];
+  owner_spread: {
+    owners: number;
+    min_ratio: number | null;
+    max_ratio: number | null;
+    invisible_owners: string[];
+  };
+  owners: ReconciliationOwner[];
 }
 
 export const PLATFORM_STATUS_LABEL: Record<PlatformStatus, string> = {

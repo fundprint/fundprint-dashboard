@@ -81,6 +81,12 @@ const LOG: Milestone[] = [
     done: true,
   },
   {
+    label: "Reconciliation",
+    title: "The gap against the published estimate, taken apart",
+    body: "The peer-reviewed count for the same country is 574 private-equity-owned sites; this dataset holds 1,621. Rather than assert one is right, the difference is now decomposed and published. Both find private equity in exactly 42 states, so the disagreement is depth rather than footprint. Restricted to what the federal registry can see, the two counts land six sites apart, and the whole of the remainder is centres that appear only in an operator's own directory. The registry's blind spot runs from 1.0x to unbounded operator by operator, so no multiplier can correct for it.",
+    done: true,
+  },
+  {
     label: "Next",
     title: "A verification rate with its confidence interval",
     body: "A stratified hand-check of published clinics against independent sources, reported as accuracy with a 95% confidence interval broken out by source type, plus the rate of registrations that survive after a centre has closed. Stated as a number, not implied.",
@@ -101,7 +107,7 @@ export default function ProgressPage() {
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note={`${fmtNum(totals.pe_clinics)} private-equity owned`} />
-        <StatSlot value="345" label="Tests passing" note="deterministic pipeline" />
+        <StatSlot value="353" label="Tests passing" note="deterministic pipeline" />
         {cov ? (
           <StatSlot
             value={`${cov.covered} of ${cov.in_scope}`}
