@@ -31,3 +31,8 @@ npm run build
 A deploy pins exactly one `dataset_version` and links to the matching Hugging Face release. The dashboard reads validated, above-floor rows through read-only views only. It has no database of its own, no user accounts, and never writes anywhere. See `docs/deployment.md`.
 
 The dataset this dashboard reads lives in `fundprint-data`. The methodology governing what counts as "PE-backed" lives in `fundprint-methodology`. See `docs/cross-repo.md` for how the three repos coordinate; the dashboard cuts last in every release.
+
+## License
+
+The code is licensed under the [MIT License](./LICENSE). The data is licensed under
+[CC BY 4.0](./LICENSE-DATA): reuse it freely, with attribution.
