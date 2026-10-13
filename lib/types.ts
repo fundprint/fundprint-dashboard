@@ -175,6 +175,8 @@ export interface Snapshot {
   reconciliation: Reconciliation | null;
   // Null when the state files have not been built for this release.
   state_files: StateFiles | null;
+  // Null until a hand-verification sample has been reviewed and scored.
+  verification: Verification | null;
   acquirers: Acquirer[];
   brands: Brand[];
   states: StateCount[];
@@ -211,6 +213,33 @@ export interface Platform {
   fundprint_owners: string[];
   fundprint_clinics: number | null;
   source_url: string | null;
+}
+
+// A share with its 95% Wilson interval, in percent.
+export interface Rate {
+  k: number;
+  n: number;
+  rate: number | null;
+  ci95: [number, number];
+}
+
+// The hand-verification result (score_verification.py --out). The headline is
+// the private-equity stratum alone: non-PE was deliberately oversampled, so the
+// pooled rate leans on it and is shown only beside the headline, labelled.
+export interface Verification {
+  sample_id: string | null;
+  seed: number | null;
+  drawn_at: string | null;
+  drawn: number;
+  reviewed: number;
+  adjudicated: number;
+  headline_pe: Rate;
+  all_published: Rate;
+  strata: (Rate & { stratum: string })[];
+  cannot_tell: number;
+  ghosts: Rate;
+  wrong_address: Rate;
+  recall_missed_owners: Rate;
 }
 
 export interface Coverage {

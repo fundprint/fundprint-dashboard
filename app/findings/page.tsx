@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 };
 
 export default function FindingsPage() {
-  const { totals } = snapshot;
+  const { totals, verification: ver } = snapshot;
+  const cov = snapshot.coverage?.coverage;
   const pePct = Math.round((totals.pe_clinics / totals.clinics) * 100);
 
   return (
@@ -93,11 +94,24 @@ export default function FindingsPage() {
             </p>
           </div>
           <div className="folder px-4 py-4">
-            <div className="label-mono text-pe">Still measuring</div>
+            <div className="label-mono text-pe">{ver && cov ? "Measured, not implied" : "Still measuring"}</div>
             <p className="mt-2 font-sans text-[0.95rem] text-ink/85">
-              How complete the record is against the full set of PE-backed ABA platforms,
-              and a published hand-verification rate. Both are in progress and will be
-              stated as numbers, not implied.
+              {ver && cov ? (
+                <>
+                  How right and how complete the record is. A hand check of a random sample
+                  found {ver.headline_pe.k} of {ver.headline_pe.n} private-equity clinics
+                  correct on site, address, brand and owner ({ver.headline_pe.rate}%, 95% CI{" "}
+                  {ver.headline_pe.ci95[0].toFixed(1)} to {ver.headline_pe.ci95[1].toFixed(1)}%). The record covers{" "}
+                  {cov.covered} of {cov.in_scope} known PE-backed ABA platforms, and{" "}
+                  <Link href="/coverage/" className="text-pe hover:underline">every gap is named</Link>.
+                </>
+              ) : (
+                <>
+                  How complete the record is against the full set of PE-backed ABA platforms,
+                  and a published hand-verification rate. Both are in progress and will be
+                  stated as numbers, not implied.
+                </>
+              )}
             </p>
           </div>
         </div>

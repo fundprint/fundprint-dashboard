@@ -92,16 +92,30 @@ const LOG: Milestone[] = [
     body: "Care is bought locally and so is oversight. Each audited state now has its own page pairing the government audit of its Medicaid autism-therapy spending with the ownership traced there. The pages refuse the obvious insinuation: no audit attributes a dollar to private equity, and Maine is published as the control case, with the third-largest finding of the four and no private-equity clinics at all. What the pairing does support is that Wisconsin's auditors can see 2 of the 48 private-equity-owned centres in their state.",
     done: true,
   },
-  {
-    label: "Next",
-    title: "A verification rate with its confidence interval",
-    body: "A stratified hand-check of published clinics against independent sources, reported as accuracy with a 95% confidence interval broken out by source type, plus the rate of registrations that survive after a centre has closed. Stated as a number, not implied.",
-    done: false,
-  },
+  verificationEntry(),
 ];
 
+function verificationEntry(): Milestone {
+  const v = snapshot.verification;
+  if (!v) {
+    return {
+      label: "Next",
+      title: "A verification rate with its confidence interval",
+      body: "A stratified hand-check of published clinics against independent sources, reported as accuracy with a 95% confidence interval broken out by source type, plus the rate of registrations that survive after a centre has closed. Stated as a number, not implied.",
+      done: false,
+    };
+  }
+  const pe = v.headline_pe;
+  return {
+    label: "Verification",
+    title: "A verification rate with its confidence interval",
+    body: `A seeded, stratified random sample of published clinics was checked by hand against independent sources: is the centre open, at the address given, under the brand given, owned by the firm given. ${pe.k} of ${pe.n} private-equity clinics passed all four (${pe.rate}%, 95% CI ${pe.ci95[0].toFixed(1)} to ${pe.ci95[1].toFixed(1)}%). A clinic the reviewer could not confirm counts as a failure, not as a pass. ${v.ghosts.k} of ${v.ghosts.n} sampled clinics were closed or not ABA clinics, and ${v.recall_missed_owners.k} of ${v.recall_missed_owners.n} unattributed registry sites turned out to have a financial owner we had missed. The same review caught a parser error that had misfiled eight centres' addresses; it was fixed and the correction published.`,
+    done: true,
+  };
+}
+
 export default function ProgressPage() {
-  const { totals, coverage } = snapshot;
+  const { totals, coverage, verification: ver } = snapshot;
   const cov = coverage?.coverage;
   return (
     <div className="space-y-12">
@@ -113,7 +127,7 @@ export default function ProgressPage() {
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" note={`${fmtNum(totals.pe_clinics)} private-equity owned`} />
-        <StatSlot value="364" label="Tests passing" note="deterministic pipeline" />
+        <StatSlot value="371" label="Tests passing" note="deterministic pipeline" />
         {cov ? (
           <StatSlot
             value={`${cov.covered} of ${cov.in_scope}`}
@@ -123,7 +137,15 @@ export default function ProgressPage() {
         ) : (
           <StatSlot value={`${totals.acquirers} of ~30`} label="Platforms covered" note="denominator being finalized" pending />
         )}
-        <StatSlot value="Measuring" label="Verification rate" note="hand-check sample under way" pending />
+        {ver ? (
+          <StatSlot
+            value={`${ver.headline_pe.rate}%`}
+            label="Verified correct"
+            note={`${ver.headline_pe.k} of ${ver.headline_pe.n} PE clinics hand-checked; 95% CI ${ver.headline_pe.ci95[0].toFixed(1)} to ${ver.headline_pe.ci95[1].toFixed(1)}%`}
+          />
+        ) : (
+          <StatSlot value="Measuring" label="Verification rate" note="hand-check sample under way" pending />
+        )}
       </div>
 
       <ol className="relative space-y-6 border-l-2 border-rule pl-6">
