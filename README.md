@@ -1,5 +1,11 @@
 # fundprint-dashboard
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23426864.svg)](https://doi.org/10.5281/zenodo.23426864)
+[![Site](https://img.shields.io/badge/site-whofundsmytherapist.com-b3241c.svg)](https://whofundsmytherapist.com)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-green.svg)](./LICENSE)
+
+The site at **[whofundsmytherapist.com](https://whofundsmytherapist.com)**: private equity owns at least 1,621 autism therapy clinics across 42 states, and you can look up any of them. The data and pipeline live in [fundprint-data](https://github.com/fundprint/fundprint-data).
+
 The public dashboard for Fundprint: a free, citable view onto the dataset tracking private-equity ownership of U.S. ABA / autism therapy clinics. Its core feature is a clinic lookup ("Is your clinic PE-owned?"); around it sit a sortable acquirer table, a geographic heatmap, acquisition timelines, and ownership-chain views. The dashboard **displays** the dataset; it never derives a number the published dataset does not contain, and every claim on screen is one click from its public source. See `docs/architecture.md` for the five-layer design and `docs/data-contract.md` for what it is allowed to read.
 
 The dashboard takes no position on ABA as a therapy. It tracks who owns the clinics that serve autistic children, full stop. See `docs/copy-and-claims.md`.
@@ -8,7 +14,7 @@ The dashboard takes no position on ABA as a therapy. It tracks who owns the clin
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/<org>/fundprint-dashboard.git
+git clone https://github.com/fundprint/fundprint-dashboard.git
 cd fundprint-dashboard
 
 # 2. Install dependencies (requires Node 20+)
