@@ -65,7 +65,7 @@ export default function AboutPage() {
           <StatSlot value={fmtNum(totals.clinics)} label="Clinics traced" />
           <StatSlot value="5" label="Pipeline stages" />
           <StatSlot value="3" label="Open repositories" />
-          <StatSlot value="243" label="Tests passing" accent />
+          <StatSlot value="371" label="Tests passing" accent />
         </div>
       </Exhibit>
 
